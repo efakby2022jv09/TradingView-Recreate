@@ -1,0 +1,2037 @@
+"use strict";
+(self.webpackChunktradingview = self.webpackChunktradingview || []).push([
+	[78943], {
+		328289: (e, t, r) => {
+			r.d(t, {
+				ChartSession: () => c
+			});
+			var s = r(97639),
+				i = r.n(s),
+				n = r(711806),
+				a = r(270617);
+			const o = (0, r(911905).getLogger)("ChartSession");
+			class c extends n.Session {
+				constructor(e, t = !1) {
+					super(e, "cs", !1), this._sessionDisabled = !1, this._handler = null, this._criticalError = new(i()), this._symbolResolveMap = new Map, this._disableStatistics = t
+				}
+				destroy() {
+					this._criticalError.destroy(), this._handler = null, this._symbolResolveMap.clear(), super.destroy()
+				}
+				serverTimeOffset() {
+					return this._getChartApi().serverTimeOffset()
+				}
+				switchTimezone(e) {
+					return this._getChartApi().switchTimezone(this.sessionId(), e)
+				}
+				defaultResolutions() {
+					return this._getChartApi().defaultResolutions()
+				}
+				availableCurrencies() {
+					return this._getChartApi().availableCurrencies()
+				}
+				availableUnits() {
+					return this._getChartApi().availableUnits()
+				}
+				resolveSymbol(e, t, r) {
+					if (this._symbolResolveMap.has(t)) {
+						const [e, s] = this._symbolResolveMap.get(t);
+						return Array.isArray(s) ? s.push(r) : s.then(r), e
+					} {
+						const s = [r];
+						return this._getChartApi().resolveSymbol(this.sessionId(), e, t, (r => {
+							"symbol_error" === r.method ? this._symbolResolveMap.delete(t) : this._symbolResolveMap.set(t, [e, Promise.resolve(r)]), s.forEach((e => e(r)))
+						})), this._symbolResolveMap.set(t, [e, s]), e
+					}
+				}
+				requestFirstBarTime(e, t, r) {
+					return this._getChartApi().requestFirstBarTime(this.sessionId(), e, t, r)
+				}
+				createSeries(e, t, r, s, i, n, a) {
+					return this._getChartApi().createSeries(this.sessionId(), e, t, r, s, i, n, a)
+				}
+				modifySeries(e, t, r, s, i, n) {
+					return this._getChartApi().modifySeries(this.sessionId(), e, t, r, s, i, n)
+				}
+				removeSeries(e) {
+					return !!this.isConnected().value() && this._getChartApi().removeSeries(this.sessionId(), e)
+				}
+				requestMoreData(e, t, r) {
+					return "number" == typeof e ? this._getChartApi().requestMoreData(this.sessionId(), e) : this._getChartApi().requestMoreData(this.sessionId(), e, t, r)
+				}
+				requestMoreTickmarks(e, t, r) {
+					return (0, a.isNumber)(e) ? this._getChartApi().requestMoreTickmarks(this.sessionId(), e) : this._getChartApi().requestMoreTickmarks(this.sessionId(), e, t, r)
+				}
+				requestMetadata(e, t) {
+					const r = () => this._getChartApi().requestMetadata(this.sessionId(), e, t);
+					window.localForageReady.done(r).fail((e => {
+						o.logError("localForage is not initialized, cannot proceed. " + e)
+					}))
+				}
+				isCanCreateStudy(e) {
+					return this._getChartApi().isCanCreateStudy(e)
+				}
+				createStudy(e, t, r, s, i, n, a) {
+					return this._getChartApi().createStudy(this.sessionId(), e, t, r, s, i, n, a)
+				}
+				rebindStudy(e, t, r, s, i, n, a) {
+					return this._getChartApi().rebindStudy(this.sessionId(), e, t, r, s, i, n, a)
+				}
+				modifyStudy(e, t, r, s) {
+					return this._getChartApi().modifyStudy(this.sessionId(), e, t, r, s)
+				}
+				removeStudy(e, t) {
+					return this._getChartApi().removeStudy(this.sessionId(), e, t)
+				}
+				createPointset(e, t, r, s, i, n) {
+					return this._getChartApi().createPointset(this.sessionId(), e, t, r, s, i, n)
+				}
+				modifyPointset(e, t, r, s) {
+					return this._getChartApi().modifyPointset(this.sessionId(), e, t, r, s)
+				}
+				removePointset(e) {
+					return this._getChartApi().removePointset(this.sessionId(), e)
+				}
+				setVisibleTimeRange(e, t, r, s, i, n) {
+					0
+				}
+				criticalError() {
+					return this._criticalError
+				}
+				connect(e = null) {
+					null !== e && (this._handler = e), this._symbolResolveMap.clear(),
+						super.connect()
+				}
+				setHandler(e) {
+					this._handler = e
+				}
+				connected() {
+					return this.isConnected().value() && !this._sessionDisabled
+				}
+				disable() {
+					this._sessionDisabled = !0
+				}
+				chartApi() {
+					return this._getChartApi()
+				}
+				_sendCreateSession() {
+					Object.keys(this).forEach((e => {
+						/^(s|st|symbol_)\d+$/.test(e) && delete this[e]
+					})), this._getChartApi().chartCreateSession(this.sessionId(), this._disableStatistics)
+				}
+				_sendRemoveSession() {
+					this._getChartApi().chartDeleteSession(this.sessionId())
+				}
+				_onMessage(e) {
+					this._handler && this._handler(e)
+				}
+				_onCriticalError(e, t) {
+					this._criticalError.fire(e, t), super._onCriticalError(e, t)
+				}
+			}
+		},
+		166437: (e, t, r) => {
+			var s = r(611688),
+				i = [{
+					d: "E-Mini S&P 500",
+					t: "ES"
+				}, {
+					d: "E-Mini Nasdaq 100",
+					t: "NQ"
+				}, {
+					d: "Gold",
+					t: "GC"
+				}, {
+					d: "Silver",
+					t: "SI"
+				}, {
+					d: "Crude Oil WTI",
+					t: "CL"
+				}, {
+					d: "Natural Gas",
+					t: "NG"
+				}, {
+					d: "Australian Dollar",
+					t: "6A"
+				}, {
+					d: "Australian Dollar (Floor)",
+					t: "AD"
+				}, {
+					d: "Euro FX",
+					t: "6E"
+				}, {
+					d: "Euro FX (Floor)",
+					t: "EC"
+				}, {
+					d: "Corn",
+					t: "ZC"
+				}, {
+					d: "Corn (Floor)",
+					t: "C"
+				}, {
+					d: "Eurodollar",
+					t: "GE"
+				}, {
+					d: "Eurodollar (Floor)",
+					t: "ED"
+				}],
+				n = function() {
+					var e = [{
+						pattern: "(",
+						ctor: a
+					}, {
+						pattern: ")",
+						ctor: o
+					}, {
+						pattern: "+",
+						ctor: d
+					}, {
+						pattern: "-",
+						ctor: h
+					}, {
+						pattern: "*",
+						ctor: u
+					}, {
+						pattern: "/",
+						ctor: l
+					}, {
+						pattern: "^",
+						ctor: m
+					}, {
+						pattern: /\d+(?:\.\d*|(?![a-zA-Z0-9_!:.&]))|\.\d+/,
+						ctor: y
+					}, {
+						pattern: /\./,
+						ctor: v
+					}, {
+						pattern: s.enabled("charting_library_base") ? /[a-zA-Z0-9_\u0370-\u1FFF_\u2E80-\uFFFF^][a-zA-Z0-9_\u0020\u0370-\u1FFF_\u2E80-\uFFFF_!:.&]*|'.+?'/ : /[a-zA-Z0-9_\u0370-\u1FFF_\u2E80-\uFFFF][a-zA-Z0-9_\u0020\u0370-\u1FFF_\u2E80-\uFFFF_!|:.&]*|'.+?'/,
+						ctor: f
+					}, {
+						pattern: /'[^']*/,
+						ctor: b
+					}, {
+						pattern: /[\0-\x20\s]+/,
+						ctor: n
+					}];
+
+					function t(e, t) {
+						var r = function() {};
+						return r.prototype = t.prototype, e.prototype = new r, e
+					}
+
+					function r() {}
+
+					function n(e) {
+						this.value = e
+					}
+
+					function a() {}
+
+					function o() {}
+
+					function c() {}
+
+					function d() {}
+
+					function h() {}
+
+					function u() {}
+
+					function l() {}
+
+					function m() {}
+					r.prototype.toString = function() {
+						return this.value
+					}, t(n, r), t(a, r), a.prototype.value = "(", t(o, r), o.prototype.value = ")", t(c, r), t(d, c), d.prototype.value = "+", d.prototype.precedence = 0, d.prototype.commutative = !0, t(h, c), h.prototype.value = "-", h.prototype.precedence = 0, h.prototype.commutative = !1, t(u, c), u.prototype.value = "*", u.prototype.precedence = 1, u.prototype.commutative = !0, t(l, c), l.prototype.value = "/", l.prototype.precedence = 1, l.prototype.commutative = !1, t(m, c), m.prototype.value = "^", m.prototype.precedence = 2, m.prototype.commutative = !1;
+					var _ = /^'?(?:([A-Z0-9_]+):)?(.*?)'?$/i,
+						p = /[+\-/*]/;
+
+					function f(e) {
+						this.value = e
+					}
+
+					function y(e) {
+						this.value = e
+					}
+
+					function g(e) {
+						this.value = e
+					}
+
+					function b() {
+						f.apply(this, arguments)
+					}
+
+					function v() {
+						y.apply(this, arguments)
+					}
+					t(f, r), f.prototype.toString = function() {
+							if (this.hasOwnProperty("_ticker")) {
+								var e = p.test(this._ticker) ? "'" : "";
+								return e + (this._exchange ? this._exchange + ":" : "") + this._ticker + e
+							}
+							return this.value
+						}, f.prototype.parse = function() {
+							var e = _.exec(this.value);
+							e[1] && (this._exchange = e[1]), this._ticker = e[2]
+						}, f.prototype.parseAsFutures = function() {
+							this.hasOwnProperty("_ticker") || this.parse();
+							for (var e = function(e) {
+									return i.some((function(t) {
+										return t.t === e
+									}))
+								}, t = 2; t >= 1; --t) {
+								var r = this._ticker.slice(0, t);
+								if (e(r)) {
+									this._root = r, this._contract = this._ticker.slice(t);
+									break
+								}
+							}
+						},
+						f.prototype.exchange = function(e) {
+							if (this.hasOwnProperty("_ticker") || this.parse(), !(arguments.length > 0)) return this._exchange;
+							null == e ? delete this._exchange : this._exchange = e + ""
+						}, f.prototype.ticker = function(e) {
+							if (this.hasOwnProperty("_ticker") || this.parse(), !(arguments.length > 0)) return this._ticker;
+							null == e ? delete this._ticker : this._ticker = e + "", delete this._root, delete this._contract
+						}, f.prototype.root = function(e) {
+							if (this.hasOwnProperty("_root") || this.parseAsFutures(), !(arguments.length > 0)) return this._root;
+							null == e ? delete this._root : (this._root = e + "", this._root && (this._ticker = this._root + (this._contract || "")))
+						}, f.prototype.contract = function(e) {
+							if (this.hasOwnProperty("_contract") || this.parseAsFutures(), !(arguments.length > 0)) return this._root;
+							null == e ? delete this._contract : (this._contract = e + "", this._root && (this._ticker = this._root + this._contract))
+						}, t(y, r), y.prototype.toString = function() {
+							return this.hasOwnProperty("_normalizedValue") ? this._normalizedValue : this.value
+						}, y.prototype.parse = function() {
+							this._normalizedValue = this.value.replace(/^0+|\.0*$/g, "").replace(/(\.\d*?)0+$/, "$1").replace(/^(\.|$)/, "0$1")
+						}, g.prototype.toString = function() {
+							return this.value
+						}, t(b, f), b.prototype.isIncomplete = !0, b.prototype.incompleteSuggest = function() {
+							if ("'" !== this.value) return String("'")
+						}, t(v, y), v.prototype.isIncomplete = !0;
+					var S = new RegExp(e.map((function(e) {
+						return "(" + ("string" == typeof e.pattern ? e.pattern.replace(/[\^$()[\]{}*+?|\\]/g, "\\$&") : e.pattern.source) + ")"
+					})).concat(".").join("|"), "g");
+
+					function k(t, r) {
+						var s, i = [];
+						e: for (; s = S.exec(t);) {
+							for (var a = e.length; a--;)
+								if (s[a + 1]) {
+									if (e[a].ctor) {
+										var o = new e[a].ctor(s[a + 1]);
+										o._offset = s.index, i.push(o)
+									}
+									continue e
+								} var c = new g(s[0]);
+							c._offset = s.index, i.push(c)
+						}
+						if (r && r.recover) {
+							var d;
+							for (a = i.length; a--;) {
+								var h = i[a];
+								if (h instanceof y || h instanceof f) {
+									if (void 0 !== d) {
+										var u = new f(""),
+											l = i.splice(a, d - a + 1, u);
+										u.value = l.map((function(e) {
+											return e.value
+										})).join("")
+									}
+									d = a
+								} else h instanceof n || (d = void 0)
+							}
+						}
+						return i
+					}
+
+					function C(e) {
+						for (var t = [], r = 0; r < e.length; r++) e[r] instanceof n || t.push(e[r]);
+						return t
+					}
+
+					function I(e) {
+						e = C(e);
+						for (var t, r = [], s = [], i = 0; i < e.length; i++) {
+							var n = e[i];
+							if (n instanceof c) s.length && s[s.length - 1].minPrecedence > n.precedence && (s[s.length - 1].minPrecedence = n.precedence);
+							else if (n instanceof a) s.push(t = {
+								minPrecedence: 1 / 0,
+								openBraceIndex: i
+							});
+							else if (n instanceof o) {
+								var d = e[(t = s.pop()).openBraceIndex - 1],
+									h = e[i + 1];
+								h instanceof c && !(h.precedence <= t.minPrecedence) || !(!(d instanceof c) || d.precedence < t.minPrecedence || d.precedence === t.minPrecedence && d.commutative) || (r.unshift(t.openBraceIndex), r.push(i), s.length && s[s.length - 1].minPrecedence > t.minPrecedence && (s[s.length - 1].minPrecedence = t.minPrecedence))
+							}
+						}
+						for (i = r.length; i--;) e.splice(r[i], 1);
+						return e
+					}
+
+					function w(e) {
+						if ("string" != typeof e) throw new TypeError("expression must be a string");
+						return (e = k(e)).filter((function(e) {
+							return e instanceof f
+						})).map((function(e) {
+							return e.exchange()
+						})).filter((function(e) {
+							return e
+						}))
+					}
+
+					function E(e) {
+						return 1 !== (e = w(e)).length ? null : e[0]
+					}
+
+					function P(e, t) {
+						return (e = w(e)).some((function(e) {
+							return t.includes((e || "").toUpperCase())
+						}))
+					}
+
+					function F(e) {
+						return e.join("")
+					}
+					return {
+						tokenize: k,
+						validate: function(e) {
+							if (s.enabled("charting_library_base")) return {
+								currentState: "var"
+							};
+							for (var t = "init", r = "var", i = t, d = {
+									warnings: [],
+									errors: [],
+									isEmpty: !0
+								}, h = [], u = 0; u < e.length; u++) {
+								if (!((m = e[u]) instanceof n)) {
+									if (delete d.isEmpty, m.isIncomplete) {
+										var l = {
+											status: "incomplete",
+											reason: "incomplete_token",
+											offset: m._offset,
+											token: m
+										};
+										if (m.incompleteSuggest && (l.recover = {
+												append: m.incompleteSuggest()
+											}), d.warnings.push(l), u !== e.length - 1) {
+											l.status = "error";
+											continue
+										}
+									}
+									if (m instanceof f || m instanceof y) {
+										if (i === r) {
+											d.errors.push({
+												status: "error",
+												reason: "unexpected_token",
+												offset: m._offset,
+												token: m
+											});
+											continue
+										}
+										i = r
+									} else if (m instanceof c) {
+										if (i !== r) {
+											d.errors.push({
+												status: "error",
+												reason: "unexpected_token",
+												offset: m._offset,
+												token: m
+											});
+											continue
+										}
+										i = "operator"
+									} else if (m instanceof a) {
+										if (i === r) {
+											d.errors.push({
+												status: "error",
+												reason: "unexpected_token",
+												offset: m._offset,
+												token: m
+											});
+											continue
+										}
+										h.push(m), i = t
+									} else if (m instanceof o) {
+										if (i !== r) {
+											d.errors.push({
+												status: "error",
+												reason: "unexpected_token",
+												offset: m._offset,
+												token: m
+											});
+											continue
+										}
+										h.pop() || d.errors.push({
+											status: "error",
+											reason: "unbalanced_brace",
+											offset: m._offset,
+											token: m,
+											recover: {
+												prepend: new a
+											}
+										}), i = r
+									} else m instanceof g && d.errors.push({
+										status: "error",
+										reason: "unparsed_entity",
+										offset: m._offset,
+										token: m
+									})
+								}
+							}
+							for (d.braceBalance = h.length, i !== r && d.warnings.push({
+									status: "incomplete"
+								}); h.length;) {
+								var m;
+								l = {
+									status: "incomplete",
+									reason: "unbalanced_brace",
+									offset: (m = h.pop())._offset,
+									token: m
+								};
+								i === r && (l.recover = {
+									append: new o
+								}), d.warnings.push(l)
+							}
+							return d.currentState = i, 0 === d.warnings.length && delete d.warnings, 0 === d.errors.length && delete d.errors, d
+						},
+						factorOutBraces: I,
+						normalizeTokens: function(e) {
+							for (var t = 0; t < e.length; t++) e[t].parse && e[t].parse();
+							return e
+						},
+						flip: function(e) {
+							var t = function(e) {
+								for (var t, r = 0, s = 1, i = 2, d = 3, h = r, u = 0, m = 0; m < e.length; m++) {
+									var _ = e[m];
+									if (!(_ instanceof n)) switch (h) {
+										case r:
+											if (!(_ instanceof y && 1 == +_.value)) return !1;
+											h = s;
+											break;
+										case s:
+											if (!(h === s && _ instanceof l)) return !1;
+											h = i, t = m + 1;
+											break;
+										case i:
+											if (_ instanceof a) h = d, u = 1;
+											else if (_ instanceof c) return !1;
+											break;
+										case d:
+											_ instanceof a ? u++ : _ instanceof o && --u <= 0 && (h = i)
+									}
+								}
+								return e.slice(t)
+							}(e);
+							return I(t || [new y("1"), new l, new a].concat(e).concat(new o))
+						},
+						hasBatsSymbols: function(e) {
+							return P(e, ["BATS"])
+						},
+						hasEodSymbols: function(e) {
+							return (e = E(e)) && -1 !== e.toUpperCase().indexOf("_EOD")
+						},
+						hasChxjpySymbols: function(e) {
+							return P(e, ["CHXJPY"])
+						},
+						hasFreeDelaySymbols: function(e) {
+							return P(e, pro.getProductsByType(pro.PRODUCT_TYPES.exchange).map((function(e) {
+								return e.exchange.toUpperCase() + "_DLY"
+							})))
+						},
+						getExchange: E,
+						getExchanges: w,
+						isExchange: function(e, t) {
+							return !!(e = E(e)) && e.substring(0, t.length) === t
+						},
+						SymbolToken: f,
+						IncompleteSymbolToken: b,
+						NumberToken: y,
+						BinaryOperatorToken: c,
+						OpenBraceToken: a,
+						CloseBraceToken: o,
+						ticker: function(e) {
+							return new f(e).ticker()
+						},
+						shortName: function(e) {
+							if ("string" != typeof e) throw new TypeError("expression must be a string");
+							var t = I(C(k(e)));
+							return t.forEach((function(e) {
+								e instanceof f && e.exchange(null)
+							})), F(t)
+						},
+						normalize: function(e) {
+							if ("string" != typeof e) throw new TypeError("expression must be a string");
+							return F(I(C(k(e))))
+						}
+					}
+				}();
+			e.exports = n
+		},
+		235893: (e, t, r) => {
+			r.d(t, {
+				ChartEvents: () => y
+			});
+			var s = r(316230),
+				i = r(588537),
+				n = r(86674),
+				a = r(501867),
+				o = r.n(a),
+				c = r(175203),
+				d = r(911905),
+				h = r(97639),
+				u = r.n(h),
+				l = r(457906);
+			const m = (0, d.getLogger)("ReutersCalendar");
+
+			function _(e) {
+				return new Date(e).toISOString()
+			}
+
+			function p(e) {
+				return e.forEach((e => {
+					e.timestamp = Date.parse(e.date)
+				})), e
+			}
+
+			function f(e, t, r, n) {
+				var a;
+				const o = [],
+					c = [];
+				let d = 0,
+					h = 0;
+				const u = [],
+					l = {},
+					m = new Set;
+				for (t.length > 0 && e.forEach((e => m.add(e.id)));
+					(h < e.length || d < t.length) && u.length <= n;) {
+					const n = h < e.length ? e[h] : null,
+						_ = d < t.length ? t[d] : null;
+					if (null !== _ && m.has(_.id)) d += 1;
+					else if (null !== n && n.timestamp >= (null !== (a = null == _ ? void 0 : _.timestamp) && void 0 !== a ? a : -1 / 0)) {
+						const e = r[n.id];
+						e ? (0, s.default)(e, n) || c.push(e) : o.push(n), u.push(n), l[n.id] = n, h += 1
+					} else {
+						const e = (0, i.ensureNotNull)(_);
+						u.push(e), l[e.id] = e, d += 1
+					}
+				}
+				return {
+					itemsById: l,
+					mergedItems: u,
+					addedItems: o,
+					changedItems: c
+				}
+			}
+			class y {
+				constructor(e, t) {
+					if (this.changed = new(u()), this._pendingRequestMoreResult = null, this._pushstreamHandler = e => {
+							const t = this._mergeItems(p([].concat(e)).sort(((e, t) => t.timestamp - e.timestamp)));
+							(t.changed.length || t.added.length) && this.changed.fire(t)
+						}, !(this instanceof y)) throw new Error("ChartEvents is a constructor");
+					this._useEconomicCalendarUrl = Boolean(t), this._pushstream = t ? "economic-calendar" : "chartevents-reuters", this._url = t ? window.ECONOMIC_CALENDAR_URL + "events" : window.CHARTEVENTS_URL ? window.CHARTEVENTS_URL + "events" : "/chartevents/", this.reset(e), o().on(this._pushstream, this._pushstreamHandler)
+				}
+				get defaultSelectionTimeAmount() {
+					return 6048e5
+				}
+				items() {
+					return this._items
+				}
+				reset(e) {
+					var t;
+					null === (t = this._pendingRequestMoreResult) || void 0 === t || t.abort(), this._pendingRequestMoreResult = null, this._items = [], this._itemsById = {}, this.minObtainedTimestamp = 1 / 0, this._noResults = !1, e && null != e.from ? this.from = Number(e.from) : this.from = Date.now() - 864e5, this._historyLimit = e && e.historyLimit, this._maxItems = 1 / 0, e && void 0 !== e.maxItems && e.maxItems > 0 && (this._maxItems = +e.maxItems), e && null != e.to ? this.to = e.to : this.to = this.from + this.defaultSelectionTimeAmount, this.from = this.cacheFriendlyTimestamp(this.from), this.to = this.cacheFriendlyTimestamp(this.to), this.countriesFilter = e && e.currencyFilter ? (0, l.convertCurrenciesToCountryCodes)(e.currencyFilter, !this._useEconomicCalendarUrl) : [], e && void 0 !== e.minImportance && isFinite(+e.minImportance) ? this.minImportance = Math.max(-1, Math.min(1, Math.floor(e.minImportance))) : this.minImportance = -1
+				}
+				cacheFriendlyTimestamp(e) {
+					return e - e % 36e5
+				}
+				requestMore(e) {
+					if (this._pendingRequestMoreResult && !this._pendingRequestMoreResult.ready) return this._pendingRequestMoreResult.promise;
+					if (isFinite(this.minObtainedTimestamp) && void 0 !== this._historyLimit && Number(new Date(this.from)) < this._historyLimit && (this._noResults = !0), this._items.length >= this._maxItems && (this._noResults = !0), this._noResults) return Promise.resolve({
+						added: [],
+						changed: [],
+						noResults: !0
+					});
+					const t = new URL(this._url); - 1 !== this.minImportance && t.searchParams.set("minImportance", this.minImportance.toString()), isFinite(this.minObtainedTimestamp) && (this.to = this.from, this.from = this.from - this.defaultSelectionTimeAmount),
+						e && e.from && e.from < this.minObtainedTimestamp && (this.from = this.cacheFriendlyTimestamp(e.from)), t.searchParams.set("from", _(this.from)), t.searchParams.set("to", _(this.to)), this.countriesFilter.length && t.searchParams.set("countries", this.countriesFilter.toString().toUpperCase());
+					const r = new AbortController,
+						s = this._requestDataImpl(t, r.signal),
+						i = {
+							promise: s,
+							ready: !1,
+							abort: () => r.abort()
+						};
+					return s.then((e => {
+						i.ready = !0, this.changed.fire(e)
+					})).catch((e => {
+						var t;
+						i.ready = !0, t = e, m.logWarn(`An error ocurred while loading economic events: ${t}`)
+					})), this._pendingRequestMoreResult = i, s
+				}
+				destroy() {
+					o().off(this._pushstream, this._pushstreamHandler), this._items = [], this.reset()
+				}
+				_mergeItems(e) {
+					const t = this._noResults,
+						r = e.filter((e => {
+							var t;
+							return (-1 === this.minImportance || this.minImportance <= (null !== (t = e.importance) && void 0 !== t ? t : 1 / 0)) && (void 0 === this._historyLimit || e.timestamp >= this._historyLimit)
+						})),
+						{
+							itemsById: s,
+							mergedItems: i,
+							addedItems: n,
+							changedItems: a
+						} = f(r, this._items, this._itemsById, this._maxItems);
+					return this._items = i, this._itemsById = s, {
+						added: n,
+						changed: a,
+						noResults: t
+					}
+				}
+				async _requestDataImpl(e, t, r) {
+					let s = await this._requestOneChunk(e, t),
+						i = s.items,
+						n = s.noData;
+					for (; 2e3 === s.items.length;) {
+						const r = new Date(i[0].date);
+						e.searchParams.set("from", _(r.getTime() + 1)), s = await this._requestOneChunk(e, t), i = f(s.items, i, {}, 1 / 0).mergedItems, n = n || s.noData
+					}
+					return this.minObtainedTimestamp = this.from, n && (this._noResults = !0, this.minObtainedTimestamp = -1 / 0), this._mergeItems(i)
+				}
+				async _requestOneChunk(e, t) {
+					var r;
+					const s = Date.now(),
+						i = await (0, n.fetch)(e.toString(), {
+							headers: {
+								accept: "application/json"
+							},
+							signal: t
+						}),
+						a = Date.now() - s;
+					if (c.telemetry.sendReport("calendars", "chartevents_http_status", {
+							value: i.status,
+							additional: {
+								source: "ChartEvents"
+							}
+						}), c.telemetry.sendReport("calendars", "chartevents_response_time_frame", {
+							value: a,
+							additional: {
+								source: "ChartEvents"
+							}
+						}), !i.ok) throw new Error(`Request ${e.toString()}, status: ${i.status}, status text: ${i.statusText}`);
+					const o = await i.json();
+					if (!o || !o.status || "error" === o.status) throw c.telemetry.sendReport("calendars", "chartevents_error"), new Error(o && o.errmsg || "invalid response");
+					c.telemetry.sendReport("calendars", "chartevents_ok");
+					return {
+						items: p(null !== (r = o.result) && void 0 !== r ? r : []).reverse(),
+						noData: "no_data" === o.status
+					}
+				}
+			}
+		},
+		457906: (e, t, r) => {
+			r.d(t, {
+				countries: () => i,
+				convertCurrenciesToCountryCodes: () => a,
+				kits: () => c
+			});
+			var s = r(575932);
+			const i = [{
+					name: (0, s.t)("Angola"),
+					code: "ao",
+					kits: ["africa"],
+					currency: "AON"
+				}, {
+					name: (0, s.t)("Argentina"),
+					code: "ar",
+					kits: ["americas", "G20"],
+					currency: "ARS"
+				}, {
+					name: (0, s.t)("Australia"),
+					code: "au",
+					kits: ["asia_pacific", "G20"],
+					currency: "AUD"
+				}, {
+					name: (0, s.t)("Austria"),
+					code: "at",
+					kits: ["europe"],
+					currency: "ATS"
+				}, {
+					name: (0, s.t)("Bahrain"),
+					code: "bh",
+					kits: ["middle_east"],
+					currency: "BHD"
+				}, {
+					name: (0, s.t)("Belgium"),
+					code: "be",
+					kits: ["europe"],
+					currency: "BEF"
+				}, {
+					name: (0, s.t)("Botswana"),
+					code: "bw",
+					kits: ["africa"],
+					currency: "BWP"
+				}, {
+					name: (0, s.t)("Brazil"),
+					code: "br",
+					kits: ["americas", "G20"],
+					currency: "BRL"
+				}, {
+					name: (0, s.t)("Canada"),
+					code: "ca",
+					kits: ["americas", "G20"],
+					currency: "CAD"
+				}, {
+					name: (0, s.t)("Chile"),
+					code: "cl",
+					kits: ["americas"],
+					currency: "CLP"
+				}, {
+					name: (0, s.t)("China"),
+					code: "cn",
+					kits: ["asia_pacific", "G20"],
+					currency: "CNY"
+				}, {
+					name: (0, s.t)("Colombia"),
+					code: "co",
+					kits: ["americas"],
+					currency: "COP"
+				}, {
+					name: (0, s.t)("Czech Republic"),
+					code: "cz",
+					kits: ["europe"],
+					currency: "CZK"
+				}, {
+					name: (0, s.t)("Denmark"),
+					code: "dk",
+					kits: ["europe"],
+					currency: "DKK"
+				}, {
+					name: (0, s.t)("Egypt"),
+					code: "eg",
+					kits: ["africa"],
+					currency: "EGP"
+				}, {
+					name: (0, s.t)("Estonia"),
+					code: "ee",
+					kits: ["europe"],
+					currency: "EEK"
+				}, {
+					name: (0, s.t)("Ethiopia"),
+					code: "et",
+					kits: ["africa"],
+					currency: "ETB"
+				}, {
+					name: (0, s.t)("European Union"),
+					code: "eu",
+					kits: ["europe", "G20"],
+					currency: "EUR"
+				}, {
+					name: (0, s.t)("Finland"),
+					code: "fi",
+					kits: ["europe"],
+					currency: "FIM"
+				}, {
+					name: (0, s.t)("France"),
+					code: "fr",
+					kits: ["europe", "G20"],
+					currency: "FRF"
+				}, {
+					name: (0, s.t)("Germany"),
+					code: "de",
+					kits: ["europe", "G20"],
+					currency: "DEM"
+				}, {
+					name: (0, s.t)("Ghana"),
+					code: "gh",
+					kits: ["africa"],
+					currency: "GHC"
+				}, {
+					name: (0, s.t)("Greece"),
+					code: "gr",
+					kits: ["europe"],
+					currency: "GRD"
+				}, {
+					name: (0, s.t)("Hong Kong"),
+					code: "hk",
+					kits: ["asia_pacific"],
+					currency: "HKD"
+				}, {
+					name: (0, s.t)("Hungary"),
+					code: "hu",
+					kits: ["europe"],
+					currency: "HUF"
+				}, {
+					name: (0, s.t)("Iceland"),
+					code: "is",
+					kits: ["europe"],
+					currency: "ISK"
+				}, {
+					name: (0, s.t)("India"),
+					code: "in",
+					kits: ["asia_pacific", "G20"],
+					currency: "INR"
+				}, {
+					name: (0, s.t)("Indonesia"),
+					code: "id",
+					kits: ["asia_pacific", "G20"],
+					currency: "IDR"
+				}, {
+					name: (0, s.t)("Ireland"),
+					code: "ie",
+					kits: ["europe"],
+					currency: "IRP"
+				}, {
+					name: (0, s.t)("Israel"),
+					code: "il",
+					kits: ["middle_east"],
+					currency: "ILS"
+				}, {
+					name: (0, s.t)("Italy"),
+					code: "it",
+					kits: ["europe", "G20"],
+					currency: "ITL"
+				}, {
+					name: (0, s.t)("Japan"),
+					code: "jp",
+					kits: ["asia_pacific", "G20"],
+					currency: "JPY"
+				}, {
+					name: (0, s.t)("Kenya"),
+					code: "ke",
+					kits: ["africa"],
+					currency: "KES"
+				}, {
+					name: (0, s.t)("Korea, Republic Of"),
+					code: "kr",
+					kits: ["asia_pacific", "G20"],
+					currency: "KRW"
+				}, {
+					name: (0, s.t)("Kuwait"),
+					code: "kw",
+					kits: ["middle_east"],
+					currency: "KWD"
+				}, {
+					name: (0, s.t)("Latvia"),
+					code: "lv",
+					kits: ["europe"],
+					currency: "LVR"
+				}, {
+					name: (0, s.t)("Lithuania"),
+					code: "lt",
+					kits: ["europe"],
+					currency: "LTL"
+				}, {
+					name: (0, s.t)("Malawi"),
+					code: "mw",
+					kits: ["africa"],
+					currency: "MWK"
+				}, {
+					name: (0, s.t)("Malaysia"),
+					code: "my",
+					kits: ["asia_pacific"],
+					currency: "MYR"
+				}, {
+					name: (0, s.t)("Mauritius"),
+					code: "mu",
+					kits: ["africa"],
+					currency: "MUR"
+				}, {
+					name: (0, s.t)("Mexico"),
+					code: "mx",
+					kits: ["americas", "G20"],
+					currency: "MXN"
+				}, {
+					name: (0, s.t)("Mozambique"),
+					code: "mz",
+					kits: ["africa"],
+					currency: "MZM"
+				}, {
+					name: (0, s.t)("Namibia"),
+					code: "na",
+					kits: ["africa"],
+					currency: "NAD"
+				}, {
+					name: (0, s.t)("Netherlands"),
+					code: "nl",
+					kits: ["europe"],
+					currency: "NLG"
+				}, {
+					name: (0, s.t)("New Zealand"),
+					code: "nz",
+					kits: ["asia_pacific"],
+					currency: "NZD"
+				}, {
+					name: (0, s.t)("Nigeria"),
+					code: "ng",
+					kits: ["africa"],
+					currency: "NGN"
+				}, {
+					name: (0, s.t)("Norway"),
+					code: "no",
+					kits: ["europe"],
+					currency: "NOK"
+				}, {
+					name: (0, s.t)("Oman"),
+					code: "om",
+					kits: ["middle_east"],
+					currency: "OMR"
+				}, {
+					name: (0, s.t)("Peru"),
+					code: "pe",
+					kits: ["americas"],
+					currency: "PEN"
+				}, {
+					name: (0, s.t)("Philippines"),
+					code: "ph",
+					kits: ["asia_pacific"],
+					currency: "PHP"
+				}, {
+					name: (0, s.t)("Poland"),
+					code: "pl",
+					kits: ["europe"],
+					currency: "PLZ"
+				}, {
+					name: (0, s.t)("Portugal"),
+					code: "pt",
+					kits: ["europe"],
+					currency: "PTE"
+				}, {
+					name: (0, s.t)("Qatar"),
+					code: "qa",
+					kits: ["middle_east"],
+					currency: "QAR"
+				}, {
+					name: (0, s.t)("Romania"),
+					code: "ro",
+					kits: ["europe"],
+					currency: "RON"
+				}, {
+					name: (0, s.t)("Russian Federation"),
+					code: "ru",
+					kits: ["europe", "G20"],
+					currency: "RUR"
+				}, {
+					name: (0, s.t)("Rwanda"),
+					code: "rw",
+					kits: ["africa"],
+					currency: "RWF"
+				}, {
+					name: (0, s.t)("Saudi Arabia"),
+					code: "sa",
+					kits: ["middle_east", "G20"],
+					currency: "SAR"
+				}, {
+					name: (0, s.t)("Serbia"),
+					code: "rs",
+					kits: ["europe"],
+					currency: "RSD"
+				}, {
+					name: (0, s.t)("Seychelles"),
+					code: "sc",
+					kits: ["africa"],
+					currency: "SCR"
+				}, {
+					name: (0, s.t)("Singapore"),
+					code: "sg",
+					kits: ["asia_pacific"],
+					currency: "SGD"
+				}, {
+					name: (0, s.t)("Slovakia"),
+					code: "sk",
+					kits: ["europe"],
+					currency: "SKK"
+				}, {
+					name: (0, s.t)("South Africa"),
+					code: "za",
+					kits: ["africa", "G20"],
+					currency: "ZAR"
+				}, {
+					name: (0, s.t)("Spain"),
+					code: "es",
+					kits: ["europe"],
+					currency: "ESP"
+				}, {
+					name: (0, s.t)("Sweden"),
+					code: "se",
+					kits: ["europe"],
+					currency: "SEK"
+				}, {
+					name: (0, s.t)("Switzerland"),
+					code: "ch",
+					kits: ["europe"],
+					currency: "CHF"
+				}, {
+					name: (0, s.t)("Taiwan, Province Of China"),
+					code: "tw",
+					kits: ["asia_pacific"],
+					currency: "TWD"
+				}, {
+					name: (0, s.t)("Tanzania, United Republic Of"),
+					code: "tz",
+					kits: ["africa"],
+					currency: "TZS"
+				}, {
+					name: (0, s.t)("Thailand"),
+					code: "th",
+					kits: ["asia_pacific"],
+					currency: "THB"
+				}, {
+					name: (0, s.t)("Turkey"),
+					code: "tr",
+					kits: ["middle_east", "G20"],
+					currency: "TRL"
+				}, {
+					name: (0, s.t)("Uganda"),
+					code: "ug",
+					kits: ["africa"],
+					currency: "UGX"
+				}, {
+					name: (0, s.t)("Ukraine"),
+					code: "ua",
+					kits: ["europe"],
+					currency: "UAK"
+				}, {
+					name: (0, s.t)("United Arab Emirates"),
+					code: "ae",
+					kits: ["middle_east"],
+					currency: "AED"
+				}, {
+					name: (0, s.t)("United Kingdom"),
+					code: "gb",
+					kits: ["europe", "G20"],
+					currency: "GBP"
+				}, {
+					name: (0, s.t)("United States"),
+					code: "us",
+					kits: ["americas", "G20"],
+					currency: "USD"
+				}, {
+					name: (0, s.t)("Zambia"),
+					code: "zm",
+					kits: ["africa"],
+					currency: "ZMK"
+				}, {
+					name: (0, s.t)("Zimbabwe"),
+					code: "zw",
+					kits: ["africa"],
+					currency: "ZWD"
+				}],
+				n = new Map;
+			for (const e of i) n.set(e.currency, e.code);
+
+			function a(e, t) {
+				const r = [];
+				for (const s of e) {
+					const e = "EUR" === s && t ? "ERL" : n.get(s);
+					e && r.push(e)
+				}
+				return r
+			}
+			const o = (e, t, r) => ({
+				id: e,
+				name: t,
+				value: r || i.filter((t => -1 !== t.kits.indexOf(e)))
+			});
+
+			function c() {
+				return [o("all", (0, s.t)("All"), i), o("G20", (0, s.t)("G20")), o("asia_pacific", (0, s.t)("Asia Pacific")), o("middle_east", (0, s.t)("Middle East")), o("europe", (0, s.t)("Europe")), o("americas", (0, s.t)("Americas")), o("africa", (0, s.t)("Africa"))]
+			}
+		},
+		15693: (e, t, r) => {
+			function s(e) {
+				return "=" + JSON.stringify(i(e))
+			}
+
+			function i(e) {
+				return Object.keys(e).sort().reduce(((t, r) => ("[object Object]" === Object.prototype.toString.call(e[r]) ? t[r] = i(e[r]) : t[r] = e[r], t)), {})
+			}
+
+			function n(e) {
+				return Boolean(e.inputs) || function(e) {
+					return Boolean(e.replay)
+				}(e) || e.session || e.adjustment || e["currency-id"] || e["unit-id"] ? s(e) : e.symbol
+			}
+
+			function a(e) {
+				return "=" === e[0]
+			}
+
+			function o(e) {
+				if (!a(e)) return {
+					symbol: e
+				};
+				try {
+					return JSON.parse(e.slice(1))
+				} catch (t) {
+					return {
+						symbol: e
+					}
+				}
+			}
+
+			function c(e) {
+				return "string" == typeof e ? e : c(e.symbol)
+			}
+			r.d(t, {
+				encodeExtendedSymbolOrGetSimpleSymbolString: () => n,
+				isEncodedExtendedSymbol: () => a,
+				decodeExtendedSymbol: () => o,
+				unwrapSimpleSymbol: () => c
+			})
+		},
+		504122: (e, t, r) => {
+			r.d(t, {
+				DateFormatter: () => n
+			});
+			var s = r(381269),
+				i = r(830318);
+			class n {
+				constructor(e = "yyyy-MM-dd") {
+					this._dateFormatFunc = i.dateFormatFunctions[e]
+				}
+				format(e) {
+					return s.customFormatters && s.customFormatters.dateFormatter ? s.customFormatters.dateFormatter.format(e) : this._dateFormatFunc(e, !1)
+				}
+				formatLocal(e) {
+					return s.customFormatters.dateFormatter ? s.customFormatters.dateFormatter.formatLocal ? s.customFormatters.dateFormatter.formatLocal(e) : s.customFormatters.dateFormatter.format(e) : this._dateFormatFunc(e, !0)
+				}
+			}
+		},
+		715303: (e, t, r) => {
+			r.d(t, {
+				DateTimeFormatter: () => a
+			});
+			var s = r(820187),
+				i = r(504122);
+			const n = {
+				dateFormat: "yyyy-MM-dd",
+				timeFormat: s.hourMinuteSecondFormat,
+				dateTimeSeparator: " "
+			};
+			class a {
+				constructor(e = {}) {
+					const t = Object.assign({}, n, e);
+					this._dateFormatter = new i.DateFormatter(t.dateFormat), this._timeFormatter = new s.TimeFormatter(t.timeFormat), this._separator = t.dateTimeSeparator
+				}
+				format(e) {
+					return `${this._dateFormatter.format(e)}${this._separator}${this._timeFormatter.format(e)}`
+				}
+				formatLocal(e) {
+					return `${this._dateFormatter.formatLocal(e)}${this._separator}${this._timeFormatter.formatLocal(e)}`
+				}
+			}
+		},
+		908803: (e, t, r) => {
+			var s;
+			r.d(t, {
+					SymbolErrorPermissionDeniedReason: () => s,
+					permissionDenied: () => i,
+					invalidSymbol: () => n
+				}),
+				function(e) {
+					e.Symbol = "symbol", e.GroupPermission = "group"
+				}(s || (s = {}));
+			const i = "permission denied",
+				n = "invalid symbol"
+		},
+		695078: (e, t, r) => {
+			r.d(t, {
+				ensureTimePointIndexIndex: () => a,
+				unpackNonSeriesData: () => o
+			});
+			var s = r(706617),
+				i = r(588537);
+
+			function n(e) {
+				if (!(0, s.isObject)(e)) throw new Error("Graphics commands should be wrapped in an object");
+				if ((0, s.hasProperty)(e, "create"), (0, s.hasProperty)(e, "erase")) {
+					const t = e.erase;
+					(0, i.assert)(Array.isArray(t), "Collection of erase commands should be array");
+					for (const e of t) {
+						if (!(0, s.isObject)(e) || !(0, s.hasProperty)(e, "action")) throw new Error("Command should be an object with 'action' property");
+						(0, i.assert)("all" === e.action || "one" === e.action, "Erase command action should be 'all' or 'one'")
+					}
+				}
+				return e
+			}
+
+			function a(e) {
+				if (e < 0) throw new Error("TimePointIndexIndex should be non-negative integer");
+				return e
+			}
+			async function o(e) {
+				if ("" === e) return null;
+				const t = JSON.parse(e);
+				if (!(0, s.isObject)(t) || "function" == typeof t) throw new Error("Non-object content in the non-series envelope");
+				if ((0, s.hasProperty)(t, "indexes_replace")) return {
+					indexes_replace: !0
+				};
+				const i = {
+					indexes_replace: !1
+				};
+				if ((0, s.hasProperty)(t, "offsets") && (i.offsets = t.offsets), (0, s.hasProperty)(t, "isUpdate")) {
+					if ("boolean" != typeof t.isUpdate) throw new Error('Invalid type of "isUpdate" field');
+					i.isUpdate = t.isUpdate
+				}
+				if ((0, s.hasProperty)(t, "data") && (i.data = t.data), (0, s.hasProperty)(t, "graphicsCmds") && (i.graphicsCmds = n(t.graphicsCmds)), (0, s.hasProperty)(t, "dataCompressed") || (0, s.hasProperty)(t, "graphicsCmdsCompressed")) {
+					const {
+						default: e
+					} = await Promise.all([r.e(93194), r.e(81578)]).then(r.t.bind(r, 593194, 23));
+					if ((0, s.hasProperty)(t, "dataCompressed")) {
+						const r = await (new e).loadAsync(t.dataCompressed, {
+							base64: !0
+						});
+						i.data = JSON.parse(await r.file("").async("text"))
+					}
+					if ((0, s.hasProperty)(t, "graphicsCmdsCompressed")) {
+						const r = await (new e).loadAsync(t.graphicsCmdsCompressed, {
+							base64: !0
+						});
+						i.graphicsCmds = n(JSON.parse(await r.file("").async("text")))
+					}
+					return i
+				}
+				return i
+			}
+		},
+		103653: (e, t, r) => {
+			r.d(t, {
+				seriesPlotFunctionMap: () => d,
+				barFunction: () => h,
+				SeriesData: () => m
+			});
+			var s, i = r(588537),
+				n = r(752280),
+				a = r(377884);
+			! function(e) {
+				e[e.FromLeft = -1] = "FromLeft", e[e.FromRight = 1] = "FromRight"
+			}(s || (s = {}));
+			const o = {
+					open: e => e[1],
+					high: e => e[2],
+					low: e => e[3],
+					close: e => e[4],
+					hl2: e => (e[2] + e[3]) / 2,
+					hlc3: e => (e[2] + e[3] + e[4]) / 3,
+					ohlc4: e => (e[1] + e[2] + e[3] + e[4]) / 4
+				},
+				c = ["open", "high", "low", "close", "hl2", "hlc3", "ohlc4"];
+
+			function d() {
+				const e = new Map;
+				return c.forEach(((t, r) => {
+					e.set(t, h(t))
+				})), e
+			}
+
+			function h(e, t) {
+				const r = o[null != t ? t : e],
+					s = o[e];
+				return (e, t) => 0 === t ? r(e) : s(e)
+			}
+
+			function u(e, t) {
+				return null == e[t]
+			}
+			const l = [{
+				barsToMerge: 10,
+				forBarspacingLargerThen: .03
+			}, {
+				barsToMerge: 30,
+				forBarspacingLargerThen: .01
+			}, {
+				barsToMerge: 100,
+				forBarspacingLargerThen: .003
+			}, {
+				barsToMerge: 500,
+				forBarspacingLargerThen: 0
+			}];
+			class m {
+				constructor() {
+					this._pressedChunks = {
+						chunks: new Map,
+						priceSource: "uninitialized"
+					}, this.m_bars = new n.PlotList(d(), u), this.m_nsBars = new n.PlotList(d(), u), this._clearPressedChunks()
+				}
+				bars() {
+					return this.m_bars
+				}
+				nsBars() {
+					return this.m_nsBars
+				}
+				pressedChunks(e, t) {
+					if (t !== this._pressedChunks.priceSource) {
+						this._pressedChunks.priceSource = t;
+						const e = this.m_bars.first();
+						e && (this._clearPressedChunks(), this._rebuildPressedChunks(e))
+					}
+					const r = (0, i.ensureDefined)(l.find((t => t.forBarspacingLargerThen <= e)));
+					return (0, i.ensureDefined)(this._pressedChunks.chunks.get(r.barsToMerge))
+				}
+				mergeRegularBars(e) {
+					const t = this.m_bars.size(),
+						r = this.m_bars.merge(e);
+					return r && "uninitialized" !== this._pressedChunks.priceSource && (t === this.m_bars.size() && r.index === this.m_bars.lastIndex() ? this._updateLatestChunks() : this._rebuildPressedChunks(r)), r
+				}
+				size() {
+					return this.m_bars.size() + this.m_nsBars.size()
+				}
+				each(e) {
+					this.m_bars.each(e), this.m_nsBars.each(e)
+				}
+				clear() {
+					this.m_bars.clear(), this.m_nsBars.clear(), this.lastProjectionPrice = void 0, this._clearPressedChunks()
+				}
+				isEmpty() {
+					return this.m_bars.isEmpty() && this.m_nsBars.isEmpty()
+				}
+				first() {
+					return this.m_bars.isEmpty() ? this.m_nsBars.first() : this.m_bars.first()
+				}
+				last() {
+					return this.m_nsBars.isEmpty() ? this.m_bars.last() : this.m_nsBars.last()
+				}
+				search(e, t) {
+					return this.nsBars().isEmpty() ? this.bars().search(e, t) : this.bars().isEmpty() || (0, i.ensureNotNull)(this.nsBars().firstIndex()) <= e ? this.nsBars().search(e, t) : this.bars().search(e, t)
+				}
+				valueAt(e) {
+					const t = this.search(e);
+					return null !== t ? t.value : null
+				}
+				plotValueToTimePointIndex(e, t, r) {
+					if (r === s.FromRight) {
+						const r = (r, s) => {
+								const i = s[t];
+								return null != i && e >= i
+							},
+							s = this.m_bars.findLast(r);
+						if (null !== s) return s.index;
+						const i = this.m_nsBars.findLast(r);
+						return null !== i ? i.index : this.m_bars.firstIndex()
+					}
+					if (r === s.FromLeft) {
+						const r = (r, s) => {
+								const i = s[t];
+								return null != i && e <= i
+							},
+							s = this.m_bars.findFirst(r);
+						if (null !== s) return s.index;
+						const i = this.m_nsBars.findFirst(r);
+						return null !== i ? i.index : this.m_bars.lastIndex()
+					}
+					throw new Error("plotValueToTimePointIndex: unsupported search mode")
+				}
+				moveData(e) {
+					this.m_bars.move(e), this.m_nsBars.move(e), this.m_bars.size() > 0 && this._rebuildPressedChunks((0, i.ensureNotNull)(this.m_bars.first()))
+				}
+				_rebuildPressedChunks(e) {
+					const t = this._pressedChunks.priceSource;
+					if ("uninitialized" === t) return;
+					const r = e.index,
+						s = o[t],
+						n = (e, t, r) => {
+							let i = null;
+							for (; e.hasNext();) {
+								const n = e.next(),
+									a = s(n.value);
+								i && n.index - i.startTime >= r.barsToMerge && (t.push(i), i = null), i ? (i.endTime = n.index, i.high = Math.max(i.high, a), i.low = Math.min(i.low, a), i.close = a) : i = {
+									startTime: n.index,
+									endTime: n.index,
+									open: a,
+									high: a,
+									low: a,
+									close: a
+								}
+							}
+							i && t.push(i)
+						};
+					l.forEach((e => {
+						const t = (0, i.ensureDefined)(this._pressedChunks.chunks.get(e.barsToMerge)),
+							s = (0, a.lowerbound)(t, r, ((e, t) => e.endTime < t));
+						if (0 === s && t.length > 0) {
+							const r = t[0].startTime - 1,
+								s = (0, i.ensureNotNull)(this.m_bars.firstIndex()),
+								a = this.m_bars.rangeIterator(s, r),
+								o = [];
+							n(a, o, e);
+							const c = o.concat(t);
+							this._pressedChunks.chunks.set(e.barsToMerge, c)
+						} else {
+							const r = (0, i.ensureNotNull)(this.m_bars.lastIndex());
+							t.splice(s);
+							let a = (0, i.ensureNotNull)(this.m_bars.firstIndex());
+							t.length && (a = t[t.length - 1].endTime + 1);
+							const o = this.m_bars.rangeIterator(a, r);
+							n(o, t, e)
+						}
+					}))
+				}
+				_updateLatestChunks() {
+					const e = (0, i.ensureNotNull)(this.m_bars.lastIndex());
+					l.forEach((t => {
+						const r = (0, i.ensureDefined)(this._pressedChunks.chunks.get(t.barsToMerge)),
+							s = this.m_bars.rangeIterator(e, e).next(),
+							n = s.value[4],
+							a = r[r.length - 1];
+						a.high = Math.max(a.high, n), a.low = Math.min(a.low, n), a.close = n, a.endTime = s.index
+					}))
+				}
+				_clearPressedChunks() {
+					l.forEach((e => this._pressedChunks.chunks.set(e.barsToMerge, [])))
+				}
+			}
+		},
+		180372: (e, t, r) => {
+			r.r(t), r.d(t, {
+				SeriesDataSource: () => g,
+				initialRequestOptionsToNumBars: () => y,
+				parseJapaneseProjectionBars: () => b
+			});
+			var s = r(588537),
+				i = r(270617),
+				n = r(15693),
+				a = r(273044),
+				o = r(103653),
+				c = r(695078),
+				d = r(908803),
+				h = r(97639),
+				u = r.n(h);
+			class l {
+				constructor() {
+					this._modified = new(u()), this._loading = new(u()), this._completed = new(u()), this._error = new(u()), this._symbolError = new(u()), this._symbolResolved = new(u()), this._seriesError = new(u()), this._symbolNotPermitted = new(u()), this._symbolInvalid = new(u()), this._symbolGroupNotPermitted = new(u()), this._chartTypeNotPermitted = new(u()), this._intradaySpreadNotPermitted = new(u()), this._intradayExchangeNotPermitted = new(u()), this._customIntervalNotPermitted = new(u()), this._secondsIntervalNotPermitted = new(u()), this._tickMarksRangeChanged = new(u()), this._barReceived = new(u()), this._seriesTimeFrame = new(u()), this._dataUpdated = new(u())
+				}
+				destroy() {
+					this._modified.destroy(), this._loading.destroy(), this._completed.destroy(), this._error.destroy(), this._symbolError.destroy(), this._symbolResolved.destroy(), this._seriesError.destroy(), this._symbolInvalid.destroy(), this._symbolNotPermitted.destroy(), this._symbolGroupNotPermitted.destroy(), this._chartTypeNotPermitted.destroy(), this._intradaySpreadNotPermitted.destroy(), this._intradayExchangeNotPermitted.destroy(), this._customIntervalNotPermitted.destroy(), this._secondsIntervalNotPermitted.destroy(), this._tickMarksRangeChanged.destroy(), this._barReceived.destroy(), this._seriesTimeFrame.destroy(), this._dataUpdated.destroy()
+				}
+				modified() {
+					return this._modified
+				}
+				loading() {
+					return this._loading
+				}
+				completed() {
+					return this._completed
+				}
+				error() {
+					return this._error
+				}
+				symbolError() {
+					return this._symbolError
+				}
+				symbolResolved() {
+					return this._symbolResolved
+				}
+				seriesError() {
+					return this._seriesError
+				}
+				symbolInvalid() {
+					return this._symbolInvalid
+				}
+				symbolNotPermitted() {
+					return this._symbolNotPermitted
+				}
+				symbolGroupNotPermitted() {
+					return this._symbolGroupNotPermitted
+				}
+				chartTypeNotPermitted() {
+					return this._chartTypeNotPermitted
+				}
+				intradaySpreadNotPermitted() {
+					return this._intradaySpreadNotPermitted
+				}
+				intradayExchangeNotPermitted() {
+					return this._intradayExchangeNotPermitted
+				}
+				customIntervalNotPermitted() {
+					return this._customIntervalNotPermitted
+				}
+				secondsIntervalNotPermitted() {
+					return this._secondsIntervalNotPermitted
+				}
+				tickMarksRangeChanged() {
+					return this._tickMarksRangeChanged
+				}
+				barReceived() {
+					return this._barReceived
+				}
+				seriesTimeFrame() {
+					return this._seriesTimeFrame
+				}
+				dataUpdated() {
+					return this._dataUpdated
+				}
+				fireCompleted(e, t, r) {
+					this._completed.fire(e, t, r)
+				}
+				fireModified() {
+					this._modified.fire()
+				}
+				fireLoading(e) {
+					this._loading.fire(e)
+				}
+				fireError() {
+					this._error.fire()
+				}
+				fireSymbolError(e) {
+					this._symbolError.fire(e), this.fireError()
+				}
+				fireSymbolResolved(e) {
+					this._symbolResolved.fire(e)
+				}
+				fireSeriesError(e) {
+					this._seriesError.fire(e), this.fireError()
+				}
+				fireSymbolInvalid() {
+					this._symbolInvalid.fire()
+				}
+				fireSymbolNotPermitted(e) {
+					this._symbolNotPermitted.fire(e)
+				}
+				fireSymbolGroupNotPermitted(e) {
+					this._symbolGroupNotPermitted.fire(e)
+				}
+				fireChartTypeNotPermitted(e) {
+					this._chartTypeNotPermitted.fire(e), this.fireError()
+				}
+				fireIntradaySpreadNotPermitted() {
+					this._intradaySpreadNotPermitted.fire(), this.fireError()
+				}
+				fireIntradayExchangeNotPermitted() {
+					this._intradayExchangeNotPermitted.fire(), this.fireError()
+				}
+				fireCustomIntervalNotPermitted() {
+					this._customIntervalNotPermitted.fire(), this.fireError()
+				}
+				fireSecondsIntervalNotPermitted() {
+					this._secondsIntervalNotPermitted.fire(), this.fireError()
+				}
+				fireTickMarksRangeChanged(e) {
+					this._tickMarksRangeChanged.fire(e)
+				}
+				fireBarReceived(e) {
+					this._barReceived.fire(e)
+				}
+				fireSeriesTimeFrame(e, t, r, s, i) {
+					this._seriesTimeFrame.fire(e, t, r, s, i)
+				}
+				fireDataUpdated(e, t, r) {
+					this._dataUpdated.fire(e, t, r)
+				}
+			}
+			const m = (0, r(911905).getLogger)("Chart.SeriesDataSource");
+			var _;
+			! function(e) {
+				e[e.Idle = 0] = "Idle", e[e.AwaitingConnection = 1] = "AwaitingConnection", e[e.AwaitingFirstDataUpdate = 2] = "AwaitingFirstDataUpdate", e[e.Active = 3] = "Active"
+			}(_ || (_ = {}));
+			let p = 1;
+			let f = 1;
+
+			function y(e) {
+				return e.startDate ? e.endDate || e.count ? e.endDate ? ["from_to", e.startDate, e.endDate] : ["bar_count", e.startDate, (0, s.ensure)(e.count)] : ["from_to", e.startDate] : e.count || 300
+			}
+			class g {
+				constructor(e, t, r, s) {
+					this._symbol = null, this._instanceId = null, this._symbolInstanceId = null, this._resolution = null, this._timeFrame = null, this._data = new o.SeriesData, this._dataEvents = new l, this._status = _.Idle, this._turnaroundCounter = 1, this._boundOnGatewayIsConnectedChanged = this._onGatewayIsConnectedChanged.bind(this), this._ongoingDataUpdate = Promise.resolve(), this._gateway = e, this._turnaroundPrefix = t, this._createSeriesParams = y(null != r ? r : {
+						count: 300
+					}), this._timeFrame = s || null, this._gateway.isConnected().subscribe(this._boundOnGatewayIsConnectedChanged)
+				}
+				destroy() {
+					this.stop(), this._gateway.isConnected().unsubscribe(this._boundOnGatewayIsConnectedChanged)
+				}
+				modifySeries(e, t, r = null, n = !1) {
+					n && (m.logNormal("Due to force flag clearing symbol & resolution to force re-requesting data."), this._symbol = null, this._resolution = null);
+					const o = this._symbol,
+						c = this._resolution;
+					if (this._symbol = e, this._resolution = t, null === this._instanceId) return void(this._timeFrame = r);
+					const d = !(0, i.deepEquals)(o, e)[0],
+						h = null === c || !a.Interval.isEqual(c, t);
+					(d || h || null !== r) && (this._timeFrame = null, (d || h) && this._turnaroundCounter++, d && this._resolveSymbol(), this._gateway.modifySeries(this._instanceId, this.turnaround(), (0, s.ensureNotNull)(this._symbolInstanceId), this._resolution, r, this._onMessage.bind(this)), this._dataEvents.fireModified())
+				}
+				requestMoreData(e) {
+					null !== this._instanceId && this._gateway.requestMoreData(this._instanceId, e, this._onMessage.bind(this))
+				}
+				requestMoreTickmarks(e) {
+					null !== this._instanceId && this._gateway.requestMoreTickmarks(this._instanceId, e, this._onMessage.bind(this))
+				}
+				isStarted() {
+					return this._status !== _.Idle
+				}
+				isActive() {
+					return this._status === _.Active
+				}
+				resolution() {
+					return this._resolution
+				}
+				start() {
+					this.isStarted() ? m.logNormal("start: data source is already started, nothing to do") : ((0, s.assert)(null !== this._symbol, "symbol must be set before start"), (0, s.assert)(null !== this._resolution, "resolution must be set before start"), this._gateway.isConnected().value() ? this._createSeries() : this._changeStatusTo(_.AwaitingConnection))
+				}
+				stop() {
+					this.isStarted() ? (null !== this._instanceId && (this._gateway.removeSeries(this._instanceId), this._instanceId = null), this._changeStatusTo(_.Idle)) : m.logNormal("stop: data source is already stopped, nothing to do")
+				}
+				instanceId() {
+					return this._instanceId
+				}
+				data() {
+					return this._data
+				}
+				clearData() {
+					this.isStarted() ? this._enqueueUpdate((() => this._clearDataImpl())) : this._clearDataImpl()
+				}
+				dataEvents() {
+					return this._dataEvents
+				}
+				turnaround() {
+					return `${this._turnaroundPrefix}${this._turnaroundCounter}`
+				}
+				symbolInstanceId() {
+					return this._symbolInstanceId
+				}
+				symbol() {
+					return this._symbol
+				}
+				moveData(e) {
+					this._enqueueUpdate((() => this._data.moveData(e)))
+				}
+				_resolveSymbol() {
+					null !== this._symbol && (this._symbolInstanceId = this._gateway.resolveSymbol("sds_sym_" + p++, (0, n.encodeExtendedSymbolOrGetSimpleSymbolString)(this._symbol), this._onMessage.bind(this)))
+				}
+				_clearDataImpl() {
+					this._data.clear()
+				}
+				_changeStatusTo(e) {
+					(0, s.assert)(this._status !== e, "Source and destination status should be distinct"), m.logNormal(`Status changed from ${_[this._status]} to ${_[e]}`), this._status = e
+				}
+				_createSeries() {
+					(0, s.assert)(this._status !== _.Active, 'Status should not be "Active" when creating a study'), this._instanceId = "sds_" + f++, this._resolveSymbol(), this._gateway.createSeries(this._instanceId, this.turnaround(), (0, s.ensureNotNull)(this._symbolInstanceId), (0, s.ensureNotNull)(this._resolution), this._createSeriesParams, this._timeFrame, this._onMessage.bind(this)), this._timeFrame = null, this._changeStatusTo(_.AwaitingFirstDataUpdate)
+				}
+				_onGatewayIsConnectedChanged(e) {
+					e ? this._onGatewayConnected() : this._onGatewayDisconnected()
+				}
+				_onGatewayConnected() {
+					this._status === _.AwaitingConnection && this._createSeries()
+				}
+				_onGatewayDisconnected() {
+					this._status !== _.Idle && this._status !== _.AwaitingConnection && (this._instanceId = null, this._changeStatusTo(_.AwaitingConnection)), this._turnaroundCounter = 1
+				}
+				_onMessage(e) {
+					this._enqueueUpdate((() => this._onMessageImpl(e)))
+				}
+				async _onMessageImpl(e) {
+					switch (e.method) {
+						case "symbol_resolved": {
+							const [t, r] = e.params;
+							if (t !== this._symbolInstanceId) {
+								m.logNormal(`Resolve for old symbol, expected: ${this._symbolInstanceId}, actual ${e.params[0]}`);
+								break
+							}
+							this._onSymbolResolved(r);
+							break
+						}
+						case "symbol_error":
+							if (e.params[0] !== this._symbolInstanceId) {
+								m.logNormal(`Symbol error for old symbol, expected: ${this._symbolInstanceId}, actual ${e.params[0]}`);
+								break
+							}
+							this._onSymbolError(e);
+							break;
+						case "series_timeframe": {
+							const [t, r, s, i, n, a, o] = e.params;
+							if (!this._checkTurnaround(t, r)) {
+								m.logNormal(`Time frame for old data, expected: ${this._symbolInstanceId} (${this.turnaround()}), actual ${t} (${r})`);
+								break
+							}
+							this._onSeriesTimeFrame(s, i, n, a, o);
+							break
+						}
+						case "series_error": {
+							const [t, r] = e.params;
+							if (!this._checkTurnaround(t, r)) {
+								m.logNormal(`Series error for old data, expected: ${this._symbolInstanceId} (${this.turnaround()}), actual ${t} (${r})`);
+								break
+							}
+							this._onSeriesError(e.params[2]);
+							break
+						}
+						case "series_loading": {
+							const [t, r] = e.params;
+							if (!this._checkTurnaround(t, r)) break;
+							this._onSeriesLoading(e.time);
+							break
+						}
+						case "series_completed": {
+							const [t, r, s, i] = e.params;
+							if (!this._checkTurnaround(t, s)) {
+								m.logNormal(`Series completed for old data, expected: ${this._symbolInstanceId} (${this.turnaround()}), actual ${t} (${s})`);
+								break
+							}
+							this._onSeriesCompleted(r, e.time, i);
+							break
+						}
+						case "data_update":
+							if (!this._checkTurnaround(e.params.customId, e.params.turnaround)) {
+								m.logNormal(`Data update for old data, expected: ${this._symbolInstanceId} (${this.turnaround()}), actual ${e.params.customId} (${e.params.turnaround})`);
+								break
+							}
+							await this._onDataUpdate(e.params.plots, e.params.nonseries, e.params.lastBar);
+							break;
+						case "clear_data":
+							if (e.params.turnaround !== this.turnaround()) {
+								m.logNormal(`Clear data for old data, expected: ${this.turnaround()}, actual ${e.params.turnaround}`);
+								break
+							}
+							this._clearDataImpl(), this._dataEvents.fireDataUpdated(void 0, !1, null)
+					}
+				}
+				_onSeriesError(e) {
+					let t, r;
+					if ("string" == typeof e) r = {
+						error: e
+					}, t = e;
+					else if (r = e, e.ctx) {
+						const r = {};
+						Object.entries(e.ctx).forEach((([e, t]) => {
+							r[e] = t.toString()
+						})), t = e.error.format(r)
+					} else t = e.error;
+					if (t.startsWith("study_not_auth:")) {
+						const e = t.split(":", 2)[1].split("@", 2)[0];
+						["BarSetRenko", "BarSetPriceBreak", "BarSetKagi", "BarSetPnF"].includes(e) ? this._dataEvents.fireChartTypeNotPermitted(e) : "BarSetSpread" === e ? this._dataEvents.fireIntradaySpreadNotPermitted() : "BarSetRange" === e && this._dataEvents.fireCustomIntervalNotPermitted()
+					} else "resolution_not_entitled" === t ? this._dataEvents.fireIntradayExchangeNotPermitted() : "custom_resolution" === t ? this._dataEvents.fireCustomIntervalNotPermitted() : "seconds_not_entitled" === t && this._dataEvents.fireSecondsIntervalNotPermitted();
+					this._dataEvents.fireSeriesError(r)
+				}
+				_onSeriesTimeFrame(e, t, r, s, i) {
+					this._dataEvents.fireSeriesTimeFrame(e, t, r, null == s || s, i)
+				}
+				_onSymbolError(e) {
+					if (e.params[1] === d.permissionDenied) switch (e.params[2]) {
+						case d.SymbolErrorPermissionDeniedReason.Symbol:
+							this._dataEvents.fireSymbolNotPermitted(e.params[3]);
+							break;
+						case d.SymbolErrorPermissionDeniedReason.GroupPermission:
+							this._dataEvents.fireSymbolGroupNotPermitted(e.params[3]);
+							break;
+						default:
+							this._dataEvents.fireSymbolNotPermitted(e.params[2])
+					} else e.params[1] === d.invalidSymbol && this._dataEvents.fireSymbolInvalid();
+					this._dataEvents.fireSymbolError(e.params[1])
+				}
+				_onSymbolResolved(e) {
+					this._dataEvents.fireSymbolResolved(e)
+				}
+				async _onDataUpdate(e, t, r) {
+					this._onDataUnpacked(e, r, await b(t))
+				}
+				_enqueueUpdate(e) {
+					return this._ongoingDataUpdate = this._ongoingDataUpdate.then(e, e), this._ongoingDataUpdate
+				}
+				_onDataUnpacked(e, t, r) {
+					if (this._status === _.Idle) return;
+					this._status === _.AwaitingFirstDataUpdate && (this._changeStatusTo(_.Active), this._clearDataImpl());
+					const s = this._data.bars().size(),
+						i = this._data.bars().firstIndex(),
+						n = this._data.mergeRegularBars(e);
+					null !== r && (this._data.nsBars().clear(), this._data.nsBars().merge(r.projectionPlots), this._data.lastProjectionPrice = r.lastPrice, null !== r.boxSize && (this._data.boxSize = r.boxSize), this._data.reversalAmount = r.reversalAmount);
+					const a = null === i || null !== n && n.index < i;
+					this._dataEvents.fireDataUpdated(t, a, n), s !== this._data.bars().size() && null !== n && this._dataEvents.fireBarReceived(n)
+				}
+				_onSeriesLoading(e) {
+					this._dataEvents.fireLoading(e)
+				}
+				_onSeriesCompleted(e, t, r) {
+					this._dataEvents.fireCompleted(e, t, r)
+				}
+				_checkTurnaround(e, t) {
+					return this._instanceId === e && (void 0 === t || t === this.turnaround())
+				}
+			}
+			async function b(e) {
+				if (void 0 === e) return {
+					projectionPlots: [],
+					boxSize: null
+				};
+				if ("" === e.d || "nochange" === e.indexes) return null;
+				const t = await (0, c.unpackNonSeriesData)(e.d);
+				if (null === t || t.indexes_replace) return null;
+				const r = e.indexes,
+					{
+						bars: s,
+						price: i,
+						boxSize: n,
+						reversalAmount: a
+					} = t.data;
+				return {
+					lastPrice: i,
+					projectionPlots: (s || []).map((e => {
+						let t;
+						return "factor" in e ? t = e.factor : "additionalPrice" in e && (t = e.additionalPrice), {
+							index: r[e.time],
+							value: [0, e.open, e.high, e.low, e.close, e.volume, t]
+						}
+					})),
+					reversalAmount: a,
+					boxSize: n
+				}
+			}
+		},
+		711806: (e, t, r) => {
+			r.d(t, {
+				Session: () => h
+			});
+			var s = r(588537),
+				i = r(262325),
+				n = r.n(i),
+				a = r(97639),
+				o = r.n(a),
+				c = r(95935);
+			const d = (0, r(911905).getLogger)("ChartApi.AbstractSession");
+			class h {
+				constructor(e, t, r) {
+					this._isConnected = new(n())(!1), this._state = 0, this._isConnectForbidden = !1, this._sessionId = "", this._sessionIdChanged = new(o()), this._chartApi = e, this._sessionPrefix = t, this._shouldReconnectAfterCriticalError = r
+				}
+				destroy() {
+					this._logNormal("Destroying session"), this._isConnected.unsubscribe(), this.disconnect(), this._sessionIdChanged.destroy(), delete this._chartApi, this._logNormal("Session has been destroyed")
+				}
+				isConnected() {
+					return this._isConnected
+				}
+				sessionId() {
+					return this._sessionId
+				}
+				onSessionIdChanged() {
+					return this._sessionIdChanged
+				}
+				connect() {
+					0 === this._state && ((0, s.assert)(!this._isConnectForbidden, "Cannot call connect because it is forbidden at this moment"), this._setSessionId(`${this._sessionPrefix}_${(0,c.randomHash)()}`), this._logNormal("Connecting session - wait until transport stay connected"), this._state = 1, this._chartApi.createSession(this._sessionId, this))
+				}
+				disconnect() {
+					0 !== this._state && ((0, s.assert)("" !== this._sessionId, "sessionId must not be invalid"), this._logNormal("Disconnecting session..."), this._forbidConnectWhile((() => {
+						this._chartApi.connected() && this._sendRemoveSession(), this._processDestroyingOnServer()
+					})))
+				}
+				onMessage(e) {
+					switch (e.method) {
+						case "connected":
+							return void this._onChartApiConnected();
+						case "disconnected":
+							return void this._onChartApiDisconnected();
+						case "critical_error":
+							const t = String(e.params[0]),
+								r = String(e.params[1]);
+							return void this._onCriticalError(t, r)
+					}
+					this._onMessage(e)
+				}
+				_getChartApi() {
+					return this._chartApi
+				}
+				_generateLogMessage(e) {
+					return `[${this._sessionId}] ${e}`
+				}
+				_onCriticalError(e, t) {
+					this._logError(`Critical error. Reason=${e}, info=${t}.`), this._forbidConnectWhile((() => {
+						this._processDestroyingOnServer()
+					})), this._shouldReconnectAfterCriticalError ? (this._logNormal("Reconnecting after critical error..."), this.connect()) : this._logNormal("Reconnecting after critical error skipped")
+				}
+				_onChartApiConnected() {
+					(0, s.assert)(1 === this._state, "Session is not registered"), this._logNormal("Transport is connected. Creating session on the server"), this._sendCreateSession(), this._state = 2, this._isConnected.setValue(!0)
+				}
+				_onChartApiDisconnected() {
+					this._logNormal("Transport is disconnected. Reconnecting..."), this._forbidConnectWhile((() => {
+						this._processDestroyingOnServer()
+					})), this.connect()
+				}
+				_setSessionId(e) {
+					const t = this._sessionId;
+					this._logNormal(`Changing sessionId: old=${t}, new=${e}`), this._sessionId = e, this._sessionIdChanged.fire(e, t)
+				}
+				_logNormal(e) {
+					d.logNormal(this._generateLogMessage(e))
+				}
+				_logError(e) {
+					d.logError(this._generateLogMessage(e))
+				}
+				_processDestroyingOnServer() {
+					this._state = 0, this._isConnected.setValue(!1), this._chartApi.removeSession(this._sessionId), this._setSessionId("")
+				}
+				_forbidConnectWhile(e) {
+					this._isConnectForbidden = !0, e(), this._isConnectForbidden = !1
+				}
+			}
+		},
+		183939: (e, t, r) => {
+			var s;
+			r.d(t, {
+					StudyStatusType: () => s
+				}),
+				function(e) {
+					e[e.Undefined = 0] = "Undefined", e[e.Loading = 1] = "Loading", e[e.Completed = 2] = "Completed", e[e.Error = 3] = "Error"
+				}(s || (s = {}))
+		},
+		476543: (e, t, r) => {
+			r.d(t, {
+				makeNextSymbolId: () => i,
+				makeNextStudyId: () => a
+			});
+			let s = 0;
+
+			function i() {
+				return s++, "ss_" + s
+			}
+			let n = 0;
+
+			function a() {
+				return n++, "st" + n
+			}
+		},
+		932255: (e, t, r) => {
+			r.d(t, {
+				timeHoursFormatProperty: () => o,
+				restoreTimeHoursFormatSettingsValue: () => c
+			});
+			var s = r(62802),
+				i = r(860949);
+			const n = "time_hours_format";
+
+			function a() {
+				return s.getValue(n, "24-hours")
+			}
+			const o = (0, i.createPrimitiveProperty)(a());
+
+			function c() {
+				o.setValue("24-hours"), s.remove(n)
+			}
+			s.onSync.subscribe(null, (() => o.setValue(a()))), o.subscribe(null, (() => s.setValue(n, o.value())))
+		},
+		535818: (e, t, r) => {
+			r.d(t, {
+				getHourMinuteFormat: () => n,
+				getHourMinuteSecondFormat: () => a,
+				getTimeFormatForInterval: () => o
+			});
+			var s = r(820187),
+				i = r(932255);
+
+			function n() {
+				return "12-hours" === i.timeHoursFormatProperty.value() ? s.twelveHourMinuteFormat : s.hourMinuteFormat
+			}
+
+			function a() {
+				return "12-hours" === i.timeHoursFormatProperty.value() ? s.twelveHourMinuteSecondFormat : s.hourMinuteSecondFormat
+			}
+
+			function o(e) {
+				return e.isSeconds() || e.isTicks() ? a() : n()
+			}
+		},
+		228243: (e, t, r) => {
+			function s(e, t) {
+				const r = Object.create(Object.getPrototypeOf(e));
+				for (const s of t) Object.prototype.hasOwnProperty.call(e, s) && (r[s] = e[s]);
+				return r
+			}
+			r.d(t, {
+				pickFields: () => s
+			})
+		}
+	}
+]);

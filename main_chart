@@ -1,0 +1,1049 @@
+(self.webpackChunktradingview = self.webpackChunktradingview || []).push([
+	[47830], {
+		176950: e => {
+			e.exports = {}
+		},
+		776753: e => {
+			e.exports = {
+				offlineBar: "offlineBar-UIGLv4xP",
+				icon: "icon-UIGLv4xP",
+				text: "text-UIGLv4xP"
+			}
+		},
+		360509: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				setupChartScreenshotHint: () => o
+			});
+			var a = i(575932),
+				r = i(251954),
+				n = i(588537);
+
+			function o(e, t) {
+				const o = (0, a.t)("Link to the chart image copied to clipboard {emoji}").format({
+						emoji: "ðŸ‘"
+					}),
+					s = (0, a.t)("Chart image copied to clipboard {emoji}").format({
+						emoji: "ðŸ‘"
+					});
+				r.on("onServerScreenshotCopiedToClipboard", (() => c(o)), null), r.on("onClientScreenshotCopiedToClipboard", (() => c(s)), null);
+				let l = null;
+				const d = e.getContainer();
+
+				function c(e) {
+					l ? l.show(e) : Promise.all([i.e(99740), i.e(18867), i.e(7742), i.e(30092)]).then(i.bind(i, 634464)).then((i => {
+						l || (l = new i.ChartScreenshotHintRenderer((0, n.ensureNotNull)(d), {
+							bottomPadding: t.seriesControlBarEnabled
+						}), l.show(e))
+					}))
+				}
+			}
+		},
+		820277: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				configuration: () => r
+			});
+			var a = i(722329);
+			async function r(e) {
+				const [t, {
+					ObjectTreeRenderer: r
+				}, {
+					DataWindowWidget: n
+				}] = await Promise.all([(0, a.configuration)(e), Promise.all([i.e(22850), i.e(87112)]).then(i.bind(i, 272833)), Promise.all([i.e(22850), i.e(87112)]).then(i.bind(i, 933465))]);
+				return t.ObjectTreeWidget = r, t.DataWindowWidget = n, t
+			}
+		},
+		515798: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				WidgetbarBootloader: () => c
+			});
+			var a = i(62802),
+				r = i.n(a),
+				n = i(510013),
+				o = i(611688),
+				s = i(474474),
+				l = i(477600),
+				d = i(761068);
+			class c extends n.ChunkLoader {
+				constructor(e) {
+					super(), this._options = e, this._options.resizerBridge.negotiateWidth(this._calcWidgetBarWidth()), this._options.resizerBridge.container.value().appendChild((0, l.createStubElem)())
+				}
+				async _startLoading(e) {
+					const {
+						tradingPromise: t,
+						resizerBridge: i,
+						showWizardFn: a,
+						showCloseButton: r,
+						areShortcutsAvailable: n,
+						chartWidgetCollection: o,
+						settingsPrefix: s,
+						customization: l,
+						readonly: c,
+						configuration: h
+					} = this._options, [u, g] = await Promise.all([this._loadWidgetBar(), t]), m = null !== g ? {
+						tradingPanel: g.tradingPanel,
+						setDomPanelVisibility: g.setDomPanelVisibility.bind(g),
+						setOrderPanelVisibility: g.setOrderPanelVisibility.bind(g)
+					} : void 0;
+					if (null == e ? void 0 : e.aborted) throw (0, d.createAbortError)();
+					return new u({
+						resizerBridge: i,
+						showCloseButton: r,
+						showWizardFn: a,
+						areShortcutsAvailable: n,
+						chartWidgetCollection: o,
+						settingsPrefix: s,
+						customization: l,
+						readonly: c,
+						tradingPanelAccessor: m,
+						configuration: h
+					})
+				}
+				async _loadWidgetBar() {
+					return (await Promise.all([i.e(3086), i.e(72066), i.e(22850), i.e(15107), i.e(89806), i.e(12620), i.e(13608), i.e(32547), i.e(84845), i.e(37619), i.e(40968), i.e(33216), i.e(89587), i.e(19636), i.e(59379), i.e(25773), i.e(10833), i.e(77846), i.e(30170), i.e(36325), i.e(90375), i.e(37800), i.e(68945), i.e(46256), i.e(98449), i.e(93921), i.e(91622), i.e(20651), i.e(5043), i.e(76239), i.e(26612), i.e(72106), i.e(77297), i.e(60550), i.e(54876)]).then(i.bind(i, 359621))).WidgetBar
+				}
+				_calcWidgetBarWidth() {
+					const e = r().getJSON(`${this._options.settingsPrefix}.layout-settings`, {
+						settings: (0, s.getDefaultState)()
+					});
+					void 0 === e.settings.minimized && (e.settings.minimized = !o.enabled("show_right_widgets_panel_by_default"));
+					const t = o.enabled("widgetbar_tabs") ? 46 : 0;
+					return e.settings.minimized ? t : t + e.settings.width + 1
+				}
+			}
+		},
+		418686: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				FullToolsetBootloader: () => r
+			});
+			var a = i(510013);
+			class r extends a.ChunkLoader {
+				_startLoading() {
+					return Promise.all([i.e(10146), i.e(90519), i.e(8348), i.e(90926), i.e(37135), i.e(8834), i.e(5979), i.e(3086), i.e(30063), i.e(72066), i.e(78941), i.e(53221), i.e(21834), i.e(95468), i.e(75966), i.e(82739), i.e(29331), i.e(73836), i.e(12580), i.e(63146), i.e(24817), i.e(55706), i.e(1689), i.e(74733), i.e(86193), i.e(11812), i.e(73327), i.e(44177), i.e(33837), i.e(32256), i.e(54072), i.e(91488), i.e(86018), i.e(85775), i.e(8800), i.e(55893), i.e(86602), i.e(12065), i.e(71565), i.e(90586), i.e(98449), i.e(83509), i.e(42669), i.e(61031), i.e(51060)]).then(i.bind(i, 749129)).then((e => e.getToolSet()))
+				}
+			}
+		},
+		393357: (e, t, i) => {
+			"use strict";
+			var a;
+			i.d(t, {
+					HeaderToolbarComponentIds: () => a
+				}),
+				function(e) {
+					e.SymbolSearch = "header-toolbar-symbol-search", e.Intervals = "header-toolbar-intervals", e.ChartStyles = "header-toolbar-chart-styles", e.Compare = "header-toolbar-compare", e.Indicators = "header-toolbar-indicators", e.StudyTemplates = "header-toolbar-study-templates", e.Dropdown = "header-toolbar-dropdown", e.Alerts = "header-toolbar-alerts", e.Layouts = "header-toolbar-layouts", e.SaveLoad = "header-toolbar-save-load", e.UndoRedo = "header-toolbar-undo-redo", e.Properties = "header-toolbar-properties", e.QuickSearch = "header-toolbar-quick-search", e.PublishDesktop = "header-toolbar-publish-desktop", e.PublishMobile = "header-toolbar-publish-mobile", e.Fullscreen = "header-toolbar-fullscreen", e.Screenshot = "header-toolbar-screenshot", e.Replay = "header-toolbar-replay", e.Financials = "header-toolbar-financials", e.StartTrial = "header-toolbar-start-trial"
+				}(a || (a = {}))
+		},
+		449282: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				initBeforeUnloadMessage: () => r
+			});
+			const a = (0, i(575932).t)("The Chart Layout includes unsaved changes. You will lose your data if you leave the page.");
+
+			function r(e) {
+				window.addEventListener("beforeunload", (t => {
+					if (e.hasChanges()) return t.returnValue = a, a
+				}))
+			}
+		},
+		796875: (e, t, i) => {
+			"use strict";
+			i.r(t), i.d(t, {
+				BacktestingStrategyDispatcher: () => c
+			});
+			var a = i(62802),
+				r = i(97639),
+				n = i.n(r),
+				o = i(147627),
+				s = i(949156),
+				l = i(36177),
+				d = i(579917);
+			class c {
+				constructor(e) {
+					this._chartWidgetCollection = null, this._chartWidgets = [], this._model = null, this._activeChartChanged = !1, this._strategies = [], this._modelStrategies = [], this._ready = (0, d.createDeferredPromise)(), this._filled = (0, d.createDeferredPromise)(), this._change = new(n()), this._initModel = async e => {
+						const t = e.model(),
+							i = await this._getChartModelStrategySources(t);
+						if (i.length && !t.activeStrategySource().value()) {
+							const e = a.getValue(l.LAST_STRATEGY_TVSETTINGS_KEY);
+							let t;
+							if (e)
+								for (let a = 0; a < i.length; a++)
+									if (i[a].metaInfo().scriptIdPart === e) {
+										t = i[a];
+										break
+									} t || (t = i[i.length - 1]), this.setActiveStrategy(t, this._model)
+						}
+					}, this._applyModel = e => {
+						e !== this._model && (this._model && this._model.model().strategySourcesChange().unsubscribe(null, this._onStrategiesChange), this._strategies = [], this._model = e, this._model.model().strategySourcesChange().subscribe(null, this._onStrategiesChange)), this._onStrategiesChange()
+					}, this._onStrategiesChange = () => {
+						clearTimeout(this._updateToId), this._updateToId = setTimeout(this._updateStrategies.bind(this), 100)
+					}, this._onActiveChartWidgetChange = e => {
+						this._model && (this._activeChartChanged = !0), e.hasModel() ? this._applyModel(e.model()) : e.modelCreated().subscribe(null, this._applyModel)
+					}, this._onLayoutChange = () => {
+						this._chartWidgetCollection && this._chartWidgetCollection.getAll().forEach((e => {
+							-1 === this._chartWidgets.indexOf(e) && (this._chartWidgets.push(e), e.hasModel() ? this._initModel(e.model()) : e.modelCreated().subscribe(null, this._initModel))
+						}))
+					}, this._setChartWidgetCollection(e, !0)
+				}
+				model() {
+					return this._model
+				}
+				chartWidgetCollection() {
+					return this._chartWidgetCollection ? this._chartWidgetCollection : null
+				}
+				ready() {
+					return this._ready.promise
+				}
+				change() {
+					return this._change
+				}
+				filled() {
+					return this._filled.promise
+				}
+				strategies() {
+					return this._strategies
+				}
+				setActiveStrategy(e, t) {
+					const i = t && t.model() || null !== this._model && this._model.model();
+					i && (i.setActiveStrategySource(e), i.updateSource(e))
+				}
+				unsetActiveStrategy(e) {
+					const t = e && e.model() || this._model && this._model.model();
+					t && t.unsetActiveStrategySource()
+				}
+				destroy() {
+					this._chartWidgetCollection && (this._chartWidgetCollection.layout.unsubscribe(this._onLayoutChange), this._chartWidgetCollection.activeChartWidget.unsubscribe(this._onActiveChartWidgetChange));
+					for (const e of this._modelStrategies) e.onIsActualIntervalChange().unsubscribe(this, this._updateVisibleStrategy.bind(this))
+				}
+				_setChartWidgetCollection(e, t) {
+					(e && e !== this._chartWidgetCollection || !0 === t) && (this._chartWidgetCollection && (this._chartWidgetCollection.layout.unsubscribe(this._onLayoutChange), this._chartWidgetCollection.activeChartWidget.unsubscribe(this._onActiveChartWidgetChange)), this._chartWidgetCollection = e, this._chartWidgetCollection.layout.subscribe(this._onLayoutChange, {
+						callWithLast: !0
+					}), this._chartWidgetCollection.activeChartWidget.subscribe(this._onActiveChartWidgetChange, {
+						callWithLast: !0
+					}))
+				}
+				_isStrategySource(e) {
+					var t;
+					let i;
+					return "metaInfo" in e ? i = e.metaInfo() : e instanceof o.StudyStub && (i = e.state(!0) && (null === (t = e.state(!0)) || void 0 === t ? void 0 : t.metaInfo)), Boolean(i && i.isTVScriptStrategy)
+				}
+				async _getChartModelStrategySources(e) {
+					return new Promise((t => {
+						const i = {},
+							a = {},
+							r = e.dataSources();
+						let n;
+						for (let e = 0; e < r.length; e++) n = r[e], this._isStrategySource(n) && (n instanceof s.StudyStrategy ? i[n.id()] = n : n instanceof o.StudyStub && (a[n.id()] = n));
+
+						function l(e) {
+							return Object.keys(e).map((t => e[t]))
+						}
+						Object.keys(a).length ? e.strategySourcesChange().subscribe(null, (function r() {
+							let n, o;
+							for (let t = 0; t < e.strategySources().length; t++) n = e.strategySources()[t], o = n.id(), a[o] && (i[o] = n, delete a[o]);
+							Object.keys(a).length || (e.strategySourcesChange().unsubscribe(null, r), t(l(i)))
+						})) : t(l(i))
+					}))
+				}
+				_updateVisibleStrategy() {
+					const e = this._modelStrategies.filter((e => e.isVisible()));
+					this._change.fire(this._modelStrategies.slice(), e, this._activeChartChanged), this._ready.resolve(), e.length && this._filled.resolve()
+				}
+				async _updateStrategies() {
+					if (null === this._model) return;
+					this._modelStrategies = this._model.model().strategySources();
+					for (const e of this._modelStrategies) e.onIsActualIntervalChange().subscribe(this, this._updateVisibleStrategy.bind(this));
+					const e = this._modelStrategies.filter((e => e.properties().childs().visible.value() && e.isVisible())),
+						t = this._strategies;
+					this._strategies = e && e.slice() || [], this._change.fire(t, this._strategies, this._activeChartChanged), this._activeChartChanged = !1, this._ready.resolve(), this._strategies.length && this._filled.resolve()
+				}
+			}
+		},
+		36177: (e, t, i) => {
+			"use strict";
+			i.r(t), i.d(t, {
+				LAST_STRATEGY_TVSETTINGS_KEY: () => a
+			});
+			const a = "backtesting.lastStrategySelectedScriptIdPart"
+		},
+		92949: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				ensureSettings: () => c,
+				getUserSettings: () => l,
+				setUserSettings: () => d
+			});
+			var a = i(706617);
+			const r = "chart.bottom-widgetbar";
+			var n = i(62802),
+				o = i.n(n);
+			const s = {
+				activeWidget: "screener",
+				height: 320,
+				mode: "minimized"
+			};
+
+			function l() {
+				return o().getJSON(r)
+			}
+
+			function d(e) {
+				o().setJSON(r, e)
+			}
+
+			function c(e, t = s) {
+				if (!(0, a.isObject)(e)) return t;
+				let i = t.activeWidget;
+				(0, a.hasProperty)(e, "activeWidget") && function(e) {
+					if ("string" != typeof e) return !1;
+					return ["backtesting", "screener", "scripteditor", "text_notes", "paper_trading"].includes(e)
+				}(e.activeWidget) && (i = e.activeWidget);
+				let r = t.mode;
+				(0, a.hasProperty)(e, "mode") && function(e) {
+					if ("string" != typeof e) return !1;
+					return ["minimized", "normal", "maximized"].includes(e)
+				}(e.mode) && (r = e.mode);
+				let n = t.height;
+				return (0, a.hasProperty)(e, "height") && function(e) {
+					return "number" == typeof e && isFinite(e)
+				}(e.height) && (n = e.height), {
+					activeWidget: i,
+					mode: r,
+					height: n
+				}
+			}
+		},
+		863663: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				BottomWidgetbarBootloader: () => s
+			});
+			var a = i(477600),
+				r = i(510013),
+				n = i(594195),
+				o = i(92949);
+			class s extends r.ChunkLoader {
+				constructor(e) {
+					super(), this._opts = e;
+					const t = (0, o.ensureSettings)({
+							activeWidget: e.defaultActiveWidget,
+							mode: e.mode
+						}),
+						{
+							mode: i,
+							height: r
+						} = this._userSettings = (0, o.ensureSettings)((0, o.getUserSettings)(), t),
+						s = this._opts.resizerBridge,
+						l = s.container.value();
+					switch (i) {
+						case "maximized":
+							s.negotiateHeight(s.availHeight.value());
+							break;
+						case "normal":
+							s.negotiateHeight(r + n.footerWidgetHeight);
+							break;
+						case "minimized":
+							s.negotiateHeight(n.footerWidgetHeight)
+					}
+					l.appendChild((0, a.createStubElem)())
+				}
+				_startLoading() {
+					return Promise.all([this._loadBottomWidgetbar(), this._opts.configBootloader.load()]).then((([e, t]) => new e({
+						resizerBridge: this._opts.resizerBridge,
+						chartWidgetCollection: this._opts.chartWidgetCollection,
+						backtestingStrategyDispatcher: this._opts.backtestingStrategyDispatcher,
+						studyMarket: this._opts.studyMarket,
+						widgets: this._opts.widgets,
+						config: t
+					}, this._userSettings)))
+				}
+				_loadBottomWidgetbar() {
+					return Promise.all([i.e(72853), i.e(14193)]).then(i.bind(i, 144418)).then((e => e.Bottomwidgetbar))
+				}
+			}
+		},
+		839648: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				FullConfigSetBootloder: () => r
+			});
+			var a = i(510013);
+			class r extends a.ChunkLoader {
+				_startLoading() {
+					return Promise.all([i.e(10146), i.e(90519), i.e(8348), i.e(90926), i.e(48181), i.e(37135), i.e(8834), i.e(35354), i.e(5979), i.e(3086), i.e(30063), i.e(72066), i.e(78941), i.e(99740), i.e(91670), i.e(22850), i.e(53221), i.e(63280), i.e(89806), i.e(21834), i.e(95468), i.e(80580), i.e(84845), i.e(68074), i.e(89242), i.e(52498), i.e(9935), i.e(82739), i.e(37619), i.e(61369), i.e(44155), i.e(12580), i.e(63146), i.e(5799), i.e(24817), i.e(50522), i.e(32151), i.e(52019), i.e(24384), i.e(55706), i.e(19636), i.e(35015), i.e(18867), i.e(2036), i.e(61153), i.e(77542), i.e(50991), i.e(43788), i.e(4171), i.e(40731), i.e(93683), i.e(97430), i.e(84458), i.e(93762), i.e(90745), i.e(30170), i.e(73886), i.e(54792), i.e(66724), i.e(83230), i.e(8655), i.e(81750), i.e(86217), i.e(6058), i.e(5244), i.e(82598), i.e(38012), i.e(98076), i.e(93921), i.e(69397), i.e(9111), i.e(6254), i.e(68985), i.e(46e3), i.e(95106), i.e(7498), i.e(81868), i.e(74046), i.e(44008), i.e(24141), i.e(88800)]).then(i.bind(i, 607834)).then((e => e.getFullConfigSet()))
+				}
+			}
+		},
+		594195: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				footerWidgetHeight: () => a
+			});
+			const a = 39
+		},
+		913979: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				FooterWidgetBootloader: () => r
+			});
+			var a = i(510013);
+			class r extends a.ChunkLoader {
+				constructor(e) {
+					super(), this._opts = e
+				}
+				_startLoading() {
+					return Promise.all([this._opts.bottomWidgetbarBootloader.load(), this._loadFooterWidget()]).then((([e, t]) => {
+						const {
+							resizerBridge: i
+						} = this._opts;
+						return new t(e.footerWidgetContainer(), i, e)
+					}))
+				}
+				_loadFooterWidget() {
+					return Promise.all([i.e(10146), i.e(90519), i.e(8348), i.e(37135), i.e(8834), i.e(34539), i.e(92772), i.e(93921), i.e(91622), i.e(37707)]).then(i.bind(i, 725795)).then((e => e.FooterWidgetRenderer))
+				}
+			}
+		},
+		807422: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				UaTitleManager: () => d
+			});
+			var a = i(588537),
+				r = i(692598);
+
+			function n(e) {
+				return null == e ? "" : e > 0 ? `+${e}%` : e < 0 ? `âˆ’${Math.abs(e)}%` : "0%"
+			}
+
+			function o(e) {
+				return null == e ? 0 : e > 0 ? 1 : e < 0 ? -1 : 0
+			}
+
+			function s(e, t) {
+				return null == e ? "" : t.format(e)
+			}
+			const l = window.TVD ? window.TVD.setTitle : function(e) {
+				const t = [];
+				e.symbol && t.push(e.symbol), e.last && (t.push(e.last), e.changeSign && t.push(e.changeSign > 0 ? "â–²" : "â–¼"), e.changePercent && t.push(e.changePercent), e.name && t.push(e.name)), 0 === t.length && t.push("New Chart"), document.title = t.join(" ")
+			};
+			class d {
+				constructor(e) {
+					this._currentSeries = null, this._onLayoutChanged = e => {
+						this._rendererData.layout = e, this._updateView()
+					}, this._onNameChanged = e => {
+						this._rendererData.name = e, this._updateView()
+					}, this._updateView = () => {
+						l(this._rendererData)
+					}, this._onSymbolOrFormatterChanged = () => {
+						const e = (0, a.ensureNotNull)(this._currentSeries),
+							t = e.quotesProvider().quotes(),
+							i = {
+								logoid: null == t ? void 0 : t.logoid,
+								"currency-logoid": null == t ? void 0 : t["currency-logoid"],
+								"base-currency-logoid": null == t ? void 0 : t["base-currency-logoid"]
+							};
+						this._rendererData = {
+							name: this._rendererData.name,
+							layout: this._rendererData.layout,
+							symbol: e.symbol().replace(/\w+:/g, ""),
+							last: s(t && t.last_price, e.formatter()),
+							changePercent: n(t && t.change_percent),
+							changeSign: o(t && t.change_percent),
+							logoUrls: null !== t ? (0, r.removeUsdAndStableCoinFromCryptoPairLogos)((0, r.resolveLogoUrls)(i)) : []
+						}, this._updateView()
+					}, this._onQuoteData = (e, t) => {
+						const i = t.values,
+							l = i.change_percent,
+							d = i.last_price;
+						let c = !1;
+						if (void 0 !== l && (this._rendererData.changeSign = o(l), this._rendererData.changePercent = n(l), c = !0), void 0 !== d) {
+							const e = (0, a.ensureNotNull)(this._currentSeries);
+							this._rendererData.last = s(d, e.formatter()), c = !0
+						}
+						if (void 0 !== i.logoid || void 0 !== i["currency-logoid"] || void 0 !== i["base-currency-logoid"]) {
+							const e = {
+								logoid: i.logoid,
+								"currency-logoid": i["currency-logoid"],
+								"base-currency-logoid": i["base-currency-logoid"]
+							};
+							this._rendererData.logoUrls = (0, r.removeUsdAndStableCoinFromCryptoPairLogos)((0, r.resolveLogoUrls)(e)), c = !0
+						}
+						c && this._updateView()
+					}, this._onActiveChartChanged = () => {
+						this._unsubscribeFromCurrentSeriesEvents();
+						const e = this._chartWidgetCollection.activeChartWidget.value();
+						e.withModel(null, (() => {
+							this._chartWidgetCollection.activeChartWidget.value() === e && (this._currentSeries = e.model().mainSeries(), this._subscribeToCurrentSeriesEvents(), this._onSymbolOrFormatterChanged())
+						}))
+					}, this._chartWidgetCollection = e, this._rendererData = {
+						symbol: "",
+						last: "",
+						changeSign: 0,
+						changePercent: "",
+						name: this._chartWidgetCollection.metaInfo.name.value(),
+						layout: this._chartWidgetCollection.layout.value(),
+						logoUrls: []
+					}, this._chartWidgetCollection.layout.subscribe(this._onLayoutChanged), this._chartWidgetCollection.metaInfo.name.subscribe(this._onNameChanged), this._chartWidgetCollection.activeChartWidget.subscribe(this._onActiveChartChanged), this._onActiveChartChanged()
+				}
+				destroy() {
+					this._chartWidgetCollection.layout.unsubscribe(this._onLayoutChanged), this._chartWidgetCollection.metaInfo.name.unsubscribe(this._onNameChanged), this._chartWidgetCollection.activeChartWidget.unsubscribe(this._onActiveChartChanged), this._unsubscribeFromCurrentSeriesEvents(), this._currentSeries = null
+				}
+				_unsubscribeFromCurrentSeriesEvents() {
+					if (null !== this._currentSeries) {
+						this._currentSeries.formatterChanged().unsubscribeAll(this);
+						const e = this._currentSeries.quotesProvider();
+						e.quoteSymbolChanged().unsubscribeAll(this), e.quotesUpdate().unsubscribeAll(this)
+					}
+				}
+				_subscribeToCurrentSeriesEvents() {
+					if (null !== this._currentSeries) {
+						this._currentSeries.formatterChanged().subscribe(this, this._onSymbolOrFormatterChanged);
+						const e = this._currentSeries.quotesProvider();
+						e.quoteSymbolChanged().subscribe(this, this._onSymbolOrFormatterChanged), e.quotesUpdate().subscribe(this, this._onQuoteData)
+					}
+				}
+			}
+		},
+		108743: (e, t, i) => {
+			"use strict";
+			i(970028), i(281640)
+		},
+		588326: (e, t, i) => {
+			"use strict";
+			var a = i(97639),
+				r = i(823127),
+				n = i(895370).addPerfMark;
+			n("main_chart.ExecuteStart"), i(764612), i(94772);
+			const o = i(611688);
+			o.enable("tv_production"), o.enable("mobile_trading"), o.enable("real_brokers"), window.setWinMobileMode = function() {}, i(385518);
+			var s = i(548829).HeaderToolbarBootloader,
+				l = i(418686).FullToolsetBootloader,
+				d = i(414471).DrawingToolbarBootloader,
+				c = i(670503).isDrawingToolbarVisible,
+				h = i(24958).TradingBootloader,
+				u = i(515798).WidgetbarBootloader,
+				g = i(863663).BottomWidgetbarBootloader,
+				m = i(796875).BacktestingStrategyDispatcher,
+				b = i(839648).FullConfigSetBootloder,
+				_ = i(913979).FooterWidgetBootloader,
+				C = i(436046).TopLeftButtonBootloader,
+				v = i(264170),
+				p = i(372006).SupportTicketData,
+				f = i(434342).ScriptUpdater,
+				S = i(63208).CHART_WIDGET_COLLECTION_SERVICE,
+				w = i(564894),
+				y = i(964304).createFavoriteDrawingToolbar,
+				W = i(920358).getPriceAlertsDispatcher,
+				T = i(798935).ChartSaver,
+				E = i(807422).UaTitleManager,
+				B = i(984552).StudyTemplates,
+				P = i(441058).FavoriteStudyTemplateService,
+				A = i(501897).SaveChartService,
+				D = i(747113).SharingChartService,
+				k = i(252477).LoadChartService,
+				I = i(583912).linking,
+				M = i(108494),
+				L = i(155790),
+				O = i(175203).telemetry,
+				z = i(226722).TVXWindowEvents,
+				F = i(780028).StudyMarket,
+				x = i(440135).restoreTheme,
+				N = i(909740).setTheme,
+				V = i(975774).loadThemeOnChartInitialization,
+				U = i(588948).updateInitData,
+				H = i(588948).getInitData,
+				G = i(62802),
+				R = i(126974).availableTimeFrames,
+				j = i(869584).isSymbolAvailable,
+				q = i(869584).requestFallbackSymbol,
+				Y = i(251954),
+				Q = i(911730).ChartChangesWatcher,
+				J = i(449282).initBeforeUnloadMessage,
+				$ = i(279720).createGoRegisterDialog,
+				K = i(393357).HeaderToolbarComponentIds,
+				X = i(638456).CheckMobile,
+				Z = i(564757),
+				ee = i(487381).setupTrackingModePopupHint,
+				te = i(164387).setupChartEventHint,
+				ie = i(360509).setupChartScreenshotHint,
+				ae = i(385043).initAllAnalytics,
+				re = i(477393).FundamentalsDialogLoader,
+				ne = i(473999).registerSiteSymbolListBackend,
+				oe = i(453434).initGlobalSearchAction,
+				se = i(781499).handleNotificationOnOfflineOnlineEvents,
+				le = i(343719).defaultCompareSymbols,
+				de = i(201642).subscriptionNotification,
+				ce = i(125226).isFeatureEnabled,
+				he = i(778785).mobiletouch;
+			i(108743), ne(ChartApiInstance), U();
+			var ue = H(),
+				ge = ue.readOnly;
+			var me = i(90523).Root,
+				be = new(0, i(760641).ChartPage)(new me(window).allocate()),
+				_e = be.allocate({
+					areaName: "center"
+				}),
+				Ce = new v({
+					resizerBridge: _e,
+					padding: 2,
+					content: ue.content,
+					readOnly: ue.readOnly,
+					saveChartEnabled: !0,
+					takeScreenshotEnabled: !0,
+					publishedChartsEnabled: !ce("hide_ideas_on_chart"),
+					widgetOptions: {
+						defSymbol: ue.defSymbol || (ue.content ? "" : G.getValue("editchart.model.symbol", DEFAULT_SYMBOL)),
+						defInterval: ue.defInterval || (ue.content ? "" : G.getValue("editchart.model.interval")),
+						defStyle: ue.defStyle || (ue.content ? "" : G.getValue("editchart.model.style")),
+						addToWatchlistEnabled: !0,
+						showFinancialsEnabled: !0,
+						propertyPagesEnabled: !0,
+						chartEventsEnabled: !0,
+						esdEnabled: !0,
+						controlBarEnabled: !0,
+						addVolume: !0,
+						justCloned: ue.justCloned,
+						isDrawingToolbarVisible: c,
+						lastPriceAnimationEnabled: !location.search.toLowerCase().includes("disablelastpriceanimation"),
+						crossHair: {
+							menuEnabled: !ue.readOnly
+						},
+						paneContextMenuEnabled: !ue.readOnly,
+						paneContextMenu: {
+							mainSeriesTrade: !ue.readOnly
+						},
+						currencyConversionEnabled: !0,
+						unitConversionEnabled: !0,
+						isSymbolAvailable: j,
+						requestFallbackSymbol: q,
+						timeScaleWidget: {
+							contextMenuEnabled: !0,
+							timezoneMenuEnabled: !0,
+							priceAxisLabelsOptions: {
+								showLabels: !ue.readOnly
+							}
+						},
+						timeScale: {
+							preserveBarSpacing: !1,
+							lockVisibleTimeRangeOnResize: !1
+						},
+						legendWidgetEnabled: !0,
+						legendWidget: {
+							contextMenu: {
+								settings: o.enabled("show_chart_property_page"),
+								showOpenMarketStatus: !0
+							},
+							symbolMarkerEnabled: !0
+						},
+						goToDateEnabled: !0,
+						compareSymbols: le
+					},
+					seriesControlBarEnabled: !ue.readOnly,
+					seriesControlBar: {
+						timeFramesWidgetEnabled: !0,
+						timeFramesWidget: {
+							goToDateEnabled: !0,
+							availableTimeFrames: R
+						},
+						timeWidgetEnabled: !0,
+						timeWidget: {
+							timezoneMenuEnabled: !0
+						},
+						adjustForDividendsButtonEnabled: !0,
+						sessionIdButtonEnabled: !0,
+						backAdjustmentButtonEnabled: !0,
+						settlementAsCloseButtonEnabled: !0,
+						percentageScaleButtonEnabled: !0,
+						logScaleButtonEnabled: !0,
+						autoScaleButtonEnabled: !0,
+						fullscreenButtonEnabled: !0,
+						mobileChangeLayoutEnabled: X.any()
+					},
+					metaInfo: ue.metaInfo,
+					globalEvents: !0,
+					mobileForceChartMaximizeEnabled: X.any()
+				});
+			let ve = !1;
+			Ce.onAboutToBeDestroyed.subscribe(null, (() => {
+				ve = !0
+			}), !0);
+			var pe = function() {
+				window.user && window.user.is_pro || (window.loginStateChange.unsubscribe(null, pe), Promise.all([i.e(72434), i.e(30187)]).then(i.bind(i, 146325)).then((({
+					addBrandingSource: e
+				}) => {
+					e(Ce)
+				})))
+			};
+			window.user && window.user.is_pro ? window.loginStateChange.subscribe(null, pe) : pe(), o.enabled("alerts") && (W().then((function(e) {
+				e.setChartWidgetCollection(Ce)
+			})), i.e(20645).then(i.bind(i, 13374)).then((function(e) {
+				e.initGlobalAlertsHotkeys(Ce)
+			})));
+			var fe = ge ? null : new h({
+				resizerBridge: be.allocate({
+					areaName: "tradingpanel"
+				}),
+				chartWidgetCollection: Ce
+			}).load();
+			y(), Ce.readOnly() || (window.studyMarket = new F(Ce), window.fundamentalsDialog = new re(Ce)), w.registerService(S, Ce); {
+				const e = de();
+				e.on("subscribe", (() => {
+					e.showChartNotification()
+				})), e.on("upgrade", (() => {
+					e.showChartNotification()
+				}))
+			}
+			I.bindToChartWidgetCollection(Ce), p.setChartWidgetCollection(Ce), window.scriptUpdater = new f(Ce), window._exposed_chartWidgetCollection = Ce, ue.theme ? N(ue.theme) : x(), window.saver = new T(Ce);
+			var Se = new Q(Ce, window.saver, Y),
+				we = new P(z, G),
+				ye = new A(Ce, window.saver);
+			Ce.setSaveChartService(ye);
+			var We = new D(!!ue.sharing_enabled, Ce.metaInfo.uid.value(), Ce.metaInfo.id.value()),
+				Te = new k(Ce),
+				Ee = new m(Ce),
+				Be = he ? ["full"] : void 0;
+
+			function Pe(e) {
+				var t = document.getElementById(K.PublishDesktop),
+					i = document.getElementById(K.PublishMobile);
+				if (!(t && t.contains(e.target) || i && i.contains(e.target))) {
+					var a = TradingView.bottomWidgetBar;
+					a && a.turnOffMaximize()
+				}
+			}
+			var Ae = new B({
+				favoriteStudyTemplatesService: we,
+				chartWidgetCollection: Ce
+			});
+			window.TradingViewApi = new M({
+				chartApiInstance: ChartApiInstance,
+				chartWidgetCollection: Ce,
+				saveChartService: ye,
+				loadChartService: Te,
+				sharingChartService: We,
+				studyMarket: window.studyMarket,
+				financialsDialog: window.fundamentalsDialog
+			});
+			var De = X.any() ? void 0 : oe(),
+				ke = new s(new l, {
+					resizerBridge: be.allocate({
+						areaName: "top"
+					}),
+					ideas: !0,
+					chartSaver: window.saver,
+					chartApiInstance: ChartApiInstance,
+					availableTimeFrames: R,
+					allowedModes: Be,
+					chartWidgetCollection: Ce,
+					studyMarket: window.studyMarket,
+					studyTemplates: Ae,
+					favoriteStudyTemplatesService: we,
+					saveChartService: ye,
+					sharingChartService: We,
+					loadChartService: Te,
+					chartChangesWatcher: Se,
+					financialsDialogController: window.fundamentalsDialog,
+					onClick: Pe,
+					openGlobalSearch: De
+				}),
+				Ie = new a,
+				Me = new a,
+				Le = new C({
+					resizerBridge: be.allocate({
+						areaName: "topleft"
+					}),
+					chartChangesWatcher: Se,
+					chartWidgetCollection: Ce,
+					saveChartService: ye,
+					sharingChartService: We,
+					loadChartService: Te,
+					chartSaver: window.saver,
+					isSupportAvailable: window.initData.is_support_available,
+					widgetbarSettled: Ie,
+					bottomWidgetBarSettled: Me
+				}),
+				Oe = new d({
+					resizerBridge: be.allocate({
+						areaName: "left"
+					}),
+					chartWidgetCollection: Ce,
+					readOnly: ge,
+					onClick: Pe,
+					widgetbarSettled: Ie
+				});
+			const ze = i(820277).configuration;
+			var Fe = new u({
+					chartWidgetCollection: Ce,
+					resizerBridge: be.allocate({
+						areaName: "right"
+					}),
+					settingsPrefix: "widgetbar",
+					showCloseButton: !0,
+					showWizardFn: null,
+					areShortcutsAvailable: !0,
+					configuration: () => ze({
+						chartApiInstance: ChartApiInstance
+					}),
+					tradingPromise: fe
+				}),
+				xe = new b,
+				Ne = be.allocate({
+					areaName: "bottom"
+				}),
+				Ve = new g({
+					resizerBridge: Ne,
+					chartWidgetCollection: Ce,
+					backtestingStrategyDispatcher: Ee,
+					studyMarket: window.studyMarket,
+					widgets: ["screener", "text_notes", ge ? null : "scripteditor", "backtesting", ge ? null : "paper_trading"],
+					configBootloader: xe
+				}),
+				Ue = new _({
+					resizerBridge: Ne,
+					chartWidgetCollection: Ce,
+					bottomWidgetbarBootloader: Ve
+				});
+
+			function He() {
+				r(".loading-indicator").remove()
+			}
+			Promise.all([i.e(10146), i.e(90519), i.e(8348), i.e(37135), i.e(5979), i.e(78941), i.e(21834), i.e(95468), i.e(82739), i.e(44155), i.e(12580), i.e(24384), i.e(1689), i.e(74733), i.e(11812), i.e(74499), i.e(60990), i.e(54792), i.e(24782), i.e(29754), i.e(80436), i.e(46690), i.e(75514), i.e(29594), i.e(91622), i.e(91890), i.e(67217), i.e(80075), i.e(88607), i.e(22306)]).then(i.t.bind(i, 565808, 23)).then((({
+				default: e
+			}) => {
+				ve || (window.lineToolPropertiesToolbar = new e(Ce))
+			}));
+			var Ge = Ce.activeChartWidget.value(),
+				Re = null;
+
+			function je() {
+				n("main_chart.LoadToolbars");
+				var e = ke.load(),
+					t = Le.load();
+				return {
+					headerToolbarPromise: e,
+					drawingToolbarPromise: Oe.load(),
+					widgetbarPromise: Fe.load().then((function(e) {
+						window.widgetbar = e, Ie.fire(!0)
+					})).then((() => {
+						i.e(20603).then(i.bind(i, 732246)).then((e => e.openMindsOnLoad()))
+					})),
+					bottomWidgetPromise: Ve.load().then((function(e) {
+						return function(e, t) {
+							function i(e, t) {
+								var i = t.map((function(e) {
+									return e.id()
+								}));
+								return e.filter((function(e) {
+									return !i.includes(e.id())
+								}))
+							}
+
+							function a(e, t) {
+								var i = e.map((function(e) {
+									return e.id()
+								}));
+								return t.filter((function(e) {
+									return !i.includes(e.id())
+								}))
+							}
+							t.change().subscribe(null, (function(t, r, n, o) {
+								if (!n) {
+									var s = i(t, r),
+										l = a(t, r);
+									0 === s.length && 1 === l.length && 1 !== o && e.toggleWidget("backtesting", !0)
+								}
+							}))
+						}(e, Ee), TradingView.bottomWidgetBar = e, Me.fire(!0), e
+					})).then((() => {
+						Promise.all([i.e(89029), i.e(78892)]).then(i.bind(i, 145125)).then((function(e) {
+							e.tradeNowInit()
+						}))
+					})),
+					footerWidgetPromise: Ue.load().then((function(e) {
+						return window.footerWidget = e.getComponent(), e.getComponent()
+					})),
+					topLeftButtonPromise: t
+				}
+			}
+			Ge ? (Z.isAnyChartWidgetInitialized(Ce) ? Re || (Re = je()) : Z.waitAnyChartWidgetInitialized(Ce, (function() {
+				Re || (Re = je())
+			})), Ge.withModel(Ge, (function() {
+				var e = this.model().mainSeries();
+				window.initData.offlineAlertEventsOnInit && e.dataEvents().completed().subscribe(this, (function() {
+						Promise.all([i.e(75514), i.e(49680), i.e(81579), i.e(91046)]).then(i.bind(i, 871386)).then((({
+							initAlertsNotifications: e
+						}) => e()))
+					}), !0),
+					e.dataEvents().completed().subscribe(this, (function() {
+						ee && (ee(_e.container.value()), ee = null), te && (te(Ce), te = null), ie && (ie(Ce, {
+							seriesControlBarEnabled: !ue.readOnly
+						}), ie = null)
+					})), V(Ce), ae(new Promise((function(t) {
+						e.dataEvents().completed().subscribe(null, t, {
+							once: !0
+						})
+					})))
+			}), !0), new E(Ce), He(), Ge.onTagsChanged().subscribe(null, (function() {
+				Ge.hasModel() && (G.setValue("editchart.model.interval", Ge.model().mainSeries().properties().interval.value()), G.setValue("editchart.model.style", Ge.model().mainSeries().properties().style.value()), G.setValue("editchart.model.symbol", Ge.model().mainSeries().properties().symbol.value()))
+			})), Ge.onDisconnected().subscribe(null, (function(e) {
+				e && L.showCriticalErrorMessage((function() {
+					ChartApiInstance.disconnect(), setTimeout((function() {
+						ChartApiInstance.connect(), Ge.reconnect()
+					}), 500)
+				}))
+			})), Ge.onReconnectBailout().subscribe(null, (function() {
+				L.showDisconnectedMessage((function() {
+					setTimeout((function() {
+						ChartApiInstance.connect()
+					}), 0)
+				}))
+			})), Ge.onConnected().subscribe(null, (function() {
+				Ge._disconnectCounter = 0
+			})), r(".tv-content").bind("contextmenu", (function(e) {
+				var t = r(e.originalEvent.target);
+				if (!t.is("input") && !t.is("textarea")) return !1
+			})), setTimeout((function() {
+				He()
+			}), 1e4), setTimeout((function() {
+				Re || (Re = je())
+			}), 5e3), window.is_authenticated || setTimeout((function() {
+				window.is_authenticated || $()
+			}), 9e5)) : He(), document.addEventListener("readystatechange", (function() {
+				var e = Date.now() - 3e5;
+				if ("complete" === document.readyState && window.performance && window.performance.timing && window.performance.timing.domInteractive > e && window.performance.timing.requestStart > e) {
+					var t = window.performance.timing.domInteractive - window.performance.timing.requestStart;
+					O.sendChartReport("page_load_time_frame", {
+						value: t
+					})
+				}
+			})), J(Se), n("main_chart.ExecuteEnd");
+			var qe = i(888778);
+			Promise.all([qe.initSymbolListService(), Promise.all([i.e(93921), i.e(29594), i.e(91622), i.e(35883), i.e(44692), i.e(1026)]).then(i.bind(i, 804169))]).then((function(e) {
+				var t = e[0],
+					i = e[1];
+				t.runner.run(i.activeSymbolListNavigator)
+			})), se(be.allocate({
+				areaName: "extratop"
+			}))
+		},
+		487389: (e, t, i) => {
+			"use strict";
+			var a = i(823127),
+				r = i(926904);
+			a.fn.timeUpdate = function(e, t, i) {
+				return this.each((function() {
+					var n = a(this),
+						o = n.data(e || "timestamp"),
+						s = this.hasAttribute("data-force-ago-format");
+					o ? o *= 1e3 : o = 1e3 * n.text(), r.jQueryCompatibleAgoDateFormatter(n, new Date(o), s, t, i), n.removeClass("time-upd js-time-upd")
+				}))
+			}
+		},
+		764612: (e, t, i) => {
+			"use strict";
+			i.r(t);
+			i(176950)
+		},
+		279720: (e, t, i) => {
+			"use strict";
+
+			function a(e) {
+				return Promise.all([i.e(90519), i.e(90926), i.e(8834), i.e(30063), i.e(99740), i.e(77301), i.e(75966), i.e(64430), i.e(75514), i.e(92697), i.e(27901)]).then(i.bind(i, 426335)).then((t => t.createGoRegisterDialog(e)))
+			}
+			i.d(t, {
+				createGoRegisterDialog: () => a
+			})
+		},
+		453434: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				initGlobalSearchAction: () => o
+			});
+			var a = i(398835),
+				r = i(564894),
+				n = i(63208);
+
+			function o() {
+				const e = () => {
+					const e = (0, r.service)(n.CHART_WIDGET_COLLECTION_SERVICE).activeChartWidget.value();
+					e.withModel(null, (() => {
+						Promise.all([i.e(10146), i.e(90519), i.e(8348), i.e(90926), i.e(48181), i.e(37135), i.e(8834), i.e(35354), i.e(5979), i.e(3086), i.e(30063), i.e(72066), i.e(78941), i.e(22850), i.e(21834), i.e(95468), i.e(80580), i.e(67161), i.e(68074), i.e(89242), i.e(52498), i.e(34640), i.e(82739), i.e(44155), i.e(63146), i.e(5799), i.e(52019), i.e(24384), i.e(55706), i.e(35015), i.e(2036), i.e(61153), i.e(74733), i.e(50991), i.e(4171), i.e(40731), i.e(11812), i.e(92617), i.e(93683), i.e(81532), i.e(24782), i.e(6221), i.e(79065), i.e(83352), i.e(74381), i.e(93921), i.e(69397), i.e(29594), i.e(72785), i.e(46e3), i.e(95106), i.e(35883), i.e(91890), i.e(67217), i.e(71110), i.e(59754)]).then(i.bind(i, 401154)).then((t => {
+							t.showGlobalSearchDialog(e)
+						}))
+					}))
+				};
+				return (0, a.createGroup)({
+					desc: "GlobalSearch"
+				}).add({
+					desc: "Open",
+					hotkey: a.Modifiers.Mod + 75,
+					handler: e
+				}), e
+			}
+		},
+		781499: (e, t, i) => {
+			"use strict";
+			i.d(t, {
+				handleNotificationOnOfflineOnlineEvents: () => u
+			});
+			var a = i(559496),
+				r = i(587995),
+				n = i(575932),
+				o = i(83436),
+				s = i(18182),
+				l = i(364366),
+				d = i(776753);
+
+			function c(e) {
+				return a.createElement(s.MatchMedia, {
+					rule: "screen and (max-width: 428px)"
+				}, (e => a.createElement("div", {
+					className: d.offlineBar
+				}, a.createElement(o.Icon, {
+					className: d.icon,
+					icon: l
+				}), a.createElement("span", {
+					className: d.text
+				}, e ? (0, n.t)("Youâ€™re offline.") : (0, n.t)("Youâ€™re offline. The markets arenâ€™t. Donâ€™t miss your move.")))))
+			}
+			class h {
+				constructor(e) {
+					this._resizer = e, this._container = e.container.value()
+				}
+				show() {
+					this._resizer.negotiateHeight(30), r.render(a.createElement(c, null), this._container)
+				}
+				hide() {
+					r.unmountComponentAtNode(this._container), this._resizer.negotiateHeight(0)
+				}
+			}
+
+			function u(e) {
+				const t = new h(e);
+				let i = !1,
+					a = null;
+				window.addEventListener("offline", (() => {
+					a && clearTimeout(a), a = setTimeout((() => {
+						navigator.onLine || (t.show(), i = !0)
+					}), 1e4)
+				})), window.addEventListener("online", (() => {
+					a && clearTimeout(a), i && (t.hide(), i = !1)
+				}))
+			}
+		},
+		364366: e => {
+			e.exports = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" width="18" height="18" fill="none"><path fill="#FB8C00" d="M0 9a9 9 0 1 1 18 0A9 9 0 0 1 0 9z"/><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M9 4c-.79 0-1.38.7-1.25 1.48l.67 4.03a.59.59 0 0 0 1.16 0l.67-4.03A1.27 1.27 0 0 0 9 4zm0 8a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>'
+		}
+	},
+	e => {
+		e.O(0, [15107, 93419, 37352, 82472, 19768, 86742, 29806, 31256, 94349, 90377, 74062, 75514, 75932, 25977, 23127, 24951, 24377, 95170, 17487, 49371, 40802, 95097, 23889, 37339, 68647, 79794, 45721, 9103, 47872, 49473, 4980, 98898, 29667, 10612, 10605, 3663, 85518, 93987, 95925, 64679, 48874, 78943, 66190, 36995, 40662, 67280, 62639, 12639, 64170, 80995, 45148, 78034], (() => {
+			return t = 588326, e(e.s = t);
+			var t
+		}));
+		e.O()
+	}
+]);

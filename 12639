@@ -1,0 +1,3411 @@
+"use strict";
+(self.webpackChunktradingview = self.webpackChunktradingview || []).push([
+	[12639, 88746], {
+		661118: (e, t) => {
+			t.CircularBuffer = void 0;
+			var s = function() {
+				function e(e) {
+					this._start = 0, this._size = 0, this._buffer = new Array(e)
+				}
+				return e.prototype.size = function() {
+					return this._size
+				}, e.prototype.capacity = function() {
+					return this._buffer.length
+				}, e.prototype.enqueue = function(e) {
+					this._size < this._buffer.length ? this._size++ : this._start = (this._start + 1) % this._buffer.length;
+					var t = (this._start + this._size - 1) % this._buffer.length;
+					this._buffer[t] = e
+				}, e.prototype.dequeue = function() {
+					if (0 === this._size) throw new Error("Buffer is empty");
+					var e = this._buffer[this._start];
+					return this._buffer[this._start] = void 0, this._start = (this._start + 1) % this._buffer.length, this._size--, e
+				}, e.prototype.get = function(e) {
+					if (e >= this._size) throw new Error("Index is out of range");
+					var t = (this._start + e) % this._buffer.length;
+					return this._buffer[t]
+				}, e.prototype.forEach = function(e, t) {
+					for (var s = 0; s < this._size; s++) {
+						var i = (this._start + s) % this._buffer.length;
+						e.call(t, this._buffer[i], i, this)
+					}
+				}, e.prototype.clear = function() {
+					for (var e = this._buffer.length, t = 0; t < e; t++) this._buffer[t] = void 0;
+					this._start = 0, this._size = 0
+				}, e
+			}();
+			t.CircularBuffer = s
+		},
+		257380: (e, t, s) => {
+			s.d(t, {
+				WatchedObject: () => o
+			});
+			var i = s(262325),
+				r = s.n(i),
+				n = s(270617);
+
+			function a(e, t) {
+				return (0, n.deepEquals)(e, t)[0]
+			}
+			class o extends(r()) {
+				constructor(e, t = a) {
+					super(e), this._comparator = t
+				}
+				setValue(e, t) {
+					!1 === this._comparator(this.value(), e) && super.setValue(e, t)
+				}
+			}
+		},
+		588746: (e, t, s) => {
+			s.r(t), s.d(t, {
+				TVAction: () => r,
+				TVActionAsync: () => n,
+				TVLoader: () => a
+			});
+			var i = s(829770);
+			class r extends i.Action {
+				constructor(e, t) {
+					super({
+						...e,
+						actionId: "TVActionId"
+					}, t)
+				}
+				getState() {
+					return {
+						...super.getState(),
+						jsxLabel: this._options.jsxLabel
+					}
+				}
+			}
+			class n extends i.ActionAsync {
+				constructor(e) {
+					super("TVActionId", e)
+				}
+			}
+			class a extends r {
+				constructor() {
+					super({})
+				}
+				isLoading() {
+					return !0
+				}
+				getSize() {
+					return "big"
+				}
+			}
+		},
+		1891: (e, t, s) => {
+			s.r(t), s.d(t, {
+				ContextMenuManager: () => i
+			});
+			var i, r = s(829770),
+				n = s(224743);
+			! function(e) {
+				let t = null,
+					i = null;
+				const a = [],
+					o = {
+						createAction: e => new r.Action({
+							...e,
+							actionId: "Chart.CustomActionId"
+						}),
+						createAsyncAction: e => new r.ActionAsync("Chart.CustomActionId", e),
+						createSeparator: () => new r.Separator
+					};
+				async function l(e, r = {}, n = {
+					menuName: ""
+				}, l) {
+					let d;
+					null !== t && (e = await t(e, o));
+					const u = () => {
+						const e = a.indexOf(d); - 1 !== e && a.splice(e, 1), void 0 !== l && l()
+					};
+					if (null !== i) d = await i(e, n, u), h();
+					else {
+						const t = await Promise.all([s.e(8348), s.e(5979), s.e(78941), s.e(21834), s.e(44155), s.e(24384), s.e(74733), s.e(11812), s.e(24782), s.e(75514), s.e(88607), s.e(91584)]).then(s.bind(s, 37091));
+						d = new t.ContextMenuRenderer(e, r, u, h)
+					}
+					return a.push(d), d
+				}
+
+				function h() {
+					(0, n.globalCloseMenu)()
+				}
+				e.createMenu = l, e.showMenu = function(e, t, s = {}, i, r) {
+					return l(e, s, i, r).then((e => e.show(t)))
+				}, e.setCustomRendererFactory = function(e) {
+					i = e
+				}, e.setCustomItemsProcessor = function(e) {
+					t = e
+				}, e.hideAll = h, e.getShown = function() {
+					for (let e = 0; e < a.length; e++)
+						if (a[e].isShown()) return a[e];
+					return null
+				}
+			}(i || (i = {}))
+		},
+		214318: (e, t, s) => {
+			s.d(t, {
+				isCustomStudy: () => r
+			});
+			const i = {
+				LinearRegression: !0,
+				PivotPointsHighLow: !0,
+				VbPSessions: !0,
+				VbPSessionsRoughDetailed: !0,
+				VbPPeriodic: !0,
+				VbPAutoAnchored: !0,
+				ZigZag: !0,
+				VbPFixed: !0,
+				PivotPointsStandard: !0,
+				VbPVisible: !0
+			};
+
+			function r(e) {
+				return e in i
+			}
+		},
+		333412: (e, t, s) => {
+			s.d(t, {
+				MetaInfoHelper: () => c
+			});
+			var i = s(588537),
+				r = s(970028),
+				n = s(418458),
+				a = s(270617),
+				o = s(911905);
+			const l = ["first_visible_bar_time", "last_visible_bar_time"];
+
+			function h(e) {
+				return !e.groupId && !e.isHidden && !l.includes(e.id)
+			}
+			var d = s(214318);
+			const u = (0, o.getLogger)("Platform.GUI.PropertyDialog.Indicators.MetaInfo");
+			class c {
+				constructor(e) {
+					this._metaInfo = e
+				}
+				hasUserEditableInputs() {
+					return this._metaInfo.inputs.some(h)
+				}
+				getUserEditableInputs() {
+					return this._metaInfo.inputs.filter(h)
+				}
+				hasUserEditableProperties() {
+					return r.StudyMetaInfo.isScriptStrategy(this._metaInfo)
+				}
+				hasUserEditableStyles() {
+					const e = this._metaInfo;
+					return e.plots.length > 0 || void 0 !== e.bands || void 0 !== e.filledAreas || (0, d.isCustomStudy)(e.shortId) || r.StudyMetaInfo.isScriptStrategy(this._metaInfo) || Object.values(e.graphics).some((e => void 0 !== e))
+				}
+				getUserEditablePlots() {
+					const e = new Set,
+						t = this._metaInfo;
+					return t.plots.filter((s => {
+						if ((0, n.isColorerPlot)(s) || (0, n.isTextColorerPlot)(s) || (0, n.isDataOffsetPlot)(s) || (0, n.isOhlcColorerPlot)(s) || (0, n.isAlertConditionPlot)(s) || (0, n.isDataPlot)(s)) return !1;
+						if ((0, n.isOhlcPlot)(s)) {
+							const r = s.target;
+							if (e.has(r)) return !1;
+							e.add(r);
+							const n = (0, i.ensureDefined)(t.ohlcPlots);
+							return !(0, i.ensureDefined)(n[r]).isHidden
+						} {
+							const e = t.styles ? t.styles[s.id] : void 0;
+							return void 0 === e || !e.isHidden
+						}
+					}))
+				}
+				hasUserEditableOptions() {
+					return this.hasUserEditableInputs() || this.hasUserEditableProperties() || this.hasUserEditableStyles()
+				}
+				getStrategyProperties() {
+					const e = this._metaInfo,
+						t = e.inputs.filter(p),
+						s = {
+							..._
+						};
+					for (const i of t) {
+						const t = i.internalID;
+						s[t] = i, _.hasOwnProperty(t) || u.logWarn(`Unknown strategy input internal id ${t} in ${e.fullId}`)
+					}
+					return (0, a.clone)(s)
+				}
+			}
+			const _ = {
+				currency: void 0,
+				backtest_fill_limits_assumption: void 0,
+				calc_on_every_tick: void 0,
+				calc_on_order_fills: void 0,
+				commission_value: void 0,
+				commission_type: void 0,
+				initial_capital: void 0,
+				pyramiding: void 0,
+				slippage: void 0,
+				default_qty_type: void 0,
+				default_qty_value: void 0,
+				margin_long: void 0,
+				margin_short: void 0,
+				use_bar_magnifier: void 0,
+				process_orders_on_close: void 0
+			};
+
+			function p(e) {
+				return "strategy_props" === e.groupId
+			}
+		},
+		281967: (e, t, s) => {
+			s.d(t, {
+				DELAY_WITHOUT_AGREEMENT: () => c,
+				isBats: () => _,
+				firstReplacedByBatsExchange: () => p,
+				isEod: () => m,
+				isDelay: () => S,
+				witoutRealtime: () => b,
+				isTickByTick: () => y,
+				isDelayForGuest: () => g,
+				isDelayWithoutMarketAgreement: () => v,
+				getExchange: () => f
+			});
+			var i = s(588537),
+				r = s(166437),
+				n = s.n(r),
+				a = s(833813),
+				o = s(560507),
+				l = s(195048),
+				h = s(749473);
+			const d = ["DJ", "CBOE", "JSE"],
+				u = ["NZX"],
+				c = ["ICESG"];
+
+			function _(e) {
+				return n().hasBatsSymbols(e.full_name)
+			}
+
+			function p(e) {
+				const t = n().getExchanges(e.pro_name),
+					s = n().getExchanges(e.full_name);
+				for (let e = 0; e < s.length; ++e)
+					if ("BATS" === s[e].toUpperCase()) return t[e];
+				return null
+			}
+
+			function m(e, t) {
+				return n().hasEodSymbols(e.full_name) || t === l.STATUS_EOD
+			}
+
+			function S(e) {
+				return void 0 !== e && e > 0
+			}
+
+			function b(e) {
+				return "index" === e.type && d.includes(e.listed_exchange) || "futures" === e.type && u.includes(e.listed_exchange)
+			}
+
+			function y(e, t) {
+				return !((0,
+					o.enabled)(a.ProductFeatures.TICK_BY_TICK_PUSH_DATA) || S(e.delay) || m(e, t) || (0, h.isCryptoSymbol)(e))
+			}
+
+			function g(e, t) {
+				return t.listed_exchange === e && !window.is_authenticated
+			}
+
+			function v(e) {
+				return c.includes(e.listed_exchange)
+			}
+			async function f(e) {
+				{
+					const t = (0, i.ensureDefined)(window.pro);
+					await new Promise((e => {
+						t.runOrUpdate(e)
+					}));
+					const s = t.getProduct(function(e) {
+							return `exchange-${e.pro_perm}`
+						}(e)),
+						r = function(e) {
+							let t;
+							if (!window.pro) throw new Error("Pro module not defined");
+							t = window.pro.getProductsByType(window.pro.PRODUCT_TYPES.exchange).find((t => Boolean(t.included_exchanges && t.included_exchanges.includes(e))));
+							return t || null
+						}(s.exchange || "");
+					return r && "cme-full" === r.exchange ? s : r || s
+				}
+			}
+		},
+		453765: (e, t, s) => {
+			s.d(t, {
+				extrapolateBarsFrontToTime: () => r,
+				extrapolateBarsFrontByCount: () => n
+			});
+			var i = s(370062);
+
+			function r(e, t, s, i, n = !1) {
+				if (t > s) {
+					const a = r(e, s, t, i, n);
+					return a.count = -a.count, a
+				}
+				return a(e, t, 1, ((e, t) => t > s || 0 !== i && e > i), n)
+			}
+
+			function n(e, t, s, i = !1) {
+				const r = s < 0 ? -1 : 1;
+				return a(e, t, r, ((e, t) => e >= s * r), i)
+			}
+
+			function a(e, t, s, r, n) {
+				let a = 0,
+					o = t;
+				e.moveTo(o);
+				let l = 0,
+					h = Number.MAX_VALUE,
+					d = !1,
+					u = t;
+				const c = [];
+				for (; !r(a, o);) {
+					if (l > 15) throw new Error("Internal error 0x10 while extrapolating.");
+					const r = e.indexOfBar(o);
+					if (r === i.SessionStage.PRE_SESSION && 1 === s) o = e.startOfBar(0), e.moveTo(o);
+					else if (r === i.SessionStage.PRE_SESSION && -1 === s) o = e.startOfBar(i.SessionStage.PRE_SESSION), e.moveTo(o);
+					else if (r === i.SessionStage.POST_SESSION && 1 === s) o = e.startOfBar(i.SessionStage.POST_SESSION), e.moveTo(o);
+					else {
+						if (r === i.SessionStage.POST_SESSION && -1 === s) throw new Error("Internal error 0x12 while extrapolating."); {
+							const _ = e.startOfBar(r);
+							if (_ > t && s > 0 || t > _ && s < 0) {
+								if (d && h === _) throw new Error("Internal error 0x11 while extrapolating.");
+								d = !0, h = _, l = 0, a++, u = _, n && c.push(u)
+							}
+							if (0 === r && -1 === s) o = _ - 1;
+							else {
+								o = e.startOfBar(r + s);
+								const t = e.startOfBar(i.SessionStage.POST_SESSION);
+								o > t && (e.moveTo(t), o = e.startOfBar(0))
+							}
+						}
+					}
+					l++
+				}
+				return {
+					time: u,
+					times: c,
+					count: a
+				}
+			}
+		},
+		850979: (e, t, s) => {
+			s.d(t, {
+				FutureBarsPaneView: () => l
+			});
+			var i = s(588537),
+				r = s(380047),
+				n = s(103653);
+			const a = {
+				0: {
+					background: "rgba(255, 158, 171, 0.3)",
+					line: "#7E202F"
+				},
+				1: {
+					background: "rgba(244, 255, 158, 0.3)",
+					line: "#EBFF3F"
+				},
+				2: {
+					background: "rgba(195, 255, 160, 0.3)",
+					line: "#308020"
+				}
+			};
+			class o extends r.ScaledPaneRenderer {
+				constructor() {
+					super(...arguments), this._data = null
+				}
+				setData(e) {
+					this._data = e
+				}
+				hitTest() {
+					return null
+				}
+				_drawImpl(e, t) {
+					if (null === this._data) return;
+					const s = a[this._data.predictionCode];
+					e.fillStyle = s.background, e.fillRect(Math.max(0, this._data.startX), 0, t.cssWidth, t.cssHeight), e.strokeStyle = s.line, e.beginPath(), e.lineWidth = 1;
+					const i = Math.round(this._data.startX);
+					e.moveTo(i, 0), e.lineTo(i, t.cssHeight), e.stroke()
+				}
+			}
+			class l {
+				constructor(e, t, s, i) {
+					this._renderer = new o, this._startX = 0, this._series = t, this._timeScale = e, this._lastKnownBarIndex = s, this._direction = i
+				}
+				update() {
+					this._startX = this._timeScale.indexToCoordinate(this._lastKnownBarIndex) + .5 * this._timeScale.barSpacing() + 1
+				}
+				renderer() {
+					const e = (0, n.barFunction)("close"),
+						t = this._series.data().bars(),
+						s = e((0, i.ensureNotNull)(t.valueAt(this._lastKnownBarIndex))),
+						r = e((0, i.ensureNotNull)(t.last()).value);
+					let a = 0;
+					r > s ? a = 1 : r < s && (a = 2);
+					let o = 1;
+					return 0 !== this._direction && (o = this._direction === a ? 2 : 0), this._renderer.setData({
+						startX: this._startX,
+						predictionCode: o
+					}), this._renderer
+				}
+			}
+		},
+		91110: (e, t, s) => {
+			function i(e) {
+				return e ? ["AMEX"].includes(e) ? "Arca" : ["NYSE ARCA & MKT"].includes(e) ? "NYSE Arca" : e : ""
+			}
+			s.d(t, {
+				redefineExchangeName: () => i
+			})
+		},
+		762527: (e, t, s) => {
+			s.d(t, {
+				SeriesBase: () => Yt
+			});
+			var i = s(588537),
+				r = s(638456),
+				n = s(345848),
+				a = s(251954),
+				o = s(911905),
+				l = s(902899),
+				h = s(103653),
+				d = s(752280),
+				u = s(232567),
+				c = s.n(u),
+				_ = s(749473),
+				p = s(689765),
+				m = s(195048),
+				S = s(892139),
+				b = s(575932),
+				y = s(611688),
+				g = s(913324),
+				v = s(5073),
+				f = s(902105),
+				w = s(91110);
+			const P = (0, b.t)("Symbol Error"),
+				C = (0, r.onWidget)(),
+				x = y.enabled("hide_unresolved_symbols_in_legend");
+			class I extends v.StatusProviderBase {
+				constructor(e, t, s, i) {
+					super(t), this._series = e, this._statusViewProperties = s, this._options = i || {}
+				}
+				text() {
+					return (0, f.generateTitleForGui)(this._getTitleGenerationOptions())
+				}
+				getSplitTitle() {
+					return (0, f.generateSplitTitleForGui)(this._getTitleGenerationOptions())
+				}
+				bold() {
+					return !1
+				}
+				size() {
+					return this._statusViewProperties.childs().fontSize.value() + "px"
+				}
+				errorStatus() {
+					const e = this._series.seriesErrorMessage();
+					return null !== e ? {
+						error: e,
+						title: P
+					} : null
+				}
+				_getTitleGenerationOptions() {
+					var e, t;
+					const s = this._series.symbolInfo(),
+						i = this._statusViewProperties.childs(),
+						r = this._series.symbolTextSourceProxyProperty().value();
+					let n;
+					if (i.showExchange.value() && s) {
+						const i = (0, _.isEconomicSymbol)(s) && (null !== (t = null === (e = s.source2) || void 0 === e ? void 0 : e.name) && void 0 !== t ? t : s.source);
+						n = i || (C || "forex" === s.type ? s.exchange : (0, w.redefineExchangeName)(null == s ? void 0 : s.listed_exchange))
+					}
+					return {
+						description: "ticker" === r ? s && s.name || void 0 : (0, g.getTranslatedSymbolDescription)({
+							pro_name: s && s.pro_name || void 0,
+							short_name: s && s.name || void 0,
+							description: s && s.description || void 0,
+							short_description: s && s.short_description || void 0,
+							local_description: s && s.local_description || void 0,
+							language: s && s.language || void 0
+						}),
+						exchange: n,
+						symbol: x && null === s ? "" : this._series.symbol(),
+						interval: i.showInterval.value() && !this._options.hideResolution ? this._series.interval() : void 0,
+						style: this._series.properties().childs().style.value(),
+						inputs: this._series.getInputsProperties().state(),
+						boxSize: this._series.data().boxSize,
+						reversalAmount: this._series.data().reversalAmount,
+						ticker: "ticker-and-description" === r ? s && s.name || void 0 : "",
+						branding: this._options.branding
+					}
+				}
+			}
+			class T extends S.StatusView {
+				constructor(e, t, s, i) {
+					super(new I(e, t, s, i)), this._invalidated = !0, this._series = e, this._series.onRestarted().subscribe(this, this.update), this._series.dataEvents().symbolResolved().subscribe(this, this.update), this._series.dataEvents().completed().subscribe(this, this.update), this._series.boxSizeValue().subscribe(this.update.bind(this)), s.childs().symbolTextSource.listeners().subscribe(this, this.update)
+				}
+				getSeriesPrecision() {
+					let e = 4;
+					const t = this._series.symbolInfo();
+					return t && t.pricescale && (e = Math.round(Math.log(t.pricescale) / Math.log(10))), e
+				}
+				round(e) {
+					const t = this.getSeriesPrecision(),
+						s = Math.round(e * Math.pow(10, t)) / Math.pow(10, t);
+					return s ? s.toString() : ""
+				}
+				update() {
+					this._invalidated = !0
+				}
+				text() {
+					return this._updateImpl(), super.text()
+				}
+				color() {
+					return this._updateImpl(), super.color()
+				}
+				bold() {
+					return this._updateImpl(), super.bold()
+				}
+				size() {
+					return this._updateImpl(), super.size()
+				}
+				getSplitTitle() {
+					return this._updateImpl(), this._statusProvider.getSplitTitle()
+				}
+				_updateImpl() {
+					this._invalidated && (this._bold = this._statusProvider.bold(), this._size = this._statusProvider.size(), this._text = this._statusProvider.text(), this._invalidated = !1)
+				}
+			}
+			var A = s(939901),
+				V = s(394683);
+			const R = {
+				open: (0, b.t)("O", {
+					context: "in_legend"
+				}),
+				high: (0, b.t)("H", {
+					context: "in_legend"
+				}),
+				low: (0, b.t)("L", {
+					context: "in_legend"
+				}),
+				close: (0, b.t)("C", {
+					context: "in_legend"
+				}),
+				hl2: (0, b.t)("HL2", {
+					context: "in_legend"
+				}),
+				hlc3: (0, b.t)("HLC3", {
+					context: "in_legend"
+				}),
+				ohlc4: (0, b.t)("OHLC4", {
+					context: "in_legend"
+				})
+			};
+			class D extends V.SeriesValuesProvider {
+				constructor(e, t) {
+					super(e, t);
+					const s = t.properties().childs().paneProperties.childs().legendProperties.childs();
+					this._showBarChange = s.showBarChange, this._showSeriesOHLC = s.showSeriesOHLC, this._showVolume = s.showVolume, this._seriesStyle = e.properties().childs().style;
+					const i = this._emptyValues[0],
+						r = this._emptyValues[1],
+						n = this._emptyValues[2];
+					i.title = R.open, r.title = R.high, n.title = R.low, i.unimportant = !0, r.unimportant = !0, n.unimportant = !0, this._emptyValues[3].title = R.close, this._emptyValues[6].title = "", this._emptyValues[4].title = ""
+				}
+				getValues(e) {
+					const t = super.getValues(e),
+						s = this._showSeriesOHLC.value(),
+						i = this._showBarChange.value(),
+						r = 12 === this._series.style(),
+						n = t[6];
+					n.visible = n.visible && i && !r;
+					const a = t[7];
+					if (a.visible = a.visible && this._showVolume.value(), this._showLastPriceAndChangeOnly()) {
+						const e = t[5];
+						return e.visible = e.visible && s, t
+					}
+					const o = (0, _.isPriceSourceStyle)(this._seriesStyle.value()),
+						l = s && !o,
+						h = s && o;
+					return t[0].visible = l && !r, t[1].visible = l, t[2].visible = l, t[3].visible = l && !r, t[4].visible = h, t
+				}
+			}
+			var E = s(214729);
+			const M = (0, b.t)("At close");
+			class k extends A.SeriesDataWindowView {
+				constructor(e, t) {
+					super(e, t), this._backgroundColorSpawn = t.backgroundTopColor().spawn(), this._backgroundColorSpawn.subscribe(this.update.bind(this));
+					const s = t.properties().childs().paneProperties.childs().legendProperties.childs();
+					this._visibilityProperty = (0, E.combineProperty)(((e, t, s) => e || t || s), s.showBarChange, s.showSeriesOHLC, s.showVolume), this._visibilityProperty.subscribe(this, this.update)
+				}
+				areValuesVisible() {
+					return this._visibilityProperty.value()
+				}
+				additional() {
+					const e = this._series.dataPoweredBy();
+					return null !== e && e.length > 0 ? (0, b.t)("Data Provided by") + " " + e : null
+				}
+				marketTitle() {
+					const e = this._series.marketStatusModel().status().value();
+					return this._showLastPriceAndChangeOnly() && ("pre_market" === e || "post_market" === e) ? `${M}:` : ""
+				}
+				destroy() {
+					this._backgroundColorSpawn.destroy(), this._visibilityProperty.destroy()
+				}
+				_createValuesProvider(e, t) {
+					return new D(e, t)
+				}
+			}
+			var L = s(262325),
+				B = s.n(L),
+				N = s(797753),
+				F = s(393987);
+
+			function O() {
+				const e = window.ChartApiInstance.serverTimeOffset();
+				return Date.now() / 1e3 + e
+			}
+
+			function U(e, t, s) {
+				return e <= s ? t <= s ? 1 / 0 : t / 1e3 : Math.min(e, t) / 1e3
+			}
+			class W {
+				constructor(e, t) {
+					this._marketStatus = new(B())(null), this._lastMarketStatus = null, this._sessionsSpec = null,
+						this._nextSessionEdgeInternal = null, this._nextSessionEdge = new(B())(null), this._recalcNextSessionEdgeTimerId = null, this._quotesProvider = e, e.quotesUpdate().subscribe(this, this._update.bind(this)), e.quoteSymbolChanged().subscribe(this, (() => {
+							this._nextSessionEdgeInternal = null, this._recalculateNextSessionEdge()
+						})), this._resetSubscription = t, this._resetSubscription.subscribe(this, this._resetStatus)
+				}
+				destroy() {
+					this._quotesProvider.quotesUpdate().unsubscribeAll(this), this._quotesProvider.quoteSymbolChanged().unsubscribeAll(this), this._resetSubscription.unsubscribeAll(this), null !== this._recalcNextSessionEdgeTimerId && clearTimeout(this._recalcNextSessionEdgeTimerId)
+				}
+				setSymbolInfo(e) {
+					var t, s, i, r, n;
+					if (this._nextSessionEdgeInternal = null, null === e) return void(this._sessionsSpec = null);
+					const a = new N.SessionSpec(e.timezone, null !== (t = e.session_display) && void 0 !== t ? t : e.session, e.session_holidays, e.corrections);
+					let o, l;
+					const h = null === (s = e.subsessions) || void 0 === s ? void 0 : s.find((e => "premarket" === e.id)),
+						d = null === (i = e.subsessions) || void 0 === i ? void 0 : i.find((e => "postmarket" === e.id));
+					void 0 !== h && (o = new N.SessionSpec(e.timezone, null !== (r = h["session-display"]) && void 0 !== r ? r : h.session, e.session_holidays, h["session-correction"])), void 0 !== d && (l = new N.SessionSpec(e.timezone, null !== (n = d["session-display"]) && void 0 !== n ? n : d.session, e.session_holidays, d["session-correction"])), this._sessionsSpec = {
+						general: a,
+						preMarket: o,
+						postMarket: l
+					}, this._recalculateNextSessionEdge()
+				}
+				status() {
+					return this._marketStatus
+				}
+				nextSessionEdge() {
+					return this._nextSessionEdge
+				}
+				_resetStatus() {
+					this._marketStatus.setValue(null)
+				}
+				_update(e) {
+					void 0 !== e && void 0 !== e.values.current_session && (this._lastMarketStatus = e.values.current_session), null !== this._lastMarketStatus ? this._marketStatus.setValue(this._lastMarketStatus) : this._resetStatus()
+				}
+				_getNextSessionEdgeInternal() {
+					var e;
+					if (null === this._sessionsSpec || "24x7" === this._sessionsSpec.general.spec()) return null;
+					const t = 1e3 * O();
+					if (null === this._nextSessionEdgeInternal || (null !== (e = this._nextSessionEdgeInternal.timestamp) && void 0 !== e ? e : 1 / 0) <= t / 1e3) {
+						const {
+							general: e,
+							preMarket: s,
+							postMarket: i
+						} = this._sessionsSpec, r = (0, F.get_timezone)(e.timezone()), n = (0, F.utc_to_cal)(r, t), a = U((0, F.cal_to_utc)(r, e.alignToNearestSessionStart(n, 1)), (0, F.cal_to_utc)(r, e.alignToNearestSessionEnd(n, 1)), t), o = U(void 0 !== s ? (0, F.cal_to_utc)(r, s.alignToNearestSessionStart(n, 1)) : 1 / 0, void 0 !== s ? (0, F.cal_to_utc)(r, s.alignToNearestSessionEnd(n, 1)) : 1 / 0, t), l = U(void 0 !== i ? (0, F.cal_to_utc)(r, i.alignToNearestSessionStart(n, 1)) : 1 / 0, void 0 !== i ? (0, F.cal_to_utc)(r, i.alignToNearestSessionEnd(n, 1)) : 1 / 0, t), h = Math.min(a, o, l);
+						h === 1 / 0 && (this._nextSessionEdgeInternal = {
+							timestamp: null
+						}), this._nextSessionEdgeInternal = h === l ? {
+							timestamp: h,
+							status: "post_market"
+						} : h === o ? {
+							timestamp: h,
+							status: "pre_market"
+						} : {
+							timestamp: h
+						}
+					}
+					return this._nextSessionEdgeInternal
+				}
+				_recalculateNextSessionEdge() {
+					const e = this._getNextSessionEdgeInternal();
+					if (null === e || null === e.timestamp) return void this._nextSessionEdge.setValue(null);
+					const t = {
+						status: e.status,
+						remainingSeconds: Math.max(0, e.timestamp - O())
+					};
+					if (null === this._recalcNextSessionEdgeTimerId) {
+						let e = Math.ceil(t.remainingSeconds % 60);
+						0 === e && (e += 60), this._recalcNextSessionEdgeTimerId = setTimeout((() => this._recalculateNextSessionEdgeByTimer()), 1e3 * e)
+					}
+					this._nextSessionEdge.setValue(t)
+				}
+				_recalculateNextSessionEdgeByTimer() {
+					this._recalcNextSessionEdgeTimerId = null, this._recalculateNextSessionEdge()
+				}
+			}
+			var H = s(38627),
+				z = s(273044),
+				j = s(566190),
+				q = s(453765),
+				G = s(95935);
+			let Y = 0;
+			class X {
+				constructor(e, t) {
+					this._extrapolatedData = [], this._cacheForFuture = !1, this._modelId = Y++, this._builderCache = null, this._uniqueId = (0, G.randomHashN)(6), this._resolution = t, this._symbolInfo = e, this._valid = Boolean(e.timezone) && Boolean(e.session), this._session = new j.SessionInfo(e.timezone, e.session, e.session_holidays, e.corrections)
+				}
+				syncSourceTarget() {
+					return {
+						uniqueId: this._uniqueId,
+						resolution: this._resolution,
+						symbolInfo: this._symbolInfo,
+						session: this._session.state()
+					}
+				}
+				getSymbolInfo() {
+					return this._symbolInfo
+				}
+				getSession() {
+					return this._session
+				}
+				getResolution() {
+					return this._resolution
+				}
+				uniqueId() {
+					return this._modelId
+				}
+				distance(e, t) {
+					if (!this.isValid()) return {
+						success: !1
+					};
+					if (e > t) return {
+						success: !1
+					};
+					if (e === t) return {
+						success: !0,
+						result: 0
+					};
+					let s = this._extrapolatedData.length,
+						i = 0 !== s ? this._extrapolatedData[0] : null,
+						r = null !== i ? this._extrapolatedData[s - 1] : null;
+					const n = e < t;
+					if (1e3 * e === i && this._cacheForFuture === n || (this._extrapolatedData = [1e3 * e], s = 1, i = null, r = null), null === i || null !== r && 1e3 * t > r) {
+						const i = (0, q.extrapolateBarsFrontToTime)(this._barBuilder(), r || 1e3 * e, 1e3 * t, 2e3, !0);
+						this._extrapolatedData = this._extrapolatedData.concat(i.times), s = this._extrapolatedData.length, this._cacheForFuture = n
+					}
+					if (r = this._extrapolatedData[s - 1], r < 1e3 * t) return {
+						success: !1
+					};
+					const a = this._extrapolatedData.indexOf(1e3 * t);
+					return -1 === a ? {
+						success: !1
+					} : {
+						success: !0,
+						result: a
+					}
+				}
+				projectTime(e, t) {
+					if (!this.isValid()) return e;
+					let s = this._extrapolatedData.length,
+						i = s > 0 ? this._extrapolatedData[0] : null,
+						r = null !== i ? this._extrapolatedData[s - 1] : null;
+					const n = t >= 0;
+					1e3 * e === i && this._cacheForFuture === n || (this._extrapolatedData = [1e3 * e], s = 1, i = null, r = null);
+					const a = Math.abs(t);
+					if (null === i || a >= s) {
+						const i = (0, q.extrapolateBarsFrontByCount)(this._barBuilder(), r || 1e3 * e, Math.sign(t) * (a - s + 1), !0);
+						this._extrapolatedData = this._extrapolatedData.concat(i.times), s = this._extrapolatedData.length, this._cacheForFuture = n
+					}
+					return s < a ? e : this._extrapolatedData[a] / 1e3
+				}
+				isValid() {
+					return this._valid
+				}
+				dataSize() {
+					return this._extrapolatedData.length
+				}
+				createNewModelWithResolution(e) {
+					return new X(this._symbolInfo, e)
+				}
+				_barBuilder() {
+					return null === this._builderCache && (this._builderCache = (0, j.newBarBuilder)(this._resolution, this._session, this._session)), this._builderCache
+				}
+			}
+			var $ = s(841926),
+				Z = s(281967),
+				K = s(99177);
+			const J = (0, o.getLogger)("Chart.Definitions.Series");
+
+			function Q(e, t) {
+				const s = [];
+				return (0, Z.isDelay)(e.delay) ? function(e) {
+					const t = [];
+					return (0, Z.witoutRealtime)(e) ? t.push("DelayNoRealtime") : (0, Z.isDelayForGuest)("MOEX", e) ? t.push("MOEXDelayForGuest") : (0, Z.isDelayForGuest)("TFEX", e) ? t.push("TFEXDelayForGuest") : (0, Z.isDelayForGuest)("CHIXAU", e) ? t.push("CHIXAuDelayForGuest") : (0,
+						Z.isDelayForGuest)("NGM", e) ? t.push("NGMDelayForGuest") : (0, Z.isDelayForGuest)("ICESG", e) ? t.push("ICESGDelayForGuest") : (0, Z.isDelayForGuest)("ADX", e) ? t.push("ADXDelayForGuest") : ["BER", "DUS", "HAM", "HAN", "MUN"].some((t => (0, Z.isDelayForGuest)(t, e))) ? t.push("DEForGuest") : ["LSE", "LSIN", "MIL"].some((t => (0, Z.isDelayForGuest)(t, e))) ? t.push("LSEDelayForGuest") : (0, Z.isDelayWithoutMarketAgreement)(e) ? t.push("DelayWithoutMarketAgreement") : t.push("DelayToRealtime"), t
+				}(e) : (0, Z.isEod)(e, t) ? (s.push("EOD"), s) : ((0, Z.isTickByTick)(e, t) && s.push("TickByTick"), (0, Z.isBats)(e) && s.push("BATSToRealtime"), s)
+			}
+			class ee {
+				constructor(e, t, s) {
+					this._dataUpdatedModeStatus = new(B())(null), this._symbolInfo = (0, $.createWVFromGetterAndSubscription)(e.getter, e.onChange), this._status = (0, $.createWVFromGetterAndSubscription)(t.getter, t.onChange), this._symbolInfo.subscribe(this._update.bind(this)), this._status.subscribe(this._update.bind(this)), this._resetSubscription = s, this._resetSubscription.subscribe(this, this._resetStatus)
+				}
+				destroy() {
+					this._symbolInfo.destroy(), this._status.destroy(), this._resetSubscription.unsubscribeAll(this)
+				}
+				status() {
+					return this._dataUpdatedModeStatus.readonly()
+				}
+				symbolName() {
+					const e = this._symbolInfo.value();
+					return null !== e ? e.name : ""
+				}
+				time() {
+					const e = this._symbolInfo.value(),
+						t = null !== e && e.delay && e.delay > 0 ? e.delay : 900;
+					return Math.round(t / 60)
+				}
+				listedExchange() {
+					const e = this._symbolInfo.value();
+					return null !== e ? e.listed_exchange : ""
+				}
+				async description() {
+					const e = this._symbolInfo.value();
+					if (null === e) return "";
+					let t = {};
+					try {
+						t = (0, i.ensureNotNull)(await (0, Z.getExchange)(e))
+					} catch (e) {
+						J.logWarn(`Cannot get exchange ${(0,K.errorToString)(e)}`)
+					}
+					return t.description || e.listed_exchange
+				}
+				exchange() {
+					const e = this._symbolInfo.value();
+					return null !== e ? e.exchange : ""
+				}
+				proName() {
+					const e = this._symbolInfo.value();
+					return null !== e ? e.pro_name : ""
+				}
+				firstReplacedByBatsExchange() {
+					const e = this._symbolInfo.value();
+					return e && (0, Z.firstReplacedByBatsExchange)(e)
+				}
+				_resetStatus() {
+					this._dataUpdatedModeStatus.setValue(null)
+				}
+				_update() {
+					const e = this._symbolInfo.value();
+					if (null === e) return void this._dataUpdatedModeStatus.setValue(null);
+					const t = this._status.value();
+					if ("string" == typeof t) return void this._dataUpdatedModeStatus.setValue(null);
+					if (t === m.STATUS_LOADING || t === m.STATUS_RESOLVING) return;
+					const s = Q(e, t);
+					0 !== s.length ? this._dataUpdatedModeStatus.setValue(s) : this._dataUpdatedModeStatus.setValue(null)
+				}
+			}
+			var te = s(257380),
+				se = s(270617);
+			class ie {
+				constructor(e, t) {
+					this._dataProblem = new te.WatchedObject(null), this._quotesProvider = e, this._quotesProvider.quotesUpdate().subscribe(this, this._update.bind(this)), this._resetSubscription = t, this._resetSubscription.subscribe(this, this._resetStatus)
+				}
+				destroy() {
+					this._quotesProvider.quotesUpdate().unsubscribeAll(this), this._resetSubscription.unsubscribeAll(this)
+				}
+				status() {
+					return this._dataProblem
+				}
+				_resetStatus() {
+					this._dataProblem.setValue(null)
+				}
+				_update(e) {
+					void 0 === e.values || void 0 === e.values.data_problem ? this._resetStatus() : this._dataProblem.setValue((0, se.clone)(e.values.data_problem))
+				}
+			}
+			var re = s(556074),
+				ne = s(721386),
+				ae = s(498424),
+				oe = s(926281);
+
+			function le(e) {
+				return e < 10 ? `0${e}` : e.toString()
+			}
+
+			function he(e, t = Date.now() / 1e3) {
+				let s = Math.ceil(e - t);
+				if (s <= 0) return "";
+				if (s < 3600) {
+					const e = Math.floor(s / 60),
+						t = Math.ceil(s % 60);
+					return `${le(e)}:${le(t)}`
+				}
+				if (s < 86400) {
+					const e = Math.floor(s / 3600);
+					s %= 3600;
+					const t = Math.floor(s / 60);
+					s %= 60;
+					const i = Math.ceil(s);
+					return `${le(e)}:${le(t)}:${le(i)}`
+				} {
+					const i = new Date(1e3 * e),
+						r = new Date(1e3 * t),
+						n = F.get_year(i),
+						a = F.get_year(r),
+						o = F.get_month(i),
+						l = F.get_month(r),
+						h = F.get_day_of_month(r),
+						d = de(i) - de(r) >= 0 ? 0 : -1;
+					let u = 12 * (n - a) + (o - l) + d;
+					if (u > 0) {
+						const t = F.get_days_in_month(l, a);
+						! function(e, t) {
+							const s = F.get_day_of_month(e);
+							e.setUTCMonth(F.get_month(e) + t), F.get_day_of_month(e) !== s && e.setUTCDate(0)
+						}(r, u);
+						const s = F.get_days_in_month(F.get_month(r), F.get_year(r)),
+							i = h !== t && s === F.get_day_of_month(r) ? t - h : 0;
+						let n = Math.ceil((e - r.getTime() / 1e3) / 86400) + i;
+						return n >= s && (u++, n = 0), `${u}M ${n}d`
+					}
+					if (-1 === d) {
+						if (F.get_days_in_month(l, a) - s / 86400 < 1 / 24) return "1M 0d"
+					}
+					let c = Math.floor(s / 86400);
+					s %= 86400;
+					let _ = Math.ceil(s / 3600);
+					return 24 === _ && (_ = 0, c += 1), c === F.get_days_in_month(o, n) ? "1M 0d" : `${c}d ${_}h`
+				}
+			}
+
+			function de(e) {
+				return 86400 * e.getUTCDate() + 3600 * e.getUTCHours() + 60 * e.getUTCMinutes() + e.getUTCSeconds()
+			}
+			var ue = s(943615),
+				ce = s(194459);
+			const _e = [0, 1, 2, 3, 9, 8, 10],
+				pe = y.enabled("force_exchange_as_title"),
+				me = {
+					alwaysShowGlobalLast: !1,
+					visibleOnHistoryOnly: !1,
+					showCountdown: !0,
+					showSymbolLabel: !0,
+					useSolidBodyColor: !0
+				};
+			class Se extends ae.PriceAxisView {
+				constructor(e, t, s) {
+					super(), this._previousCountdown = "", this._source = e, this._model = t, this._options = {
+						...me,
+						...s
+					}
+				}
+				updateCountdown() {
+					this._countdownText() !== this._previousCountdown && (this.update((0, ce.dataSourceChangeEvent)(this._source.id())), this._model.updateSourcePriceScale(this._source))
+				}
+				_getSource() {
+					return this._source
+				}
+				_getModel() {
+					return this._model
+				}
+				_isCountdownEnabled() {
+					return this._options.showCountdown
+				}
+				_countdownText() {
+					{
+						const e = this._source.barCloseTime();
+						return null === e ? "" : he(e, this._currentTime() / 1e3)
+					}
+				}
+				_updateRendererData(e, t, s) {
+					var r;
+					if (e.visible = !1, t.visible = !1, !this._source.isVisible()) return;
+					const n = this._source.properties().childs();
+					if (12 === n.style.value()) return;
+					const a = this._model.timeScale().visibleBarsStrictRange(),
+						o = this._source.data().last();
+					if (null === a || null === o) return;
+					if (this._options.visibleOnHistoryOnly && a.contains(o.index)) return;
+					const l = this._model.properties().childs().scalesProperties.childs();
+					let h = l.showSeriesLastValue.value(),
+						d = this._isCountdownEnabled() && -1 !== _e.indexOf(n.style.value()) && n.showCountdown.value() && (this._options.alwaysShowGlobalLast || a.contains(o.index)),
+						u = this._options.showSymbolLabel && l.showSymbolLabels.value();
+					const c = l.seriesLastValueMode.value() === oe.PriceAxisLastValueMode.LastPriceAndPercentageValue,
+						_ = this._source.lastValueData(void 0, this._options.alwaysShowGlobalLast);
+					if (_.noData) return;
+					const p = 8 === n.style.value();
+					if ((h || d || u) && p && n.haStyle.childs().showRealLastPrice.value()) {
+						const e = this._source.lastValueData(void 0, !1),
+							t = this._source.lastValueData(void 0, !0);
+						e.noData || t.noData || e.index !== t.index || (h = !1, d = !1, u = !1)
+					}
+					const m = this._source.priceLineColor(_.color);
+					if (this._options.useSolidBodyColor ? (s.background = m, s.borderColor = void 0) : (s.background = this._model.backgroundColorAtYPercentFromTop((null !== (r = s.fixedCoordinate) && void 0 !== r ? r : s.coordinate) / (0, i.ensureNotNull)(this._model.paneForSource(this._source)).height()), s.borderColor = m), s.coordinate = _.coordinate, s.floatCoordinate = _.floatCoordinate, h || d) {
+						const t = this._axisFirstLineText(_, h);
+						e.text = t, this._options.useSolidBodyColor ? (s.textColor = this.generateTextColor(s.background), e.borderVisible = !1) : (e.borderVisible = !0, s.textColor = m), e.textColor = s.textColor;
+						const i = h && c ? (0, ue.getOppositeModePriceText)(this._source.priceScale(), _) : "";
+						e.secondLine = i, s.secondLineTextColor = s.textColor;
+						const r = d ? this._countdownText() : "";
+						this._previousCountdown = r, e.thirdLine = r, s.thirdLineTextColor = (0, ne.generateColor)(s.textColor, 25), 0 === t.length && 0 === i.length && 0 === r.length || (e.visible = !0)
+					}
+					u && (t.text = this._paneText(u), t.visible = t.text.length > 0)
+				}
+				_paneText(e) {
+					let t = "";
+					const s = this._source.symbolInfo();
+					return pe ? t = (0, _.displayedSymbolExchange)(s) : e && (t = (0, _.displayedSymbolName)(s)), t
+				}
+				_axisFirstLineText(e, t) {
+					return t ? (0, ue.getCurrentModePriceText)(this._source.priceScale(), e) : ""
+				}
+				_currentTime() {
+					return Date.now() + 1e3 * this._source.serverTimeOffset()
+				}
+			}
+			var be = s(736643),
+				ye = s(175203);
+			class ge extends ae.PriceAxisView {
+				constructor(e, t) {
+					super(), this._source = e, this._model = t
+				}
+				_updateRendererData(e, t, s) {
+					e.visible = !1;
+					const i = this._source;
+					if (!this._model.properties().childs().scalesProperties.childs().showSeriesPrevCloseValue.value()) return;
+					if (i.isDWM()) return;
+					const r = i.prevClose();
+					if (null === r) return;
+					const n = this._source.properties().childs().prevClosePriceLineColor.value();
+					s.background = n, s.textColor = this.generateTextColor(n), s.coordinate = r.coordinate, e.text = (0, ue.getCurrentModePriceText)(i.priceScale(), r), e.visible = !0
+				}
+			}
+			var ve = s(406059),
+				fe = s(345185);
+			class we extends ve.SeriesHorizontalLinePaneView {
+				constructor(e) {
+					super(e), this._lineRendererData.linestyle = fe.LINESTYLE_DOTTED
+				}
+				_updateImpl() {
+					this._lineRendererData.visible = !1;
+					const e = this._series.properties().childs();
+					if (!e.showPrevClosePriceLine.value()) return;
+					if (this._series.isDWM()) return;
+					const t = this._series.prevClose();
+					null !== t && (this._lineRendererData.visible = !0, this._lineRendererData.y = t.coordinate, this._lineRendererData.color = e.prevClosePriceLineColor.value(), this._lineRendererData.linewidth = e.prevClosePriceLineWidth.value())
+				}
+			}
+			var Pe = s(207152),
+				Ce = s(203308),
+				xe = s(86441),
+				Ie = s(346037),
+				Te = s(218718);
+			class Ae {
+				constructor(e, t) {
+					this._bars = [], this._invalidated = !0, this._isMarkersEnabled = (0, y.enabled)("source_selection_markers"), this._selectionData = null, this._blockSize = 0, this._series = e, this._model = t, this._selectionIndexer = new Ie.SelectionIndexes(t.timeScale())
+				}
+				update() {
+					this._invalidated = !0
+				}
+				nearestIndex(e, t) {
+					var s, i;
+					return null !== (i = null === (s = this.bars().search(e, t)) || void 0 === s ? void 0 : s.index) && void 0 !== i ? i : null
+				}
+				items() {
+					return this._bars
+				}
+				_updateImpl() {
+					if (this._bars = [], 6 === this._series.properties().childs().style.value() && !this._series.data().boxSize) return;
+					const e = this._series.priceScale(),
+						t = this._model.timeScale();
+					if (t.isEmpty() || !e || e.isEmpty()) return;
+					const s = this._series.getRealVisibleRange();
+					if (null === s) return;
+					if (0 === this.bars().size()) return;
+					if (this._series.data().bars().isEmpty()) return;
+					let r = s.firstBar();
+					const n = s.lastBar(),
+						a = this._series.firstValue();
+					if (null === a) return;
+					for (; r <= n; r++) {
+						if (null !== this.bars().valueAt(r)) break
+					}
+					if (r > n) return;
+					const o = this.bars().range(r, n),
+						l = this._series.barColorer(),
+						h = {},
+						d = this._series.properties().childs().style.value(),
+						u = 5 === d || 6 === d,
+						c = this.isProjection(),
+						_ = (0, i.ensureNotNull)(this.bars().lastIndex()),
+						p = 6 === d ? (0, i.ensureDefined)(this._series.data().boxSize) : 0;
+					if (o.each(((e, t) => {
+							const s = t[1],
+								i = t[2],
+								r = t[3],
+								n = t[4];
+							if (void 0 === s || void 0 === i || void 0 === r || void 0 === n || null === s || null === i || null === r || null === n) return !1;
+							h.value = t;
+							const a = l.barStyle(e, c, h),
+								o = u ? t[6] : void 0,
+								m = {
+									time: Math.round(e),
+									open: s,
+									high: i,
+									low: r,
+									close: n,
+									color: a.barColor,
+									borderColor: a.barBorderColor,
+									isUp: a.isBarUp
+								};
+							switch (h.previousValue = t, d) {
+								case 6:
+									m.low -= .5 * p, m.high += .5 * p, m.upColor = a.upColor, m.downColor = a.downColor, m.isMergedBar = a.isMergedBar, m.additionalNum = Math.round(1 + (i - r) / p);
+									break;
+								case 5:
+									if (m.upColor = a.upColor, m.downColor = a.downColor, m.isTwoColorBar = a.isTwoColorBar, !(0, Ce.default)(o)) break;
+									m.additionalPrice = o, c && m.time === _ && (m.combinedWithProjection = !0)
+							}
+							return this._bars.push(m), !1
+						})), 6 === d && (this._blockSize = (e.priceToCoordinate(0, a) - e.priceToCoordinate(500, a)) / 500 * p), e.barPricesToCoordinates(this._bars, a), t.barIndexesToCoordinates(this._bars), this._model.selection().isSelected(this._series)) {
+						const s = this._selectionIndexer.indexes();
+						this._selectionData = {
+							points: [],
+							bgColors: [],
+							visible: !0,
+							barSpacing: t.barSpacing(),
+							hittestResult: Te.HitTestResult.REGULAR
+						};
+						const r = (0, i.ensureNotNull)(this._model.paneForSource(this._series)).height();
+						this._selectionData.hittestResult = Te.HitTestResult.REGULAR;
+						for (let i = 0; i < s.length; i++) {
+							const n = s[i],
+								o = this._series.bars().valueAt(n);
+							if (null === o) continue;
+							const l = o[1],
+								h = o[4];
+							if (null == l || null == h) continue;
+							const d = .5 * (l + h),
+								u = t.indexToCoordinate(n),
+								c = e.priceToCoordinate(d, a);
+							this._selectionData.points.push(new xe.Point(u, c)), this._selectionData.bgColors.push(this._model.backgroundColorAtYPercentFromTop(c / r))
+						}
+					} else this._selectionIndexer.clear()
+				}
+			}
+			class Ve extends Ae {
+				bars() {
+					return this._series.bars()
+				}
+				isProjection() {
+					return !1
+				}
+			}
+			class Re extends Ae {
+				bars() {
+					return this._series.nsBars()
+				}
+				isProjection() {
+					return !0
+				}
+			}
+			class De extends Re {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = this._series.properties().childs(),
+						i = {
+							bars: this._bars,
+							barSpacing: this._model.timeScale().barSpacing(),
+							thinBars: s.rangeStyle.childs().thinBars.value(),
+							dontDrawOpen: s.barStyle.childs().dontDrawOpen.value()
+						};
+					return new Pe.PaneRendererBars(i)
+				}
+			}
+			var Ee = s(267850);
+			class Me extends Se {
+				lastPrice() {
+					return this._getSource().data().lastProjectionPrice
+				}
+				_updateRendererData(e, t, s) {
+					e.visible = !1, t.visible = !1;
+					const r = this._getModel(),
+						n = this._getSource(),
+						a = n.priceScale(),
+						o = r.timeScale(),
+						l = this.lastPrice();
+					if (o.isEmpty() || a.isEmpty() || void 0 === l) return;
+					const h = o.visibleBarsStrictRange();
+					if (null === h) return;
+					const u = h.firstBar(),
+						c = h.lastBar(),
+						_ = n.data(),
+						p = _.search(c, d.PlotRowSearchMode.NearestLeft);
+					if (null === p) return;
+					const m = n.nearestIndex(u, d.PlotRowSearchMode.NearestRight);
+					if (void 0 === m) return;
+					const S = n.model().properties().childs().scalesProperties.childs(),
+						b = (0, i.ensureNotNull)(_.valueAt(m))[4];
+					let y = s.background,
+						g = S.showSeriesLastValue.value(),
+						v = !1,
+						f = !1,
+						w = !1;
+					const P = n.lastValueData(4, !1),
+						C = n.properties().childs();
+					if (8 === C.style.value() && C.haStyle.childs().showRealLastPrice.value()) {
+						const e = n.lastValueData(4, !0);
+						if (e.noData || e.color === s.background || (y = e.color), !e.noData && !P.noData) {
+							const t = e.index === P.index;
+							v = t && S.showSymbolLabels.value(), f = S.seriesLastValueMode.value() === oe.PriceAxisLastValueMode.LastPriceAndPercentageValue, g = g && t, w = t && this._isCountdownEnabled() && C.showCountdown.value()
+						}
+					} else {
+						y = n.barColorer().barStyle(p.index, !0).barColor
+					}
+					if (s.background = y, s.textColor = this.generateTextColor(y), s.secondLineTextColor = s.textColor, s.thirdLineTextColor = (0, ne.generateColor)(s.textColor, 25), s.coordinate = a.priceToCoordinate(l, b), e.visible = g || w, !P.noData) {
+						const s = n.priceScale().isPercentage();
+						P.formattedPriceAbsolute = a.formatPriceAbsolute(l), P.formattedPricePercentage = a.formatPricePercentage(l, b, !0), P.text = s ? P.formattedPricePercentage : P.formattedPriceAbsolute, e.text = this._axisFirstLineText(P, g), e.secondLine = g && f ? s ? P.formattedPriceAbsolute : P.formattedPricePercentage : "", e.thirdLine = w ? this._countdownText() : "", t.text = this._paneText(v)
+					}
+					t.visible = v
+				}
+			}
+			var ke = s(613648),
+				Le = s(350985),
+				Be = s(679520);
+			const Ne = {
+				light: {
+					lineStyle: fe.LINESTYLE_DOTTED,
+					lineWidth: 1,
+					textColor: Be.colorsPalette["color-cold-gray-900"],
+					backgroundColor: Be.colorsPalette["color-tv-blue-50"],
+					lineColor: Be.colorsPalette["color-cold-gray-500"]
+				},
+				dark: {
+					lineStyle: fe.LINESTYLE_DOTTED,
+					lineWidth: 1,
+					textColor: Be.colorsPalette["color-white"],
+					backgroundColor: Be.colorsPalette["color-tv-blue-a800"],
+					lineColor: Be.colorsPalette["color-cold-gray-500"]
+				}
+			};
+
+			function Fe(e) {
+				return e ? Ne.dark : Ne.light
+			}
+			class Oe extends Le.HorizontalLinePaneView {
+				constructor(e, t, s) {
+					super(), this._model = e, this._isVisible = t, this._getValue = s
+				}
+				_updateImpl() {
+					const e = this._lineRendererData;
+					if (e.visible = !1, !this._isVisible.value()) return;
+					const t = this._model.mainSeries(),
+						s = t.priceScale(),
+						i = t.firstValue(),
+						r = this._getValue();
+					if (null === i || null === r) return;
+					const n = Fe(this._model.isDark());
+					e.visible = !0, e.y = s.priceToCoordinate(r, i), e.linestyle = n.lineStyle, e.linewidth = n.lineWidth, e.color = n.lineColor
+				}
+			}
+			class Ue extends ae.PriceAxisView {
+				constructor(e, t, s, i) {
+					super(), this._model = e, this._label = t, this._isVisible = s, this._getValue = i
+				}
+				_updateRendererData(e, t, s) {
+					if (e.visible = !1, t.visible = !1, !this._isVisible.value()) return;
+					const i = this._model.mainSeries(),
+						r = i.priceScale(),
+						n = i.firstValue(),
+						a = this._getValue();
+					if (null === n || null === a) return;
+					const o = Fe(this._model.isDark());
+					e.visible = !0, t.visible = !0, e.text = r.formatPriceAbsolute(a), t.text = this._label, s.coordinate = r.priceToCoordinate(a, n), s.background = o.backgroundColor, s.textColor = o.textColor
+				}
+			}
+			class We extends Ee.PriceLineAxisView {
+				constructor(e, t, s) {
+					super(), this._model = e, this._isLineVisible = t,
+						this._getValue = s
+				}
+				_isVisible() {
+					return this._isLineVisible.value()
+				}
+				_lineWidth() {
+					return Fe(this._model.isDark()).lineWidth
+				}
+				_lineStyle() {
+					return Fe(this._model.isDark()).lineStyle
+				}
+				_priceLineColor(e) {
+					return Fe(this._model.isDark()).lineColor
+				}
+				_value() {
+					const e = this._model.mainSeries(),
+						t = e.priceScale(),
+						s = e.firstValue(),
+						i = this._getValue();
+					if (null === s || null === i) return {
+						noData: !0
+					};
+					const r = t.priceToCoordinate(i, s);
+					return {
+						noData: !1,
+						floatCoordinate: r,
+						coordinate: r,
+						color: "",
+						formattedPricePercentage: "",
+						formattedPriceAbsolute: "",
+						formattedPriceIndexedTo100: "",
+						text: "",
+						index: 0
+					}
+				}
+			}
+			const He = (0, b.t)("High"),
+				ze = (0, b.t)("Low");
+
+			function je(e, t, s, i, r, n) {
+				const a = new Oe(e, r, n),
+					o = new Ue(e, s, i, n);
+				return {
+					paneView: a,
+					panePriceAxisView: new ke.PanePriceAxisView(o, t, e),
+					priceAxisView: o,
+					priceLineAxisView: new We(e, r, n)
+				}
+			}
+			var qe = s(97639),
+				Ge = s.n(qe),
+				Ye = s(706342),
+				Xe = s(15693),
+				$e = s(773547);
+			class Ze {
+				constructor() {
+					this._data = null
+				}
+				setData(e) {
+					this._data = e
+				}
+				data() {
+					return this._data
+				}
+				draw(e, t) {
+					const s = this._data;
+					if (null === s) return;
+					const i = t.pixelRatio;
+					e.save();
+					const r = Math.max(1, Math.floor(i)),
+						n = r % 2 / 2,
+						a = Math.round(s.center.x * i) + n,
+						o = s.center.y * i;
+					e.fillStyle = s.seriesLineColor, e.beginPath();
+					const l = Math.max(2, 1.5 * s.seriesLineWidth) * i;
+					e.arc(a, o, l, 0, 2 * Math.PI, !1), e.fill(), e.fillStyle = s.fillColor, e.beginPath(), e.arc(a, o, s.radius * i, 0, 2 * Math.PI, !1), e.fill(), e.lineWidth = r, e.strokeStyle = s.strokeColor, e.beginPath(), e.arc(a, o, s.radius * i + r / 2, 0, 2 * Math.PI, !1), e.stroke(), e.restore()
+				}
+				hitTest(e, t) {
+					return null
+				}
+			}
+
+			function Ke(e) {
+				return e
+			}
+			const Je = [{
+				start: 0,
+				end: .25,
+				startRadius: 4,
+				endRadius: 10,
+				startFillAlpha: .25,
+				endFillAlpha: 0,
+				startStrokeAlpha: .4,
+				endStrokeAlpha: .8,
+				easing: Ke
+			}, {
+				start: .25,
+				end: .525,
+				startRadius: 10,
+				endRadius: 14,
+				startFillAlpha: 0,
+				endFillAlpha: 0,
+				startStrokeAlpha: .8,
+				endStrokeAlpha: 0,
+				easing: Ke
+			}, {
+				start: .525,
+				end: 1,
+				startRadius: 14,
+				endRadius: 14,
+				startFillAlpha: 0,
+				endFillAlpha: 0,
+				startStrokeAlpha: 0,
+				endStrokeAlpha: 0,
+				easing: Ke
+			}];
+
+			function Qe(e, t, s, i) {
+				const r = s + (i - s) * t;
+				return (0, ne.applyTransparency)(e, (0, ne.alphaToTransparency)(r))
+			}
+
+			function et(e, t) {
+				const s = e % 2600 / 2600;
+				let i;
+				for (const e of Je)
+					if (s >= e.start && s <= e.end) {
+						i = e;
+						break
+					} if (void 0 === i) throw new Error("Last price animation internal logic error");
+				const r = i.easing((s - i.start) / (i.end - i.start));
+				return {
+					fillColor: Qe(t, r, i.startFillAlpha, i.endFillAlpha),
+					strokeColor: Qe(t, r, i.startStrokeAlpha, i.endStrokeAlpha),
+					radius: (n = r, a = i.startRadius, o = i.endRadius, a + (o - a) * n)
+				};
+				var n, a, o
+			}
+			class tt {
+				constructor(e) {
+					this._renderer = new Ze, this._invalidated = !0, this._stageInvalidated = !0, this._startTime = performance.now(), this._endTime = this._startTime - 1, this._series = e
+				}
+				update(e) {
+					if (this._invalidated = !0, "data-source-change" === e.type && e.dataSourceId === this._series.id() || "viewport-change" === e.type || "global-change" === e.type) {
+						const e = performance.now(),
+							t = this._endTime - e;
+						if (t > 0) return void(t < 650 && (this._endTime += 2600));
+						this._startTime = e, this._endTime = e + 2600
+					}
+				}
+				invalidateStage() {
+					this._stageInvalidated = !0
+				}
+				animationActive() {
+					return performance.now() <= this._endTime
+				}
+				stopAnimation() {
+					this._endTime = this._startTime - 1
+				}
+				renderer(e, t) {
+					return this._invalidated ? (this._updateImpl(e, t), this._invalidated = !1,
+						this._stageInvalidated = !1) : this._stageInvalidated && (this._updateRendererDataStage(), this._stageInvalidated = !1), this._renderer
+				}
+				_updateImpl(e, t) {
+					this._renderer.setData(null);
+					const s = this._series.model().timeScale(),
+						i = s.visibleBarsStrictRange(),
+						r = this._series.firstValue(),
+						n = this._series.lastValueData(void 0, !0, !0);
+					if (null === i || null === r || void 0 === n.index || void 0 === n.price || !i.contains(n.index)) return;
+					const a = new xe.Point(s.indexToCoordinate(n.index), this._series.priceScale().priceToCoordinate(n.price, r)),
+						o = n.color,
+						l = this._series.properties().childs();
+					let h;
+					switch (this._series.style()) {
+						case 3:
+							h = l.areaStyle.childs().linewidth.value();
+							break;
+						case 10:
+							const t = l.baselineStyle,
+								s = Math.round(e * (Math.abs(100 - t.childs().baseLevelPercentage.value()) / 100));
+							h = a.y <= s ? t.childs().topLineWidth.value() : t.childs().bottomLineWidth.value();
+							break;
+						default:
+							h = l.lineStyle.childs().linewidth.value()
+					}
+					const d = et(this._duration(), o);
+					this._renderer.setData({
+						seriesLineColor: o,
+						seriesLineWidth: h,
+						fillColor: d.fillColor,
+						strokeColor: d.strokeColor,
+						radius: d.radius,
+						center: a
+					})
+				}
+				_updateRendererDataStage() {
+					const e = this._renderer.data();
+					if (null !== e) {
+						const t = et(this._duration(), e.seriesLineColor);
+						e.fillColor = t.fillColor, e.strokeColor = t.strokeColor, e.radius = t.radius
+					}
+				}
+				_duration() {
+					return this.animationActive() ? performance.now() - this._startTime : 2599
+				}
+			}
+			var st = s(388230),
+				it = s(180372),
+				rt = s(908803),
+				nt = s(364019);
+			class at extends ve.SeriesHorizontalLinePaneView {
+				constructor(e) {
+					super(e), this._lineRendererData.linestyle = fe.LINESTYLE_DOTTED
+				}
+				_updateImpl() {
+					this._lineRendererData.visible = !1;
+					const e = this._series.properties().childs();
+					if (!e.showPriceLine.value()) return;
+					if (12 === e.style.value()) return;
+					const t = this._series.lastValueData(void 0, !0);
+					t.noData || (this._lineRendererData.visible = !0, this._lineRendererData.y = t.coordinate, this._lineRendererData.color = this._series.priceLineColor(t.color), this._lineRendererData.linewidth = e.priceLineWidth.value())
+				}
+			}
+			var ot = s(156776),
+				lt = s(30347),
+				ht = s(717611),
+				dt = s(859447),
+				ut = s(601132),
+				ct = s(544077);
+			class _t extends ct.PaneRendererSeriesBase {
+				constructor(e) {
+					super(), this._bars = e.bars, this._barWidth = e.barSpacing
+				}
+				draw(e, t) {
+					e.save();
+					const s = Math.round(t.pixelRatio * this._barWidth / 2);
+					let i = null;
+					for (let r = 0; r < this._bars.length; ++r) {
+						const n = this._bars[r],
+							a = Math.round(n.time * t.pixelRatio),
+							o = null === i ? Math.round(a - s) : i + 1,
+							l = (r < this._bars.length - 1 ? Math.round(this._bars[r + 1].time * t.pixelRatio) : a + 2 * s) - s - o,
+							h = Math.round(Math.min(n.close, n.open) * t.pixelRatio),
+							d = Math.round(Math.max(n.close, n.open) * t.pixelRatio) - h + 1;
+						e.fillStyle = n.borderColor, e.fillRect(o, h, l, d), e.fillRect(a, Math.round(n.high * t.pixelRatio), 1, Math.round((n.low - n.high) * t.pixelRatio)), e.fillStyle = n.color, e.fillRect(o + 1, h + 1, l - 2, d - 2), i = o + l - 1
+					}
+					e.restore()
+				}
+				_getTolerance() {
+					return (0, ut.interactionTolerance)().series + .5
+				}
+				_getBarSpacing() {
+					return this._barWidth
+				}
+			}
+			class pt extends Ve {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = {
+							bars: this._bars,
+							barSpacing: this._model.timeScale().barSpacing()
+						},
+						i = new ht.CompositeRenderer;
+					return i.append(new _t(s)),
+						this._model.selection().isSelected(this._series) && this._isMarkersEnabled && this._selectionData && i.append(new dt.SelectionRenderer(this._selectionData)), i
+				}
+			}
+			class mt extends Re {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = {
+						bars: this._bars,
+						barSpacing: this._model.timeScale().barSpacing()
+					};
+					return new _t(s)
+				}
+			}
+			class St extends Ve {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = {
+							bars: this._bars,
+							barSpacing: .9 * this._model.timeScale().barSpacing()
+						},
+						i = new ht.CompositeRenderer;
+					return i.append(new _t(s)), this._model.selection().isSelected(this._series) && this._isMarkersEnabled && this._selectionData && i.append(new dt.SelectionRenderer(this._selectionData)), i
+				}
+			}
+			class bt extends Re {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = {
+						bars: this._bars,
+						barSpacing: .9 * this._model.timeScale().barSpacing()
+					};
+					return new _t(s)
+				}
+			}
+			class yt extends ct.PaneRendererSeriesBase {
+				constructor(e) {
+					super(), this._bars = e.bars, this._barSpacing = e.barSpacing, this._barLineWidth = Math.max(1, (0, ut.optimalBarWidth)(e.barSpacing, 1))
+				}
+				draw(e, t) {
+					let s, i, r;
+					e.save(), e.lineCap = "square";
+					const n = Math.floor(t.pixelRatio) % 2 ? 1 : 0;
+					for (const a of this._bars) {
+						const o = Math.round(t.pixelRatio * this._barLineWidth * .5),
+							l = Math.round(t.pixelRatio * a.time - o),
+							h = void 0 === i || a.isUp ? Math.round(t.pixelRatio * a.high - o) : i,
+							d = 2 * o;
+						let u;
+						if (a.isTwoColorBar) {
+							const i = Math.round(t.pixelRatio * a.additionalPrice - t.pixelRatio * a.high + o),
+								r = h + i,
+								c = Math.round(t.pixelRatio * a.low - t.pixelRatio * a.additionalPrice + o),
+								_ = void 0 !== s && a.isUp ? s : r + c;
+							e.fillStyle = a.upColor, e.fillRect(l, h, d + n, i), e.fillStyle = a.downColor, e.fillRect(l, r, d + n, _ + o - r + 1), u = _
+						} else {
+							const i = Math.round(t.pixelRatio * a.low - t.pixelRatio * a.high + o),
+								r = void 0 !== s && a.isUp ? s : h + i;
+							e.fillStyle = a.color, e.fillRect(l, h, d + n, r + o - h + 1), u = r
+						}
+						if (!a.combinedWithProjection) {
+							a.isTwoColorBar ? e.fillStyle = a.isUp ? a.downColor : a.upColor : e.fillStyle = a.color;
+							const s = void 0 === r ? Math.round((a.time - this._barSpacing) * t.pixelRatio + o) : r + 2 * o,
+								l = Math.round(a.time * t.pixelRatio - o) - s + 1,
+								h = 2 * o + n;
+							if (a.isUp) e.fillRect(s, u - o + 1 - n, l, h);
+							else {
+								const r = void 0 === i ? Math.round(a.open * t.pixelRatio - o) : i;
+								e.fillRect(s, r, l, h)
+							}
+						}
+						r = l, s = u, i = h
+					}
+					e.restore()
+				}
+				_getTolerance() {
+					return (0, ut.interactionTolerance)().series + this._barLineWidth / 4
+				}
+				_getBarSpacing() {
+					return this._barLineWidth
+				}
+			}
+			class gt extends Ve {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = {
+							bars: this._bars,
+							barSpacing: this._model.timeScale().barSpacing()
+						},
+						i = new ht.CompositeRenderer;
+					return i.append(new yt(s)), this._model.selection().isSelected(this._series) && this._isMarkersEnabled && this._selectionData && i.append(new dt.SelectionRenderer(this._selectionData)), i
+				}
+			}
+			class vt extends Re {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = {
+						bars: this._bars,
+						barSpacing: this._model.timeScale().barSpacing()
+					};
+					return new yt(s)
+				}
+			}
+			var ft;
+			! function(e) {
+				e[e.EllipseWidth = .9] = "EllipseWidth", e[e.EllipseRadius = .95] = "EllipseRadius", e[e.SimplifiedEllipseWidth = .86] = "SimplifiedEllipseWidth"
+			}(ft || (ft = {}));
+			class wt extends ct.PaneRendererSeriesBase {
+				constructor(e) {
+					super(), this._bars = e.bars, this._barSpacing = e.barSpacing, this._barWidth = e.barSpacing
+				}
+				draw(e, t) {
+					if (0 === this._bars.length) return;
+					e.save();
+					const s = this._bars.reduce(((e, t) => Math.max(e, (t.low - t.high) / t.additionalNum)), 0);
+					this._barSpacing > 1 && s >= 1 ? this._drawFillSigns(e, t) : this._drawSimplified(e, t), e.restore()
+				}
+				_drawImpl(e) {}
+				_getTolerance() {
+					return (0, ut.interactionTolerance)().series + this._barWidth / 8
+				}
+				_getBarSpacing() {
+					return this._barSpacing
+				}
+				_drawBarCross(e, t, s, i) {
+					! function(e, t, s, i, r) {
+						e.moveTo(t, s), e.lineTo(t + i, s + r), e.moveTo(t + i, s), e.lineTo(t, s + r)
+					}(e, t.time - .5 * this._barWidth, t.high + i * s, this._barWidth, s)
+				}
+				_drawBarEllipse(e, t, s, i) {
+					! function(e, t, s, i, r) {
+						e.save(), e.translate(t + i / 2, s + r / 2), e.scale(i / 2, r / 2), e.moveTo(1, 0), e.arc(0, 0, ft.EllipseRadius, 0, 2 * Math.PI, !1), e.restore()
+					}(e, t.time - this._barWidth * ft.EllipseWidth * .5, t.high + i * s, this._barWidth * ft.EllipseWidth, s)
+				}
+				_drawFillSigns(e, t) {
+					e.scale(t.pixelRatio, t.pixelRatio), e.lineCap = "butt", e.lineWidth = 1;
+					for (const t of this._bars) {
+						const s = (t.low - t.high) / t.additionalNum;
+						if (t.isMergedBar && (e.beginPath(), t.isUp ? this._drawBarEllipse(e, t, s, t.additionalNum - 1) : this._drawBarCross(e, t, s, 0), e.strokeStyle = t.isUp ? t.downColor : t.upColor, e.stroke()), e.beginPath(), t.isUp)
+							for (let i = t.additionalNum - 1 - (t.isMergedBar ? 1 : 0); i > -1; i--) this._drawBarCross(e, t, s, i);
+						else
+							for (let i = t.isMergedBar ? 1 : 0; i < t.additionalNum; i++) this._drawBarEllipse(e, t, s, i);
+						e.strokeStyle = t.color, e.stroke()
+					}
+				}
+				_drawSimplified(e, t) {
+					for (const s of this._bars) {
+						const i = s.isUp ? 1 : ft.SimplifiedEllipseWidth,
+							r = (s.time - .5 * this._barWidth * i) * t.pixelRatio,
+							n = (s.time + .5 * this._barWidth * i) * t.pixelRatio,
+							a = Math.max(1, n - r);
+						let o = s.high * t.pixelRatio;
+						const l = s.low * t.pixelRatio,
+							h = s.high * t.pixelRatio;
+						let d = Math.max(1, l - h);
+						if (s.isMergedBar) {
+							e.fillStyle = s.isUp ? s.downColor : s.upColor;
+							const t = (s.low - s.high) / s.additionalNum,
+								i = Math.max(1, Math.round(t));
+							s.isUp ? (e.fillRect(r, o, a, i), o += i) : (e.fillRect(r, o + a - i, a, i), d -= i)
+						}
+						e.fillStyle = s.color, e.fillRect(r, o, a, d)
+					}
+				}
+			}
+			class Pt extends Ve {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = {
+							bars: this._bars,
+							barSpacing: this._model.timeScale().barSpacing()
+						},
+						i = new ht.CompositeRenderer;
+					return i.append(new wt(s)), this._model.selection().isSelected(this._series) && this._isMarkersEnabled && this._selectionData && i.append(new dt.SelectionRenderer(this._selectionData)), i
+				}
+			}
+			class Ct extends Re {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(), this._invalidated = !1);
+					const s = {
+						bars: this._bars,
+						barSpacing: this._model.timeScale().barSpacing()
+					};
+					return new wt(s)
+				}
+			}
+			var xt = s(612826),
+				It = s(514628),
+				Tt = s(837778),
+				At = s(38080),
+				Vt = s(142426),
+				Rt = s(328057),
+				Dt = s(280446);
+			class Et extends At.SeriesCandlesPaneView {
+				renderer(e, t) {
+					this._invalidated && (this._updateImpl(null), this._invalidated = !1);
+					const s = this._source.priceScale();
+					if (!s) return null;
+					const i = this._source.properties().childs().haStyle.childs(),
+						r = this._model.timeScale().barSpacing(),
+						n = {
+							bars: this._bars,
+							barSpacing: r,
+							bodyVisible: i.drawBody.value(),
+							borderVisible: i.drawBorder.value(),
+							borderColor: i.borderColor.value(),
+							wickColor: i.wickColor.value(),
+							barWidth: (0, ut.optimalBarWidth)(r),
+							wickVisible: i.drawWick.value(),
+							isPriceScaleInverted: s.isInverted()
+						},
+						a = new ht.CompositeRenderer;
+					return a.append(new Dt.PaneRendererCandles(n)), this._model.selection().isSelected(this._source) && this._isMarkersEnabled && this._selectionData && a.append(new dt.SelectionRenderer(this._selectionData)), a
+				}
+			}
+			var Mt = s(487765),
+				kt = s(870914),
+				Lt = s(895405),
+				Bt = s(289627),
+				Nt = s(140662),
+				Ft = s(381269);
+			const Ot = y.enabled("price_scale_always_last_bar_value"),
+				Ut = y.enabled("display_data_mode"),
+				Wt = r.CheckMobile.any(),
+				Ht = !(0, r.onWidget)(),
+				zt = !y.enabled("hide_series_legend_item"),
+				jt = y.enabled("hide_price_scale_global_last_bar_value"),
+				qt = (0, o.getLogger)("Chart.Series"),
+				Gt = {
+					countdownEnabled: !0,
+					lastPriceAnimationEnabled: !0
+				};
+			class Yt extends l.PriceDataSource {
+				constructor(e, t, s, r) {
+					super(e, "_seriesId"), this.chartWidgetInitialized = new(Ge()), this.requestingIntradayWhenNotSupported = new(Ge()), this.requestingResolutionWhenNotSupported = new(Ge()), this.requestingStyleIsNotSupported = new(Ge()), this.requestingStyleSupportRecovered = new(Ge()), this._paneView = null, this._futureBarsPaneView = null, this._projectionBarsPaneView = null, this._waterlineView = null, this._priceLineView = null, this._gotoDateView = null, this._baseHorizontalLineView = null, this._priceStep = null, this._symbolInfo = null, this._prevSymbolInfo = null, this._isPrePostMarketPricesAvailableProperty = new(c())(!1), this._isBackAdjustmentForbiddenProperty = new(c())(!0), this._isSettlementAsCloseForbiddenProperty = new(c())(!0), this._highLowPriceCache = new Map, this._averagePriceCache = new Map, this._prevClosePriceAxisView = null, this._priceScaleChanged = new(Ge()), this._priceScaleAboutToBeChanged = new(Ge()), this._onRestarted = new(Ge()), this._onStatusChanged = new(Ge()), this._extendedHoursChanged = new(Ge()), this._tagsChanged = new(Ge()), this._intervalChanged = new(Ge()), this._sessionIdChanged = new(Ge()), this._currency = null, this._unit = null, this._requestMoreDataAvailable = !0, this._lineStyleLastPriceCirclePaneView = new tt(this), this._prevClosePriceLineView = null, this._dataPoweredBy = null, this._loading = !0, this._seriesLoaded = !1, this._status = 0, this._symbolResolvingActive = new(B())(!1), this._predictBars = 0, this._syncModel = null, this._data = null, this._endOfDataType = null, this._haStyle = {
+							studyId: (0, i.ensureNotNull)((0, _.chartStyleStudyId)(8, !0))
+						}, this._renkoStyle = {
+							studyId: (0, i.ensureNotNull)((0, _.chartStyleStudyId)(4, !0))
+						}, this._pbStyle = {
+							studyId: (0, i.ensureNotNull)((0, _.chartStyleStudyId)(7, !0))
+						}, this._kagiStyle = {
+							studyId: (0, i.ensureNotNull)((0, _.chartStyleStudyId)(5, !0))
+						}, this._pnfStyle = {
+							studyId: (0, i.ensureNotNull)((0, _.chartStyleStudyId)(6, !0))
+						}, this._rangeStyle = {
+							studyId: (0, i.ensureNotNull)((0, _.chartStyleStudyId)(11, !0))
+						}, this._barColorerCache = null, this._boxSizeValue = new(B()), this._base = 100, this._pointValue = 1, this._formattingDeps = null, this._formatter = new p.PriceFormatter(this._base), this._ignoreMinMoveFormatter = new p.PriceFormatter(this._base), this._ignoreMinMovePriceStep = null, this._lastBarCloseTime = null, this._onSessionIdPropertyChangedBound = this._onSessionIdPropertyChanged.bind(this),
+						this._ignoreSessionIdProxyPropertyChanges = !1, this._textSourceIsAlwaysTickerRestrictionEnabled = !1, this._lastPriceAnimationActive = !1, this._currentSession = "out_of_session", this._onStyleChanged = new(Ge()), this._preventRestartOnChartStyleChange = !1, this._intervalObj = null, this._obsoleteZOrder = 0, this._seriesErrorMessage = null, this._seriesAlwaysFalseHibernatedVW = new(B())(!1), this._styleToRecover = null, this._precomputedBarStyles = new WeakMap, this._doNotShowLastAvailableBar = !1, this._gotoDateResultCleared = !1, this._seriesSource = new it.SeriesDataSource(e.chartApi(), "s", r);
+					const n = this._seriesSource.dataEvents();
+					n.symbolResolved().subscribe(this, this._onSymbolResolved), n.symbolError().subscribe(this, this._onSymbolError), n.seriesTimeFrame().subscribe(this, this._onSeriesTimeFrame), n.seriesError().subscribe(this, this._onSeriesError), n.loading().subscribe(this, this._onSeriesLoading), n.completed().subscribe(this, this._onSeriesCompleted), n.dataUpdated().subscribe(this, this._onDataUpdated), n.barReceived().subscribe(this, this._onBarReceived), this._quotesProvider = new re.QuotesProvider, this._quotesProvider.quotesUpdate().subscribe(this, this._onQuotesUpdate);
+					const a = t.childs();
+					if (t.hasChild("extendedHours")) {
+						(0, i.ensureDefined)(a.extendedHours).value() && !t.hasChild("sessionId") && t.addChild("sessionId", new(c())("extended")), t.removeProperty("extendedHours")
+					}
+					t.hasChild("sessionId") || t.addChild("sessionId", new(c())("regular")), this._setProperties(t), this._sessionIdProxyProperty = new(c())(a.sessionId.value()), a.sessionId.subscribe(this, (() => this._updateSessionIdProxyProperty())), this._sessionIdProxyProperty.subscribe(this, this._onSessionIdProxyPropertyChanged), this._symbolTextSourceProxyProperty = new(c()), this._recalcSymbolTextSourceProxyProperty(), a.statusViewStyle.childs().symbolTextSource.subscribe(this, this._recalcSymbolTextSourceProxyProperty), this._symbolTextSourceProxyProperty.subscribe(this, (() => e.lightUpdate())), this._options = (0, se.merge)((0, se.clone)(Gt), s), this._prevChartStyle = a.style.value(), this._priceAxisView = new Se(this, e, {
+						alwaysShowGlobalLast: !jt,
+						showCountdown: s.countdownEnabled
+					});
+					let o = null;
+					Ot || jt || (o = new Se(this, e, {
+						visibleOnHistoryOnly: !0,
+						showSymbolLabel: !1,
+						showCountdown: !1,
+						alwaysShowGlobalLast: !1,
+						useSolidBodyColor: !1
+					})), this._priceLinePriceAxisView = new Ee.SeriesPriceLineAxisView(this), this._priceLineAxisViews = [this._priceLinePriceAxisView];
+					const l = new Me(this, e, {
+						showCountdown: s.countdownEnabled
+					});
+					this._priceAxisViews = [this._priceAxisView, l], null !== o && this._priceAxisViews.push(o), this._prevClosePriceAxisView = new ge(this, e), this._priceAxisViews.unshift(this._prevClosePriceAxisView), this._prevClosePriceLineView = new we(this), this._panePriceAxisView = new ke.PanePriceAxisView(this._priceAxisView, this, e), this._historyPricePanePriceAxisView = null !== o ? new ke.PanePriceAxisView(o, this, e) : null, this._projectionPriceAxisView = new ke.PanePriceAxisView(l, this, e), this._labelPaneViews = [this._panePriceAxisView, this._projectionPriceAxisView], null !== this._historyPricePanePriceAxisView && this._labelPaneViews.push(this._historyPricePanePriceAxisView),
+						this._highLowAvgPaneViews = [], this._averagePaneViews = [], this._createHighLowAvgViews(), this._subscribeRestartToSessionIdChange(), a.visible.subscribe(this, this._updateLastPriceAnimationActive), this._updateLastPriceAnimationActive(), this._dataWindowView = new A.SeriesDataWindowView(this, e), this._legendView = new k(this, e);
+					const h = {
+						branding: Ht
+					};
+					this._statusView = new T(this, this._model.properties().childs().scalesProperties.childs().textColor, a.statusViewStyle, h), this._marketStatusModel = new W(this._quotesProvider, a.symbol.listeners()), this._dataUpdatedModeModel = Ut ? new ee({
+						getter: this.symbolInfo.bind(this),
+						onChange: n.symbolResolved()
+					}, {
+						getter: this.status.bind(this),
+						onChange: this._onStatusChanged
+					}, a.symbol.listeners()) : null, this._dataProblemModel = new ie(this._quotesProvider, a.symbol.listeners()), a.backAdjustment.subscribe(this, (() => {
+						this.isStarted() && this.restart()
+					})), a.settlementAsClose.subscribe(this, (() => {
+						this.isDWM() && this.isStarted() && this.restart()
+					})), this._symbolResolvingActive.subscribe((() => e.realignLineTools())), this._intervalChanged.subscribe(this, (() => e.realignLineTools()))
+				}
+				supportsPressedChunks() {
+					return !0
+				}
+				pressedChunks(e, t) {
+					return this.data().pressedChunks(e, t)
+				}
+				seriesErrorMessage() {
+					return this._seriesErrorMessage
+				}
+				destroy() {
+					this._quotesProvider.quotesUpdate().unsubscribeAll(this), this._quotesProvider.destroy(), this._model.timeScale().visibleBarsStrictRangeChanged().unsubscribeAll(this), this._unsubscribeRestartToSessionIdChange()
+				}
+				barColorer() {
+					if (this._barColorerCache) return this._barColorerCache;
+					let e = null;
+					const t = this._model.dataSources();
+					for (let s = t.length - 1; s >= 0; s--) {
+						const r = t[s];
+						if ((0, Nt.isStudy)(r) && r.hasBarColorer() && !r.isSourceHidden()) {
+							const t = (0, i.ensureNotNull)(r.barColorer());
+							null === e ? e = t : e.pushBackBarColorer(t)
+						}
+					}
+					return null === e ? e = new Bt.SeriesBarColorer(this) : e.pushBackBarColorer(new Bt.SeriesBarColorer(this)), this._barColorerCache = e, e
+				}
+				createPaneView() {
+					this._paneView = null, this._projectionBarsPaneView = null, this._waterlineView = null, this._priceLineView = this.hasClosePrice() ? new at(this) : null;
+					const e = this._properties.childs().style.value();
+					switch (e) {
+						case 0:
+							this._paneView = new Tt.SeriesBarsPaneView(this, this._model);
+							break;
+						case 1:
+							this._paneView = new At.SeriesCandlesPaneView(this, this._model);
+							break;
+						case 2:
+							this._paneView = new Vt.SeriesLinePaneView(this, this._model);
+							break;
+						case 3:
+							this._paneView = new Rt.SeriesAreaPaneView(this, this._model);
+							break;
+						case 8:
+							this._paneView = new Et(this, this._model);
+							break;
+						case 9:
+							this._paneView = new Mt.SeriesHollowCandlesPaneView(this, this._model);
+							break;
+						case 13:
+							this._paneView = new It.SeriesColumnsPaneView(this, this._model);
+							break;
+						case 10: {
+							this._paneView = new kt.SeriesBaselinePaneView(this, this._model);
+							const e = this._properties.childs().baselineStyle.childs();
+							this._waterlineView = new ot.SeriesWaterlinePaneView({
+								paneHeight: () => this.priceScale().height(),
+								color: () => e.baselineColor.value(),
+								baseLevelPercentage: () => e.baseLevelPercentage.value()
+							});
+							break
+						}
+						case 12:
+							this._paneView = new lt.SeriesHiLoPaneView(this, this._model)
+					}
+					switch (e) {
+						case 4:
+							this._paneView = new pt(this, this._model),
+								this._projectionBarsPaneView = new mt(this, this._model);
+							break;
+						case 7:
+							this._paneView = new St(this, this._model), this._projectionBarsPaneView = new bt(this, this._model);
+							break;
+						case 5:
+							this._paneView = new gt(this, this._model), this._projectionBarsPaneView = new vt(this, this._model);
+							break;
+						case 6:
+							this._paneView = new Pt(this, this._model), this._projectionBarsPaneView = new Ct(this, this._model)
+					}
+					if (11 === e && (this._paneView = new Tt.SeriesBarsPaneView(this, this._model), this._projectionBarsPaneView = new De(this, this._model)), null === this._paneView) throw Error("Unknown chart style assigned: " + e)
+				}
+				properties() {
+					return this._properties
+				}
+				zorder() {
+					return 0
+				}
+				quotesProvider() {
+					return this._quotesProvider
+				}
+				currentSession() {
+					return this._currentSession
+				}
+				getRealVisibleRange() {
+					const e = this.model().timeScale().visibleBarsStrictRange();
+					if (null === e) return null;
+					const t = this.data().search(e.firstBar(), d.PlotRowSearchMode.NearestRight),
+						s = this.data().search(e.lastBar(), d.PlotRowSearchMode.NearestLeft);
+					return null === t || null === s ? null : new xt.BarsRange(t.index, s.index)
+				}
+				syncModel() {
+					if (!this._syncModel) {
+						const e = this.symbolInfo(),
+							t = this.interval();
+						if (!e || !t) return null;
+						this._syncModel = new X(e, t)
+					}
+					return this._syncModel
+				}
+				labelPaneViews() {
+					return this._labelPaneViews
+				}
+				topPaneViews() {
+					if (this._lastPriceAnimationActive) {
+						const e = this._lineStyleLastPriceCirclePaneView;
+						return e.animationActive() && setTimeout((() => this._model.invalidate(st.InvalidationMask.cursor())), 0), e.invalidateStage(), [e]
+					}
+					return null
+				}
+				priceAxisViews(e, t) {
+					return e.findTargetPriceAxisViews(this, t, this._priceAxisViews, this._priceLineAxisViews)
+				}
+				clearHighLowPriceCache() {
+					this._highLowPriceCache.clear()
+				}
+				clearAveragePriceCache() {
+					this._averagePriceCache.clear()
+				}
+				priceScaleChanged() {
+					return this._priceScaleChanged
+				}
+				priceScaleAboutToBeChanged() {
+					return this._priceScaleAboutToBeChanged
+				}
+				disconnect() {
+					this._seriesSource.stop(), this.m_symbol = void 0, this._predictBars = 0, this._status = 0, this._model.isSnapshot() || (this._prevSymbolInfo = null, this._symbolInfo = null)
+				}
+				invalidateBarStylesCache(e) {
+					qt.logDebug("Invalidate style cache starting from " + e), this._clearStylePlot(this.bars(), e), this._clearStylePlot(this.nsBars())
+				}
+				isStatusBad() {
+					return 12 === this.status() || 4 === this.status() || 10 === this.status()
+				}
+				isStatusError() {
+					return 12 === this.status()
+				}
+				actualSymbol() {
+					return (0, _.actualSymbol)(this.symbolInfo(), this.symbol())
+				}
+				proSymbol() {
+					return (0, _.proSymbol)(this.symbolInfo(), this.symbol())
+				}
+				onStyleChanged() {
+					return this._onStyleChanged
+				}
+				style() {
+					return this.properties().childs().style.value()
+				}
+				setStyle(e) {
+					this.setSymbolParams({
+						style: e
+					})
+				}
+				symbolSameAsCurrent(e) {
+					return (0, Ye.symbolSameAsCurrent)(e, this.m_symbol, this.symbolInfo())
+				}
+				status() {
+					return this._status
+				}
+				symbolInfo() {
+					return this._symbolInfo
+				}
+				symbolResolved() {
+					return this.dataEvents().symbolResolved()
+				}
+				symbolResolvingActive() {
+					return this._symbolResolvingActive
+				}
+				symbolHibernated() {
+					return this._seriesAlwaysFalseHibernatedVW
+				}
+				firstValue() {
+					const e = this.firstBar();
+					return null === e ? null : this._barFunction(e, 0)
+				}
+				firstBar() {
+					const e = this.model().timeScale().visibleBarsStrictRange();
+					if (null === e) return null;
+					const t = e.firstBar(),
+						s = this.data().search(t, d.PlotRowSearchMode.NearestRight);
+					return null !== s ? s.value : null
+				}
+				formatter(e = !0) {
+					return e ? this._formatter : this._ignoreMinMoveFormatter
+				}
+				priceStep(e = !0) {
+					return e ? this._priceStep : this._ignoreMinMovePriceStep
+				}
+				bars() {
+					return this.data().bars()
+				}
+				nsBars() {
+					return this.data().nsBars()
+				}
+				interval() {
+					return this.properties().childs().interval.value()
+				}
+				setInterval(e) {
+					this.setSymbolParams({
+						interval: e
+					})
+				}
+				intervalObj() {
+					const e = this.interval();
+					if (null !== this._intervalObj && this._intervalObj.resolutionString === e) return this._intervalObj.interval;
+					const t = z.Interval.parse(e);
+					return this._intervalObj = {
+						resolutionString: e,
+						interval: t
+					}, t
+				}
+				prevClose() {
+					const e = this.priceScale();
+					if (e.isEmpty() || this.data().isEmpty()) return null;
+					const t = this.quotes(),
+						s = this.firstValue();
+					if (null === t || null === s) return null;
+					const i = t.prev_close_price;
+					return void 0 === i ? null : {
+						coordinate: e.priceToCoordinate(i, s),
+						floatCoordinate: e.priceToCoordinate(i, s),
+						formattedPricePercentage: e.formatPricePercentage(i, s, !0),
+						formattedPriceAbsolute: e.formatPriceAbsolute(i),
+						formattedPriceIndexedTo100: e.formatPriceIndexedTo100(i, s)
+					}
+				}
+				hasClosePrice() {
+					return 12 !== this.properties().childs().style.value()
+				}
+				lastValueData(e, t, s) {
+					var i;
+					const r = {
+							noData: !0
+						},
+						n = this.priceScale();
+					if (this.model().timeScale().isEmpty() || n.isEmpty() || this.data().isEmpty()) return r;
+					const a = this.model().timeScale().visibleBarsStrictRange(),
+						o = this.firstValue();
+					if (null === a || null === o) return r;
+					let l, h;
+					if (t) {
+						const e = this.data().bars().last();
+						if (null === e) return r;
+						l = e.value, h = e.index
+					} else {
+						const e = this.data().bars().search(a.lastBar(), d.PlotRowSearchMode.NearestLeft);
+						if (null === e) return r;
+						l = e.value, h = e.index
+					}
+					const u = null !== (i = void 0 !== e ? l[e] : this._barFunction(l)) && void 0 !== i ? i : NaN,
+						c = this.barColorer().barStyle(h, !1),
+						_ = n.priceToCoordinate(u, o),
+						p = {
+							...n.getFormattedValues(u, o, !0),
+							noData: !1,
+							color: c.barColor,
+							floatCoordinate: _,
+							coordinate: _,
+							index: h
+						};
+					return s && (p.price = u), p
+				}
+				isDWM() {
+					return this.intervalObj().isDWM()
+				}
+				data() {
+					var e;
+					return null !== (e = this._data) && void 0 !== e ? e : this._seriesSource.data()
+				}
+				clearData() {
+					(0, i.assert)(null === this._data, "Cannot clear loaded data"), this._seriesSource.clearData()
+				}
+				nearestValue(e, t, s) {
+					var i;
+					const r = this.nearestData(e, s);
+					return null !== (i = null == r ? void 0 : r.value[t]) && void 0 !== i ? i : void 0
+				}
+				onIntervalChanged() {
+					return this._intervalChanged
+				}
+				onStatusChanged() {
+					return this._onStatusChanged
+				}
+				onRestarted() {
+					return this._onRestarted
+				}
+				onExtendedHoursChanged() {
+					return this._extendedHoursChanged
+				}
+				sessionId() {
+					return this.properties().childs().sessionId.value()
+				}
+				sessionIdChanged() {
+					return this._sessionIdChanged
+				}
+				autoScaleInfo(e, t) {
+					const s = this.priceRange(e, t);
+					if (null === this._paneView) return {
+						range: s
+					};
+					const i = this._paneView;
+					return {
+						range: s,
+						topPixelMargin: i.topPixelMargin ? i.topPixelMargin() : void 0,
+						bottomPixelMargin: i.bottomPixelMargin ? i.bottomPixelMargin() : void 0
+					}
+				}
+				onChartStyleChanged() {
+					var e;
+					this._updateBarFunction(), !this._preventRestartOnChartStyleChange && this.isNeedRestart() && (this.data().clear(), this.model().timeScale().scrollToRealtime(!1),
+						this.isInReplay() && !this.isStyleSupportedForReplay(this.style()) && this._removeReplaySubscriber(), this.restart());
+					const t = this.properties();
+					this._prevChartStyle = t.childs().style.value(), this._onStyleChanged.fire(t.childs().style.value()), this.invalidateBarStylesCache(), this._updateLastPriceAnimationActive(), (null === (e = this._styleToRecover) || void 0 === e ? void 0 : e.originalStyle) !== this.style() && (this._styleToRecover = null)
+				}
+				setChartStyleWithIntervalIfNeeded(e, t) {
+					const s = this.interval(),
+						i = null != t ? t : (0, nt.getResolutionByChartStyle)(e, s, this._model.defaultResolutions()),
+						r = z.Interval.isEqual(i, s);
+					this.setSymbolParams({
+						interval: r ? void 0 : i,
+						style: e
+					})
+				}
+				styleStudyInfos() {
+					return {
+						haStyle: this._haStyle,
+						renkoStyle: this._renkoStyle,
+						pbStyle: this._pbStyle,
+						kagiStyle: this._kagiStyle,
+						pnfStyle: this._pnfStyle,
+						rangeStyle: this._rangeStyle
+					}
+				}
+				sessionIdProxyProperty() {
+					return this._sessionIdProxyProperty
+				}
+				symbolTextSourceProxyProperty() {
+					return this._symbolTextSourceProxyProperty
+				}
+				setTextSourceIsAlwaysTickerRestrictionEnabled(e) {
+					this._textSourceIsAlwaysTickerRestrictionEnabled = e, this._recalcSymbolTextSourceProxyProperty()
+				}
+				isPrePostMarketPricesAvailableProperty() {
+					return this._isPrePostMarketPricesAvailableProperty
+				}
+				isSettlementAsCloseForbiddenProperty() {
+					return this._isSettlementAsCloseForbiddenProperty
+				}
+				isBackAdjustmentForbiddenProperty() {
+					return this._isBackAdjustmentForbiddenProperty
+				}
+				invalidateBarColorerCache() {
+					this._barColorerCache = null, this.invalidateBarStylesCache()
+				}
+				dataWindowView() {
+					return this._dataWindowView
+				}
+				statusView() {
+					return zt ? this._statusView : null
+				}
+				legendView() {
+					return this._legendView
+				}
+				marketStatusModel() {
+					return this._marketStatusModel
+				}
+				dataUpdatedModeModel() {
+					return this._dataUpdatedModeModel
+				}
+				dataProblemModel() {
+					return this._dataProblemModel
+				}
+				quotes() {
+					return this.data().isEmpty() ? null : this._quotesProvider.quotes()
+				}
+				base() {
+					return this._base
+				}
+				pointValue() {
+					return this._pointValue
+				}
+				barCloseTime() {
+					return this._lastBarCloseTime
+				}
+				priceSource() {
+					let e = null;
+					const t = this._properties.childs();
+					switch (t.style.value()) {
+						case 2:
+							e = t.lineStyle.childs().priceSource.value();
+							break;
+						case 3:
+							e = t.areaStyle.childs().priceSource.value();
+							break;
+						case 10:
+							e = t.baselineStyle.childs().priceSource.value();
+							break;
+						case 13:
+							e = t.columnStyle.childs().priceSource.value()
+					}
+					return e
+				}
+				updateAllViews(e) {
+					var t, s, i, r, n, a, o, l;
+					null === (t = this._paneView) || void 0 === t || t.update(e), this._dataWindowView.update(), this._legendView.update(), this._statusView.update(), this._averagePaneViews.forEach((t => t.update(e))), this._highLowAvgPaneViews.forEach((t => t.update(e))), this._labelPaneViews.forEach((t => t.update(e))), this._priceAxisViews.forEach((t => t.update(e))), this._priceLineAxisViews.forEach((t => t.update(e))), null === (s = this._futureBarsPaneView) || void 0 === s || s.update(e), null === (i = this._projectionBarsPaneView) || void 0 === i || i.update(e), null === (r = this._waterlineView) || void 0 === r || r.update(e), null === (n = this._prevClosePriceLineView) || void 0 === n || n.update(e), null === (a = this._priceLineView) || void 0 === a || a.update(e), null === (o = this._gotoDateView) || void 0 === o || o.update(e),
+						null === (l = this._baseHorizontalLineView) || void 0 === l || l.update(e);
+					const h = this._model.activeStrategySource().value();
+					null == h || h.updateAllViews(e), this._lineStyleLastPriceCirclePaneView.update(e)
+				}
+				barFunction() {
+					return this._barFunction
+				}
+				precomputedBarStyle(e) {
+					return this._precomputedBarStyles.get(e)
+				}
+				setPrecomputedBarStyle(e, t) {
+					this._precomputedBarStyles.set(e, t)
+				}
+				setSymbolParams(e) {
+					const {
+						symbol: t,
+						interval: s,
+						currency: i,
+						unit: r,
+						style: n
+					} = e, a = this.properties().childs(), o = void 0 !== t && t !== a.symbol.value(), l = void 0 !== i && i !== a.currencyId.value(), h = void 0 !== r && r !== a.unitId.value(), d = void 0 !== s && s !== a.interval.value(), u = void 0 !== n && n !== a.style.value();
+					o && a.symbol.setValueSilently(t), l && a.currencyId.setValueSilently(i), h && a.unitId.setValueSilently(r), d && a.interval.setValueSilently(s), u && a.style.setValueSilently(n), o && a.symbol.listeners().fire(a.symbol), l && a.currencyId.listeners().fire(a.currencyId), h && a.unitId.listeners().fire(a.unitId), d && a.interval.listeners().fire(a.interval), u && (o || l || h || d ? (this._preventRestartOnChartStyleChange = !0, a.style.listeners().fire(a.style), this._preventRestartOnChartStyleChange = !1) : a.style.listeners().fire(a.style))
+				}
+				setSymbol(e) {
+					this.setSymbolParams({
+						symbol: e
+					})
+				}
+				currency() {
+					return this.properties().childs().currencyId.value() || null
+				}
+				setCurrency(e) {
+					this.setSymbolParams({
+						currency: e
+					})
+				}
+				isConvertedToOtherCurrency() {
+					return (0, _.isConvertedToOtherCurrency)(this.symbolInfo())
+				}
+				unit() {
+					return this.properties().childs().unitId.value() || null
+				}
+				setUnit(e) {
+					this.setSymbolParams({
+						unit: e
+					})
+				}
+				measureUnitId() {
+					return (0, _.measureUnitId)(this.symbolInfo())
+				}
+				isConvertedToOtherUnit() {
+					return (0, _.isConvertedToOtherUnit)(this.symbolInfo(), this._model.unitConversionEnabled())
+				}
+				symbolSource() {
+					return this
+				}
+				title() {
+					return this.symbolTitle()
+				}
+				name() {
+					return this.symbolTitle()
+				}
+				symbolTitle(e, t, s = "exchange") {
+					let i = this.properties().childs().symbol.value();
+					const r = this.symbolInfo();
+					if (null !== r) {
+						const {
+							type: t
+						} = r;
+						i = (0, _.symbolTitle)(r, e, "forex" === t ? "exchange" : s)
+					}
+					return t ? i : `${i}, ${(0,$e.translatedIntervalString)(this.properties().childs().interval.value())}`
+				}
+				setObsoleteZOrder(e) {
+					this._obsoleteZOrder = e
+				}
+				obsoleteZOrder() {
+					return this._obsoleteZOrder
+				}
+				valuesProvider() {
+					return new D(this, this.model())
+				}
+				statusProvider(e) {
+					return new I(this, this._model.properties().childs().scalesProperties.childs().textColor, this.properties().childs().statusViewStyle, e)
+				}
+				open(e) {
+					const t = this.data().valueAt(e);
+					return t && t[1]
+				}
+				high(e) {
+					const t = this.data().valueAt(e);
+					return t && t[2]
+				}
+				low(e) {
+					const t = this.data().valueAt(e);
+					return t && t[3]
+				}
+				close(e) {
+					const t = this.data().valueAt(e);
+					return t && t[4]
+				}
+				moveItem(e, t, s) {
+					if (10 === this.style() && 0 === t) {
+						const t = this.priceScale(),
+							s = this.properties().childs().baselineStyle,
+							i = t.height(),
+							r = 100 - e.y / i * 100,
+							n = r < 0 ? 0 : Math.round(10 * r) / 10;
+						s.childs().baseLevelPercentage.setValue(Math.max(Math.min(n, 100), 0))
+					}
+				}
+				requestMoreDataAvailable() {
+					return this._requestMoreDataAvailable
+				}
+				endOfData() {
+					return null !== this._endOfDataType
+				}
+				endOfDataType() {
+					return this._endOfDataType
+				}
+				dataPoweredBy() {
+					return this._dataPoweredBy
+				}
+				boxSizeValue() {
+					return this._boxSizeValue
+				}
+				isUserDeletable() {
+					return !1
+				}
+				changeSymbol() {
+					this.setSymbolIntervalCurrencyDelayed(), this.model().checkLineToolSelection()
+				}
+				changeInterval() {
+					this.setSymbolIntervalCurrencyDelayed()
+				}
+				changeTimeFrame() {
+					(0, n.trackEvent)("GUI", "Change timeframe")
+				}
+				onTagsChanged() {
+					return this._tagsChanged
+				}
+				state(e) {
+					var t;
+					const s = this.obsoleteZOrder();
+					let i = {
+						type: "MainSeries",
+						id: this.id(),
+						zorder: s,
+						haStyle: this._haStyle,
+						renkoStyle: this._renkoStyle,
+						pbStyle: this._pbStyle,
+						kagiStyle: this._kagiStyle,
+						pnfStyle: this._pnfStyle,
+						rangeStyle: this._rangeStyle,
+						formattingDeps: this._formattingDeps
+					};
+					const r = this.properties().state();
+					return (null === (t = this._symbolInfo) || void 0 === t ? void 0 : t.ticker) && (r.symbol = this._symbolInfo.ticker), this._model.unitConversionEnabled() || (r.unitId = null), i.state = r, e && (i = {
+						...i,
+						bars: this._barsState(this.bars()),
+						nsBars: this._barsState(this.nsBars()),
+						symbolInfo: this._symbolInfo,
+						rtPrice: this.data().lastProjectionPrice,
+						boxSize: this.data().boxSize,
+						reversalAmount: this.data().reversalAmount
+					}), i
+				}
+				restoreState(e, t) {
+					if (t && this._setStatus(5), !this._model.unitConversionEnabled() && e.state && delete e.state.unitId, this._properties.mergeAndFire(e.state), this._properties.hasChild("esdBreaksStyle") && this._properties.removeProperty("esdBreaksStyle"), this._prevChartStyle = this.properties().childs().style.value(), this.createPaneView(), t) {
+						const t = e;
+						this.restoreData(t.bars, t.nsBars, t.symbolInfo, t.rtPrice, t.boxSize, t.reversalAmount)
+					}
+					e.formattingDeps && (this._formattingDeps = e.formattingDeps, this._recreatePriceFormattingDependencies())
+				}
+				restoreData(e, t, s, i, r, n) {
+					this._status = 5, this._data = new h.SeriesData, this._data.bars().restoreState(e), this._data.nsBars().restoreState(t), this._updateSymbolInfo(s, !1), this._data.lastProjectionPrice = i, this._data.boxSize = r;
+					const a = this.properties().childs();
+					r || (6 === a.style.value() ? this._data.boxSize = a.pnfStyle.childs().inputs.childs().boxSize.value() : 4 === a.style.value() && (this._data.boxSize = a.renkoStyle.childs().inputs.childs().boxSize.value())), this._data.reversalAmount = n, n || 5 === a.style.value() && (this._data.reversalAmount = a.kagiStyle.childs().inputs.childs().reversalAmount.value()), this._loading = !1
+				}
+				async setGotoDateResult(e) {
+					this._gotoDateResultCleared = !1;
+					const t = await s.e(4079).then(s.bind(s, 293467));
+					this._gotoDateResultCleared || (this._gotoDateView = new t.GotoDateView(this, e), this._gotoDateView.doNotShowLastAvailableBar(this._doNotShowLastAvailableBar), this._model.updateSource(this))
+				}
+				clearGotoDateResult() {
+					this._gotoDateView = null, this._gotoDateResultCleared = !0
+				}
+				doNotShowLastAvailableBar(e) {
+					var t;
+					this._doNotShowLastAvailableBar = e, null === (t = this._gotoDateView) || void 0 === t || t.doNotShowLastAvailableBar(e)
+				}
+				_barsState(e) {
+					const t = e.state();
+					return t.data.forEach((e => e.value.splice(7, 1))), t
+				}
+				_updateBarFunction() {
+					this._barFunction = (0, Lt.barFunctionByStyle)(this.style(), this.priceSource())
+				}
+				_setProperties(e) {
+					e.hasChild("timeframe") || e.merge({
+						timeframe: ""
+					}), e.hasChild("shortName") || e.merge({
+						shortName: ""
+					}), e.hasChild("currencyId") || e.addChild("currencyId", new(c())(null)), e.hasChild("unitId") || e.addChild("unitId", new(c())(null)), this._properties = e;
+					const t = e.childs();
+					t.symbol.listeners().subscribe(this, this.changeSymbol), t.interval.listeners().subscribe(this, this.changeInterval), t.currencyId.listeners().subscribe(this, this._changeCurrency), t.unitId.listeners().subscribe(this, this._changeUnit), t.timeframe.listeners().subscribe(this, this.changeTimeFrame), e.subscribe(this, this._onPropertiesChanged)
+				}
+				_updateSessionIdProxyProperty(e) {
+					const t = this._properties.childs().sessionId.value();
+					let s = t;
+					if (e) {
+						const e = this.symbolInfo();
+						null !== e && (s = e.subsession_id || t)
+					}
+					this._ignoreSessionIdProxyPropertyChanges = !0, this._sessionIdProxyProperty.setValue(s), this._ignoreSessionIdProxyPropertyChanges = !1
+				}
+				_onSessionIdProxyPropertyChanged() {
+					this._ignoreSessionIdProxyPropertyChanges || this._properties.childs().sessionId.setValue(this._sessionIdProxyProperty.value()), this._updateLastPriceAnimationActive()
+				}
+				_onSymbolResolved(e) {
+					this._seriesErrorMessage = null, this._updateSymbolInfo(e, !1), this._model.updateSource(this), this._model.onWidget() || ((0, n.trackEvent)("Symbol", e.listed_exchange, e.name), (0, n.trackEvent)("Symbol Type", e.type, e.listed_exchange));
+					const t = e.minmov / e.pricescale,
+						s = this.properties().childs();
+					4 === s.style.value() && s.renkoStyle.childs().inputs.childs().boxSize.value() < t ? s.renkoStyle.childs().inputs.merge({
+						boxSize: t
+					}) : 6 === s.style.value() && s.pnfStyle.childs().inputs.childs().boxSize.value() < t ? s.pnfStyle.childs().inputs.merge({
+						boxSize: t
+					}) : 5 === s.style.value() && s.kagiStyle.childs().inputs.childs().reversalAmount.value() < t && s.kagiStyle.childs().inputs.merge({
+						reversalAmount: t
+					}), this._checkInterval(), this._checkChartStyle(), this._formattingDeps = {
+						format: e.format,
+						pricescale: e.pricescale,
+						minmov: e.minmov,
+						fractional: e.fractional,
+						minmove2: e.minmove2
+					}
+				}
+				_onSymbolError(e) {
+					this._setStatus(4), this._loading = !1, this._properties.childs().shortName.setValue(this._properties.childs().symbol.value()), this._model.clearAllStudies(), this.updateAllViews((0, ce.dataSourceChangeEvent)(this.id())), this._model.updateSource(this), e !== rt.permissionDenied && this._model.resetTimeScale(), this._sendTelemetryCounter("symbol_error", this._getTelemetryAdditionalData(e, !1)), this._symbolResolvingActive.setValue(!1)
+				}
+				_sendTelemetryCounter(e, t) {
+					void 0 === t && (t = this._getTelemetryAdditionalData());
+					const s = Object.assign({
+						count: 1
+					}, {
+						additional: t
+					});
+					ye.telemetry.sendChartReport(e, s)
+				}
+				_getTelemetryAdditionalData(e, t) {
+					t = void 0 === t || t;
+					const s = {
+						symbol: this.actualSymbol()
+					};
+					return t && (s.resolution = this.interval()), void 0 !== e && (s.reason = e), s
+				}
+				_onSeriesLoading(e) {
+					this._loading = !0, this._setStatus(2)
+				}
+				_onDataUpdated(e, t) {
+					if (this.hasDelayedSymbolIntervalChange()) {
+						if (this._willSymbolIntervalCurrencyChanged()) return void qt.logNormal("command comes during symbol/interval changing");
+						qt.logNormal("data_update comes when symbol interval delay present but symbol/interval should not be changed")
+					}
+					t ? this._requestMoreDataAvailable = !0 : this._lastPriceAnimationActive && this._seriesLoaded && this._lineStyleLastPriceCirclePaneView.update((0, ce.dataSourceChangeEvent)(this.id())), this._lastBarCloseTime = e && e.closeTime || null, this._boxSizeValue.setValue(this.data().boxSize),
+						this._statusView.update(), this.clearAveragePriceCache(), this.clearHighLowPriceCache();
+					const s = this.model(),
+						r = (0, i.ensureNotNull)(s.paneForSource(this));
+					s.recalculatePane(r, (0, ce.dataSourceChangeEvent)(this.id())), s.updateSource(this)
+				}
+				_setStatus(e) {
+					this._status = e, this._statusView.update(), this.model().updateSource(this), this._onStatusChanged.fire()
+				}
+				_willSymbolIntervalCurrencyChanged() {
+					const e = this.properties().childs(),
+						t = this._checkIntervalWillChanged(e.interval.value()),
+						s = this._checkSymbolWillChanged(e.symbol.value()),
+						i = this._checkCurrencyWillChanged(e.currencyId.value()),
+						r = this._checkUnitWillChanged(e.unitId.value());
+					return s || t || i || r
+				}
+				_checkSymbolWillChanged(e) {
+					return !this.symbolSameAsCurrent(e)
+				}
+				_checkIntervalWillChanged(e) {
+					return !z.Interval.isEqual(this.m_interval, e)
+				}
+				_recreateFormatter() {
+					var e, t, s;
+					const i = null !== (t = null === (e = null === Ft.customFormatters || void 0 === Ft.customFormatters ? void 0 : Ft.customFormatters.priceFormatterFactory) || void 0 === e ? void 0 : e.call(Ft.customFormatters, this.symbolInfo(), this.properties().childs().minTick.value())) && void 0 !== t ? t : null;
+					null !== i ? (this._formatter = i, this._ignoreMinMoveFormatter = i) : (this._formatter = (0, _.createSeriesFormatter)(null !== (s = this.symbolInfo()) && void 0 !== s ? s : this._formattingDeps, this.properties().childs().minTick.value()), this._ignoreMinMoveFormatter = (0, _.createSeriesFormatter)(this.symbolInfo(), this.properties().childs().minTick.value(), !0)), this.priceScale() && this.priceScale().updateFormatter(), this._formatterChanged.fire()
+				}
+				_recreatePriceStep() {
+					const {
+						minMove: e,
+						priceScale: t
+					} = (0, _.getSeriesPriceFormattingState)(this.symbolInfo()), s = e / t;
+					this._ignoreMinMovePriceStep = 1 / t, this._priceStep !== s && (this._priceStep = s, this._priceStepChanged.fire())
+				}
+				_recreatePriceFormattingDependencies() {
+					this._recreateFormatter(), this._recreatePriceStep()
+				}
+				_onQuotesUpdate(e, t) {
+					if (Wt) {
+						const e = void 0 !== t.values.change || void 0 !== t.values.change_percent;
+						e && this._legendView.update();
+						const s = void 0 !== t.values.prev_close_price;
+						s && ((0, i.ensureNotNull)(this._prevClosePriceLineView).update((0, ce.dataSourceChangeEvent)(this.id())), (0, i.ensureNotNull)(this._prevClosePriceAxisView).update((0, ce.dataSourceChangeEvent)(this.id()))), (e || s) && this.model().updateSource(this)
+					}
+					void 0 !== e.values.current_session && e.values.current_session !== this._currentSession && (this._currentSession = e.values.current_session, this._updateLastPriceAnimationActive())
+				}
+				_updateIsPrePostMarketPricesForbiddenProperty() {
+					const e = (0, _.symbolHasPreOrPostMarket)(this._symbolInfo) && (this.isDWM() || (0, _.isRegularSessionId)(this.sessionIdProxyProperty().value()));
+					this._isPrePostMarketPricesAvailableProperty.setValue(e)
+				}
+				_updateSettlementAsCloseForbiddenProperty() {
+					var e;
+					const t = this.isDWM() && Boolean(null === (e = this._symbolInfo) || void 0 === e ? void 0 : e.has_settlement);
+					this._isSettlementAsCloseForbiddenProperty.setValue(!t)
+				}
+				_updateBackAdjustmentForbiddenProperty() {
+					var e;
+					const t = Boolean(null === (e = this._symbolInfo) || void 0 === e ? void 0 : e.has_backadjustment);
+					this._isBackAdjustmentForbiddenProperty.setValue(!t)
+				}
+				_getSymbolForApi() {
+					return (0,
+						_.symbolForApi)(this.symbolInfo() || this._prevSymbolInfo, this.symbol())
+				}
+				_getSymbolObject() {
+					const e = this._getExtendedSymbolObject();
+					if (m.SYMBOL_STRING_DATA.hasOwnProperty(this.properties().childs().style.value())) {
+						return {
+							symbol: e,
+							type: this.styleStudyInfo(this.getStyleShortName() + "Style").studyId + "!",
+							inputs: this.getInputsProperties().state()
+						}
+					}
+					return e
+				}
+				_getExtendedSymbolObject() {
+					const e = {
+						symbol: this._getSymbolForApi()
+					};
+					null !== this.currency() && (e["currency-id"] = this.currency());
+					const t = this.unit();
+					this._model.unitConversionEnabled() && null !== t && (e["unit-id"] = t); {
+						const t = this.properties().childs();
+						e.adjustment = t.dividendsAdjustment.value() ? "dividends" : "splits", this.isDWM() || (e.session = t.sessionId.value()), t.backAdjustment.value() && (e.backadjustment = "default"), t.settlementAsClose.value() || (e["settlement-as-close"] = !1)
+					}
+					return e
+				}
+				_changeCurrency() {
+					this.setSymbolIntervalCurrencyDelayed(), this.model().checkLineToolSelection(), this._currencyChanged.fire()
+				}
+				_changeUnit() {
+					this._model.unitConversionEnabled() && (this.setSymbolIntervalCurrencyDelayed(), this.model().checkLineToolSelection()), this._unitChanged.fire()
+				}
+				_checkCurrencyWillChanged(e) {
+					return this._currency !== e
+				}
+				_checkUnitWillChanged(e) {
+					return this._model.unitConversionEnabled() && this._unit !== e
+				}
+				_checkInterval() {
+					if (this._symbolInfo && (z.Interval.isIntraday(this.interval()) && !this._symbolInfo.has_intraday && this.requestingIntradayWhenNotSupported.fire(), this._symbolInfo.hasOwnProperty("supported_resolutions"))) {
+						const e = z.Interval.normalize(this._properties.childs().interval.value());
+						null !== e && -1 === this._symbolInfo.supported_resolutions.indexOf(e) && this.requestingResolutionWhenNotSupported.fire(this._symbolInfo.supported_resolutions[0])
+					}
+				}
+				_checkChartStyle() {
+					const e = this.style();
+					(0, _.isCloseBasedSymbol)(this.symbolInfo()) ? (0, _.isSingleValueBasedStyle)(e) || (this.requestingStyleIsNotSupported.fire(), this._styleToRecover = {
+						correctedStyle: this.style(),
+						originalStyle: e
+					}) : null !== this._styleToRecover && (this.requestingStyleSupportRecovered.fire(this._styleToRecover.originalStyle), this._styleToRecover = null)
+				}
+				_updateSymbolInfo(e, t) {
+					var s;
+					if (this._prevSymbolInfo = t ? this._symbolInfo : null, this._symbolInfo = e, e) {
+						const t = this._properties.childs();
+						t.shortName.setValue(e.name);
+						const i = (0, _.extractSymbolNameFromSymbolInfo)(e, null !== (s = this.m_symbol) && void 0 !== s ? s : null);
+						i && t.symbol.setValue(i), this._currency = (0, _.symbolCurrency)(e), this._unit = (0, _.symbolUnit)(e, this._model.unitConversionEnabled()), "alwaysOff" === (0, H.currencyUnitVisibilityProperty)().value() || this._currency === t.currencyId.value() && this._unit === t.unitId.value() || this._model.fullUpdate(), t.currencyId.setValue(this._currency), t.unitId.setValue(this._unit), this._updateSessionIdProxyProperty(!0)
+					}
+					this._base = e ? e.pricescale / e.minmov : 100, this._pointValue = e && e.pointvalue || 1;
+					const i = (0, Xe.encodeExtendedSymbolOrGetSimpleSymbolString)(this._getExtendedSymbolObject());
+					this._quotesProvider.setQuotesSessionSymbol(i), this._marketStatusModel.setSymbolInfo(e), e && this._recreatePriceFormattingDependencies(), this._statusView.update(),
+						this.priceScale().updateFormatter(), this._symbolResolvingActive.setValue(!e), this._dataPoweredBy = (0, be.getDataVendorString)(e), this._updateIsPrePostMarketPricesForbiddenProperty(), this._updateBackAdjustmentForbiddenProperty(), this._updateSettlementAsCloseForbiddenProperty()
+				}
+				_createHighLowAvgViews() {
+					const e = this.properties().childs().highLowAvgPrice,
+						t = this._getHighLowPrice.bind(this),
+						s = function(e, t, s, i) {
+							const r = s.childs(),
+								n = je(e, t, He, r.highLowPriceLabelsVisible, r.highLowPriceLinesVisible, (() => i(0))),
+								a = je(e, t, ze, r.highLowPriceLabelsVisible, r.highLowPriceLinesVisible, (() => i(1)));
+							return {
+								paneViews: [n.paneView, a.paneView],
+								panePriceAxisViews: [n.panePriceAxisView, a.panePriceAxisView],
+								priceAxisViews: [n.priceAxisView, a.priceAxisView],
+								priceLineAxisViews: [n.priceLineAxisView, a.priceLineAxisView]
+							}
+						}(this._model, this, e, t);
+					this._highLowAvgPaneViews.push(...s.paneViews), this._labelPaneViews.push(...s.panePriceAxisViews), this._priceAxisViews.push(...s.priceAxisViews), this._priceLineAxisViews.push(...s.priceLineAxisViews)
+				}
+				_createAverageViews() {}
+				_getHighLowPrice(e) {
+					if (!this._highLowPriceCache.has(e)) {
+						const e = this._model.timeScale().visibleBarsStrictRange();
+						if (null === e) return null;
+						const t = function(e, t, s) {
+							return e.minMaxOnRangeCached(t, s, [{
+								name: "low",
+								offset: 0
+							}, {
+								name: "high",
+								offset: 0
+							}])
+						}(this._model.mainSeries().bars(), e.firstBar(), e.lastBar());
+						if (null === t) return null;
+						this._highLowPriceCache.set(1, t.min), this._highLowPriceCache.set(0, t.max)
+					}
+					return this._highLowPriceCache.get(e)
+				}
+				_getAveragePrice(e) {
+					return null
+				}
+				_onSessionIdPropertyChanged() {
+					this._sessionIdChanged.fire(), this.isDWM() || (this.restart(), this._updateLastPriceAnimationActive())
+				}
+				_subscribeRestartToSessionIdChange() {
+					this.properties().childs().sessionId.subscribe(this, this._onSessionIdPropertyChangedBound)
+				}
+				_unsubscribeRestartToSessionIdChange() {
+					this.properties().childs().sessionId.unsubscribe(this, this._onSessionIdPropertyChangedBound)
+				}
+				_updateLastPriceAnimationActive() {
+					if (!this._options.lastPriceAnimationEnabled) return;
+					const e = this._lastPriceAnimationActive,
+						t = this.properties().childs(),
+						s = t.style.value();
+					if (this._model.isSnapshot() || !t.visible.value() || 3 !== s && 10 !== s && 2 !== s) this._lastPriceAnimationActive = !1;
+					else {
+						const e = this.currentSession(),
+							t = !(0, _.isRegularSessionId)(this.sessionIdProxyProperty().value()) && !this.isDWM();
+						this._lastPriceAnimationActive = "market" === e || t && ("pre_market" === e || "post_market" === e)
+					}
+					this._lastPriceAnimationActive && e !== this._lastPriceAnimationActive && this.model().invalidate(st.InvalidationMask.cursor())
+				}
+				_onPropertiesChanged(e) {
+					const t = this._properties.childs();
+					e !== t.symbol && e !== t.interval && e !== t.timeframe && (this._tagsChanged.fire(), this.createPaneView(), this.updateAllViews((0, ce.dataSourceChangeEvent)(this._id)), this.model().updateSource(this), (0, a.emit)("series_properties_changed", this._id))
+				}
+				_recalcSymbolTextSourceProxyProperty() {
+					this._textSourceIsAlwaysTickerRestrictionEnabled ? this._symbolTextSourceProxyProperty.setValue("ticker") : this._symbolTextSourceProxyProperty.setValue(this._properties.childs().statusViewStyle.childs().symbolTextSource.value())
+				}
+				_clearStylePlot(e, t) {
+					if (0 === e.size()) return;
+					if (void 0 === t && e !== this.nsBars()) return void(this._precomputedBarStyles = new WeakMap);
+					const s = null != t ? t : (0, i.ensureNotNull)(e.firstIndex()),
+						r = (0, i.ensureNotNull)(e.lastIndex()) + 1;
+					e.range(s, r).each(((e, t) => (this._precomputedBarStyles.delete(t), !1)))
+				}
+			}
+		},
+		404703: (e, t, s) => {
+			var i = s(97639),
+				r = s(232567),
+				n = s(559270).PriceRange;
+			TradingView.DEFAULT_BAR_COUNT = 300, TradingView.TIME_PLOT = 0, TradingView.OPEN_PLOT = 1, TradingView.HIGH_PLOT = 2, TradingView.LOW_PLOT = 3, TradingView.CLOSE_PLOT = 4, TradingView.ADT_PLOT = 6;
+			var a = s(588537).ensureNotNull,
+				o = s(762527).SeriesBase,
+				l = s(611688);
+			const {
+				dataSourceChangeEvent: h
+			} = s(194459);
+			var d = !1,
+				{
+					hash: u
+				} = s(290557),
+				c = s(362145).FormattersSerializer,
+				_ = s(850979).FutureBarsPaneView,
+				p = s(996159).getSeriesDangerReason,
+				m = s(647527).translateSessionExtendedDescription,
+				S = s(752280),
+				b = S.PlotRowSearchMode,
+				y = S.mergeMinMax,
+				g = s(345848).trackEvent,
+				v = s(911905).getLogger("Chart.Series"),
+				f = s(195048),
+				w = s(749473),
+				P = s(364019).getServerInterval,
+				C = s(273044).Interval,
+				x = s(621579).SeriesHorizontalBaseLinePaneView,
+				I = s(198796).deepExtend,
+				T = s(15693).encodeExtendedSymbolOrGetSimpleSymbolString,
+				A = s(251954),
+				V = s(285055).TIMEFRAMETYPE,
+				R = s(388230).InvalidationMask,
+				D = s(749473).isSingleValueBasedStyle;
+			class E extends o {
+				constructor(e, t, s, r) {
+					t.removeProperty("currencyId"), super(e, t, s, r), this._symbolIntervalChanged = new i, this.requestingIntradayWhenNotSupported = new i, this.requestingResolutionWhenNotSupported = new i, this._onInReplayStateChanged = new i, this._replayExitedDueUnsupportedInterval = new i, this._replayExitedDueUnavailableForUserInterval = new i, this._onTimeFrameApplied = new i, this._chartApi = e._chartApi, this.createPaneView(), this._replaySubscriber = null, this._isReplayResolutionAvailableForUser = null, this._properties.addExclusion && (this._properties.addExclusion("visible"), this._properties.addExclusion("currencyId")), this._futureBarsPaneView = null, this.properties().minTick.listeners().subscribe(this, E.prototype._recreateFormatter);
+					var n = this;
+					this.properties().minTick.listeners().subscribe(null, (function() {
+						n._model.fullUpdate()
+					})), this._priceLineView = null, this._baseHorizontalLineView = new x(this), this.bindStyleChange(), this.bindJapChartsInputs(), this._createIsDWMProperty(), this.createDividendsAdjustmentProperty(), this.dividendsAdjustment.listeners().subscribe(this, (function() {
+						this.restart()
+					})), this._dataPoweredBy = null, this._symbolIntervalChanged.subscribe(this, this._checkInterval), this.properties().showCountdown.listeners().subscribe(this, E.prototype._onChangeShowCountdown), this._onChangeShowCountdown(this.properties().showCountdown), this._recreatePriceFormattingDependencies(), this.properties().lineStyle.priceSource.listeners().subscribe(this, this._updateBarFunction), this.properties().areaStyle.priceSource.listeners().subscribe(this, this._updateBarFunction), this.properties().baselineStyle.priceSource.listeners().subscribe(this, this._updateBarFunction), this.properties().columnStyle.priceSource.listeners().subscribe(this, this._updateBarFunction), this._updateBarFunction()
+				}
+				isLoading() {
+					return this._loading
+				}
+				isSymbolInvalid() {
+					return this._status === E.STATUS_INVALID_SYMBOL
+				}
+				styleStudyInfo(e) {
+					return this.styleStudyInfos()[e]
+				}
+				priceLineColor(e) {
+					return this.properties().priceLineColor.value() || e
+				}
+				serverTimeOffset() {
+					return this._chartApi.serverTimeOffset()
+				}
+				_onChangeShowCountdown(e) {
+					var t = this;
+					e.value() ? this._countdownUpdateTimer = this._model.setInterval((function() {
+						t._priceAxisView.updateCountdown()
+					}), 500) : (this._model.clearInterval(this._countdownUpdateTimer), delete this._countdownUpdateTimer)
+				}
+				_createIsDWMProperty() {
+					this._isDWMProperty = new r(this.isDWM()), this._onRestarted.subscribe(this, (function() {
+						this._isDWMProperty.setValue(this.isDWM())
+					}))
+				}
+				isDWMProperty() {
+					return this._isDWMProperty
+				}
+				fixLastBar(e) {
+					this._futureBarsPaneView || (this._futureBarsPaneView = new _(this.model().timeScale(), this, this.bars().lastIndex(), e))
+				}
+				isPulse() {
+					return this._symbolInfo && this._symbolInfo.resolutions.length > 0
+				}
+				onSymbolIntervalChanged() {
+					return this._symbolIntervalChanged
+				}
+				alertCreationAvailable() {
+					const e = this.symbolInfo();
+					return this.hasStateForAlert() && e && !w.isEconomicSymbol(e)
+				}
+				hasStateForAlert() {
+					return l.enabled("alerts")
+				}
+				stateForAlert() {
+					var e, t = this === this._model.mainSeries() ? "MainSeries" : TradingView.className(this.constructor),
+						s = this.idForAlert(),
+						i = this.formatter();
+					i = i ? c.serialize(i) : null;
+					var r = this.isDWM() ? "regular" : this.sessionIdProxyProperty().value();
+					if (this._symbolInfo && this._symbolInfo.subsessions && this._symbolInfo.subsessions.length > 1) {
+						var n = this._symbolInfo.subsessions.find((function(e) {
+							return e.id === r
+						}));
+						n && (e = m(n.description))
+					}
+					var a = {
+							id: s,
+							uniqueId: s,
+							type: t,
+							proSymbol: this.proSymbol(),
+							actualSymbol: this.actualSymbol(),
+							symbolString: this.getSymbolString(),
+							interval: this.interval(),
+							style: this.properties().style.value(),
+							styleInputs: this.getInputsProperties().state(),
+							sessionId: r,
+							sessionDescription: e,
+							dividendsAdjustment: this.properties().dividendsAdjustment.value(),
+							backAdjustment: this.properties().backAdjustment.value() && !this.isBackAdjustmentForbiddenProperty().value(),
+							settlementAsClose: this.properties().settlementAsClose.value() && !this.isSettlementAsCloseForbiddenProperty().value(),
+							boxSize: this.data().boxSize,
+							reversalAmount: this.data().reversalAmount,
+							isSpread: this.isSpread(),
+							formatter: i
+						},
+						o = p(this);
+					return o && (a.dangerReason = o), a
+				}
+				idForAlert() {
+					return u(this.getSymbolString() + C.normalize(this.interval())).toString()
+				}
+				seriesSource() {
+					return this._seriesSource
+				}
+				_onSeriesTimeFrame(e, t, s, i, r) {
+					var n = D(this.style()) ? e + .5 : e,
+						a = t;
+					if (void 0 === r) null !== s && s.type !== V.PeriodBack || (a += this._model.studyAwareDefaultRightOffset());
+					else if (r.applyDefaultRightMargin) a += this._model.studyAwareDefaultRightOffset();
+					else if (r.percentRightMargin) {
+						var o = t - n + 1,
+							l = Math.max(0, Math.min(.99, r.percentRightMargin / 100));
+						a += l * o / (1 - l)
+					}
+					this._model.setTimeViewport(n, a)
+				}
+				_onSeriesError(e) {
+					this._loading = !1;
+					var t = e.error;
+					if (e.ctx) {
+						var s = {};
+						Object.entries(e.ctx).forEach((function(e, t) {
+							s[e] = t.toString()
+						})), t = t.format(s)
+					}
+					l.enabled("charting_library_debug_mode") && v.logNormal("Error reason: " + t), this._seriesErrorMessage = t;
+					const i = l.enabled("no_bars_status") && this._symbolInfo ? E.STATUS_NO_BARS : E.STATUS_INVALID_SYMBOL;
+					this._setStatus(i), this._seriesLoaded = !0, this._sendTelemetryCounter("series_error", this._getTelemetryAdditionalData(t)), this._enablePriceRangeReady()
+				}
+				_onSeriesCompleted(e, t, i) {
+					if (this._setSymbolIntervalDelay) {
+						if (this._willSymbolIntervalCurrencyChanged()) return void v.logNormal("command comes during symbol/interval changing");
+						v.logNormal("series_completed comes when symbol interval delay present but symbol/interval should not be changed")
+					}
+					this._sendTelemetryCounter("series_loaded", this._getTelemetryAdditionalData()), this._loading = !1, this._seriesErrorMessage = null;
+					var r = e;
+					switch ("pulsed" === r && (r = "delayed"), r) {
+						case "streaming":
+							this._setStatus(E.STATUS_READY);
+							break;
+						case "endofday":
+							this._setStatus(E.STATUS_EOD);
+							break;
+						case "delayed":
+							this._setStatus(E.STATUS_DELAYED);
+							break;
+						case "pulsed":
+							this._setStatus(E.STATUS_PULSE);
+							break;
+						case "replay":
+							this._setStatus(E.STATUS_REPLAY)
+					}
+					r.match(/delayed_streaming/) && this._setStatus(E.STATUS_DELAYED_STREAMING), this._endOfDataType = void 0 !== i ? i.data_completed : null;
+					var n = this._model.paneForSource(this);
+					n.recalculatePriceScale(this.priceScale(), h(this.id()));
+					var a = R.full();
+					(null !== this._model.appliedTimeFrame().value() && a.lockVisibleTimeRangeOnResize(), this._model.invalidate(a), this.model().recalcVisibleRangeStudies(!0), this.model().recalcStudyBasedLineTools(), !this.m_priceScale.isLockScale() || this.model().timeScale().isEmpty() || this._seriesLoaded || (this.model().timeScale()._correctOffset(), this.model().timeScale().correctBarSpacing(), this.model().resetPriceScale(n, this.priceScale())), this._seriesLoaded = !0, d) || (d = !0, (0, s(975420).trackTiming)("Chart", "Time to series", window.performance.now()));
+					this.requestMoreData(), this._enablePriceRangeReady()
+				}
+				_onBarReceived(e) {
+					this.model().recalcVisibleRangeStudies(!0)
+				}
+				isStarted() {
+					return this._seriesSource.isStarted()
+				}
+				restart() {
+					if (this._status !== E.STATUS_SNAPSHOT) {
+						this._loading = !0, this._onRestarted.fire(), this._setStatus(E.STATUS_RESOLVING), this._updateSymbolInfo(null, !0);
+						var e = this._properties.interval.value();
+						this._checkIntervalWillChanged(e) && this._notifyIntervalChanged(e);
+						var t = null;
+						this._pendingTimeRange && (t = this._pendingTimeRange, delete this._pendingTimeRange), this._removeReplaySubscriber(), this._onBeforeModifySeries(this.getSymbolString(), e), this._onTimeFrameApplied.fire(t), e = P(e), this._data = null, this._seriesSource.modifySeries(this._getResolvingSymbolObject(), e, t), this._seriesSource.isStarted() || this._seriesSource.start(), this.m_symbol = this._properties.symbol.value(), this._currency = this._properties.currencyId.value(), this._unit = this._properties.unitId.value(), this.m_interval = this._properties.interval.value()
+					}
+				}
+				hasDelayedSymbolIntervalChange() {
+					return !!this._setSymbolIntervalDelay
+				}
+				setSymbolIntervalCurrencyDelayed() {
+					this._willSymbolIntervalCurrencyChanged() && (this._setSymbolIntervalDelay && (v.logNormal("Clear timeout to change symbol/interval #" + this._setSymbolIntervalDelay), clearTimeout(this._setSymbolIntervalDelay)), this._setSymbolIntervalDelay = setTimeout(function() {
+						const e = this._properties;
+						v.logNormal("Timeout #" + this._setSymbolIntervalDelay + ' fired, new symbol will be "' + e.symbol.value() + '"'), delete this._setSymbolIntervalDelay, this._setSymbolInterval(e.symbol.value(), e.interval.value(), e.currencyId.value(), e.unitId.value())
+					}.bind(this), 30), v.logNormal("Started timeout #" + this._setSymbolIntervalDelay + ' to change symbol/interval from "' + this.m_symbol + '" to "' + this._properties.symbol.value() + '"'))
+				}
+				rerequestData() {
+					this._setSymbolInterval(this.m_symbol, this.m_interval, this._currency, this._unit, !0)
+				}
+				_notifyIntervalChanged(e) {
+					var t = {
+						timeframe: this._pendingTimeRange
+					};
+					this._intervalChanged.fire(e, t), this._pendingTimeRange = t.timeframe
+				}
+				_setSymbolInterval(e, t, s, i, r) {
+					this.clearGotoDateResult();
+					var n = C.isRange(t);
+					n && this._properties.rangeStyle.inputs.range.setValue(C.parse(t).multiplier());
+					var a = this._checkSymbolWillChanged(e),
+						o = this._checkIntervalWillChanged(t),
+						l = o && C.parse(this.m_interval).isDWM() !== C.parse(t).isDWM(),
+						h = this._checkCurrencyWillChanged(s),
+						d = this._checkUnitWillChanged(i);
+					if (a || o || h || d || r) {
+						if ((null !== s && h || null !== i && d) && this.isInReplay()) {
+							const e = this.symbolInfo();
+							null !== e && e.original_currency_id === s || this._removeReplaySubscriber()
+						}
+						if (this._syncModel = null, this.m_symbol = e, this.m_interval = t, this._currency = s, this._unit = i, this._status !== E.STATUS_SNAPSHOT && (!this._seriesSource.isStarted() || a || h || d || l) && this._updateSymbolInfo(null, !a && (h || d)), this.isInReplay()) {
+							var u = function() {
+								this._removeReplaySubscriber()
+							}.bind(this);
+							a ? u() : o && (n ? u() : this._isReplayResolutionAvailableForUser(t) ? this.isIntervalSupported(t) || (u(), this._replayExitedDueUnsupportedInterval.fire()) : (u(), this._replayExitedDueUnavailableForUserInterval.fire()))
+						}
+						if (this._status !== E.STATUS_SNAPSHOT) {
+							this._loading = !0, this._setStatus(E.STATUS_RESOLVING), this._updateIsPrePostMarketPricesForbiddenProperty(), this._updateBackAdjustmentForbiddenProperty(), this._updateSettlementAsCloseForbiddenProperty(), this._symbolIntervalChanged.fire(), o && this._notifyIntervalChanged(this.m_interval), this._onRestarted.fire(), this._seriesLoaded = !1, this._lineStyleLastPriceCirclePaneView.stopAnimation();
+							var c = null;
+							this._pendingTimeRange && (c = this._pendingTimeRange, delete this._pendingTimeRange), this._onTimeFrameApplied.fire(c), this._onBeforeModifySeries(this.getSymbolString(), t), this._data = null, this._seriesSource.modifySeries(this._getResolvingSymbolObject(), P(t), c, r), this._seriesSource.isStarted() || (this._predictBars = 0, this._seriesSource.start()), (a || h || d) && this.disablePriceRangeReady()
+						} else this._model.realignLineTools()
+					} else this._model.realignLineTools()
+				}
+				setDefaultTimeframe(e) {
+					this._pendingTimeRange = e
+				}
+				symbol() {
+					return this.properties().symbol.value()
+				}
+				hl2(e) {
+					return (this.high(e) + this.low(e)) / 2
+				}
+				hlc3(e) {
+					return (this.high(e) + this.low(e) + this.close(e)) / 3
+				}
+				ohlc4(e) {
+					return (this.open(e) + this.high(e) + this.low(e) + this.close(e)) / 4
+				}
+				priceRange(e, t) {
+					if (!TradingView.isInteger(e)) return v.logDebug("Series.priceRange: incorrect startBar"), null;
+					if (!TradingView.isInteger(t)) return v.logDebug("Series.priceRange: incorrect endBar"), null;
+					if (this.data().isEmpty()) return null;
+					if (this.m_priceScale.isLockScale()) {
+						var s = this._model.mainSeriesScaleRatio();
+						if (null !== s) {
+							var i = this.priceScale().internalHeight() / (this.model().timeScale().barSpacing() / s),
+								r = this.data().search(t, b.NearestLeft),
+								a = (r.value[TradingView.HIGH_PLOT] + r.value[TradingView.LOW_PLOT]) / 2;
+							return new n(a - .5 * i, a + .5 * i)
+						}
+					}
+					var o = this.priceSource();
+					if (null !== o) var l = this.data().bars().minMaxOnRangeCached(e, t, [{
+							name: o,
+							offset: 0
+						}]),
+						h = this.data().nsBars().minMaxOnRangeCached(e, t, [{
+							name: o,
+							offset: 0
+						}]);
+					else l = this.data().bars().minMaxOnRangeCached(e, t, [{
+						name: "low",
+						offset: 0
+					}, {
+						name: "high",
+						offset: 0
+					}]), h = this.data().nsBars().minMaxOnRange(e, t, [{
+						name: "low",
+						offset: 0
+					}, {
+						name: "high",
+						offset: 0
+					}]);
+					var d = null !== (l = y(l, h)) ? l.min === l.max ? new n(l.min - .5, l.max + .5) : new n(l.min, l.max) : new n(-.5, .5);
+					return this.priceScale().isLog() ? new n(this.priceScale().priceToLogical(d.minValue()), this.priceScale().priceToLogical(d.maxValue())) : d
+				}
+				nearestData(e, t) {
+					if (TradingView.isInteger(e)) {
+						var s = this.data().search(e, t);
+						return null !== s ? s : void 0
+					}
+					v.logDebug("Series.nearestData: incorrect logicalPoint")
+				}
+				nearestIndex(e, t) {
+					var s = this.nearestData(e, t);
+					return s ? s.index : void 0
+				}
+				paneViews() {
+					if (!this.properties().visible.value()) return null;
+					var e = [this._baseHorizontalLineView, this._paneView];
+					return this._futureBarsPaneView && e.push(this._futureBarsPaneView), this._projectionBarsPaneView && e.push(this._projectionBarsPaneView), null !== this._waterlineView && e.push(this._waterlineView), e.push(this._prevClosePriceLineView), null !== this._priceLineView && e.push(this._priceLineView), null !== this._gotoDateView && e.push(this._gotoDateView), e.push(...this._highLowAvgPaneViews), e.push(...this._averagePaneViews), e
+				}
+				purgeSymbolInfo() {
+					this._symbolInfo = null
+				}
+				requestMoreData(e) {
+					if ((this._status === E.STATUS_READY || this._status === E.STATUS_PULSE || this._status === E.STATUS_DELAYED || this._status === E.STATUS_DELAYED_STREAMING || this._status === E.STATUS_EOD || this._status === E.STATUS_REPLAY) && !this._model.timeScale().isEmpty()) {
+						var t = this._model.timeScale().visibleBarsStrictRange();
+						if (null !== t && 0 !== this.bars().size()) {
+							var s = t.lastBar() - a(this.data().last()).index;
+							if (this._predictBars < s && (this._predictBars = s, this._seriesSource.requestMoreTickmarks(s)), this._requestMoreDataAvailable) {
+								var i = a(this.bars().firstIndex()),
+									r = e || i - t.firstBar();
+								r <= 0 || (Number.isFinite(r) ? (this._requestMoreDataAvailable = !1, this._loading = !0, this._seriesSource.requestMoreData(r), this._setStatus(E.STATUS_LOADING)) : v.logWarn("requestMoreData: invalid bar count: " + r + ", visible bars: [" + t.firstBar() + ", " + t.lastBar() + "], last index: " + a(this.data().last()).index + ", predicted bars: " + this._predictBars + ", required bars:" + e))
+							}
+						}
+					}
+				}
+				bindStyleChange() {
+					var e = this;
+					Object.keys(E.STYLE_SHORT_NAMES).map((function(e) {
+						return E.STYLE_SHORT_NAMES[e] + "Style"
+					})).forEach((function(t) {
+						e._properties[t].listeners().subscribe(e, E.prototype.invalidateBarStylesCache)
+					}))
+				}
+				bindJapChartsInputs() {
+					this._properties.style.listeners().subscribe(this, this.onChartStyleChanged),
+						this._properties.renkoStyle.inputs.boxSize.listeners().subscribe(this, this.onInputChanged), this._properties.renkoStyle.inputs.style.listeners().subscribe(this, this.onInputChanged), this._properties.renkoStyle.inputs.atrLength.listeners().subscribe(this, this.onInputChanged), this._properties.renkoStyle.inputs.wicks.listeners().subscribe(this, this.onInputChanged), this._properties.renkoStyle.inputs.sources.listeners().subscribe(this, this.onInputChanged), this._properties.pbStyle.inputs.lb.listeners().subscribe(this, this.onInputChanged), this._properties.kagiStyle.inputs.reversalAmount.listeners().subscribe(this, this.onInputChanged), this._properties.kagiStyle.inputs.style.listeners().subscribe(this, this.onInputChanged), this._properties.kagiStyle.inputs.atrLength.listeners().subscribe(this, this.onInputChanged), this._properties.pnfStyle.inputs.boxSize.listeners().subscribe(this, this.onInputChanged), this._properties.pnfStyle.inputs.reversalAmount.listeners().subscribe(this, this.onInputChanged), this._properties.pnfStyle.inputs.sources.listeners().subscribe(this, this.onInputChanged), this._properties.pnfStyle.inputs.style.listeners().subscribe(this, this.onInputChanged), this._properties.pnfStyle.inputs.atrLength.listeners().subscribe(this, this.onInputChanged), this._properties.pnfStyle.inputs.oneStepBackBuilding.listeners().subscribe(this, this.onInputChanged), this._properties.rangeStyle.inputs.phantomBars.listeners().subscribe(this, this.onInputChanged)
+				}
+				createDividendsAdjustmentProperty() {
+					var e = this;
+					e.dividendsAdjustment = new r;
+					var t = function() {
+						var t = e._properties.dividendsAdjustment.value();
+						e.dividendsAdjustment.setValue(t), g("Dividends adjust", !0 === t ? "On" : "Off")
+					};
+					e._properties.dividendsAdjustment.listeners().subscribe(null, t), t()
+				}
+				dividendsAdjustmentProperty() {
+					return this._properties.dividendsAdjustment
+				}
+				isNeedRestart(e) {
+					return this._status !== E.STATUS_SNAPSHOT && (void 0 === e && (e = this.properties().style.value()), !w.isRangeStyle(this._prevChartStyle) && !w.isRangeStyle(e) && !(this._prevChartStyle === e || !w.isRequiringRestartSeriesStyles(this._prevChartStyle) && !w.isRequiringRestartSeriesStyles(e)))
+				}
+				applyPreferences(e) {
+					var t = I({}, e);
+					this.m_priceScale.setMode({
+						autoScale: t.priceAxisProperties.autoScale,
+						percentage: t.priceAxisProperties.percentage,
+						log: t.priceAxisProperties.log,
+						lockScale: t.priceAxisProperties.lockScale
+					}), this.setChartStyleWithIntervalIfNeeded(t.style), delete t.style, delete t.interval, this._properties.mergePreferences(t), this._properties.saveDefaults(), this.createPaneView(), this.invalidateBarStylesCache()
+				}
+				isRangeBasedStyle() {
+					return w.isRangeBasedStyle(this.style())
+				}
+				onInputChanged() {
+					this.restart()
+				}
+				getSymbolString() {
+					return T(this._getSymbolObject())
+				}
+				_getResolvingSymbolObject() {
+					var e = this._getSymbolObject();
+					return this._replaySubscriber && (e = this._replaySubscriber.generateReplaySymbol(e)), e
+				}
+				getStyleShortName() {
+					var e = this._properties.style.value();
+					if (E.STYLE_SHORT_NAMES.hasOwnProperty(e)) return E.STYLE_SHORT_NAMES[e];
+					throw new Error("Missed short name for style " + e)
+				}
+				getStyleProperties() {
+					return this._properties[this.getStyleShortName() + "Style"]
+				}
+				getInputsProperties() {
+					return this.getStyleProperties().inputs || new r
+				}
+				getInputsInfoProperties() {
+					return this.getStyleProperties().inputInfo || new r
+				}
+				isSpread() {
+					return null !== this._symbolInfo && "spread" === this._symbolInfo.type
+				}
+				getSymbolName() {
+					return this._symbolInfo ? this._symbolInfo.name : ""
+				}
+				loadDataTo(e) {
+					var t = this._properties.interval.value();
+					this._onTimeFrameApplied.fire(e), this._seriesSource.modifySeries(this._getResolvingSymbolObject(), P(t), e)
+				}
+				priceScale() {
+					return this.m_priceScale
+				}
+				setPriceScale(e) {
+					this.m_priceScale !== e && (this._priceScaleAboutToBeChanged.fire(), this.m_priceScale = e, this._properties.removeProperty("priceAxisProperties"), this._properties.addChild("priceAxisProperties", e.properties()), this._properties.priceAxisProperties.childChanged(), A.emit("series_event", "price_scale_changed"), this._priceScaleChanged.fire(e))
+				}
+				getSourceIcon() {
+					return {
+						type: "loadSvg",
+						svgId: "series." + this.properties().style.value()
+					}
+				}
+				isStyleSupported(e) {
+					return !this.isInReplay() || this.isStyleSupportedForReplay(e)
+				}
+				isIntervalSupported(e) {
+					return !this.isInReplay() || this._replaySubscriber.canChangeResolution(e)
+				}
+				isStyleSupportedForReplay(e) {
+					return w.isTimeBasedStyle(e)
+				}
+				isInReplay() {
+					return null !== this._replaySubscriber
+				}
+				onTimeFrameApplied() {
+					return this._onTimeFrameApplied
+				}
+				onInReplayStateChanged() {
+					return this._onInReplayStateChanged
+				}
+				replayExitedDueUnsupportedInterval() {
+					return this._replayExitedDueUnsupportedInterval
+				}
+				replayExitedDueUnavailableForUserInterval() {
+					return this._replayExitedDueUnavailableForUserInterval
+				}
+				switchToReplay(e, t) {
+					this._replaySubscriber = e, this._isReplayResolutionAvailableForUser = t, this._onInReplayStateChanged.fire(), this._replaySubscriber.modifySeries(this.getSymbolString(), this._properties.interval.value()), this.rerequestData()
+				}
+				switchToRealtime() {
+					this.isInReplay() && (this._removeReplaySubscriber(), this.rerequestData())
+				}
+				_removeReplaySubscriber() {
+					if (this.isInReplay()) {
+						var e = this._replaySubscriber;
+						this._replaySubscriber = null, this._isReplayResolutionAvailableForUser = null, this._onInReplayStateChanged.fire(), e.destroy()
+					}
+				}
+				_onBeforeModifySeries(e, t) {
+					this._replaySubscriber && this._replaySubscriber.modifySeries(e, t)
+				}
+				destroy() {
+					this._replayExitedDueUnsupportedInterval.destroy(), this._replayExitedDueUnavailableForUserInterval.destroy(), this._quotesProvider.quotesUpdate().unsubscribeAll(this), this._quotesProvider.destroy(), this.clearGotoDateResult(), this._legendView.destroy(), this._marketStatusModel.destroy(), null !== this._dataUpdatedModeModel && this._dataUpdatedModeModel.destroy(), this._dataProblemModel.destroy(), this._paneView && this._paneView.destroy && this._paneView.destroy(), this._onTimeFrameApplied.destroy(), this._seriesSource.destroy(), super.destroy()
+				}
+				dataEvents() {
+					return this._seriesSource.dataEvents()
+				}
+				moveData(e) {
+					return this._seriesSource.moveData(e)
+				}
+			}
+			Object.assign(E, f), TradingView.Series = E, t.Series = E, t.isSeries = function(e) {
+				return e instanceof E
+			}
+		},
+		939901: (e, t, s) => {
+			s.d(t, {
+				SeriesDataWindowView: () => _
+			});
+			var i = s(734906),
+				r = s(773547),
+				n = s(638456),
+				a = s(308170),
+				o = s(749473),
+				l = s(611688),
+				h = s(394683),
+				d = s(540968);
+			const u = n.CheckMobile.any(),
+				c = l.enabled("hide_resolution_in_legend");
+			class _ extends i.DataWindowView {
+				constructor(e, t) {
+					super(), this._invalidated = !0, this._series = e, this._model = t, this._valuesProvider = this._createValuesProvider(e, t), this._items = this._valuesProvider.getItems().map((e => new i.DataWindowItem(e.id, e.title, "", e.unimportant))), this.update()
+				}
+				update() {
+					this._invalidated = !0
+				}
+				items() {
+					return this._invalidated && (this._updateImpl(), this._invalidated = !1), this._items
+				}
+				series() {
+					return this._series
+				}
+				_updateImpl() {
+					const e = this._series.symbolInfo();
+					if (e) {
+						const t = [e.name];
+						c || t.push((0, r.translatedIntervalString)(this._series.interval())), (0, o.isEconomicSymbol)(e) && e.source ? t.push(e.source) : t.push((0, n.onWidget)() || "forex" === e.type ? e.exchange : e.listed_exchange), this._header = t.join(", "), this._title = e.description
+					} else this._header = this._series.symbol();
+					const t = this._model.crossHairSource().appliedIndex(),
+						s = this._valuesProvider.getValues(t);
+					for (let e = 0; e < s.length; ++e) {
+						const t = s[e],
+							i = this._items[e];
+						i.setValue(t.value), i.setVisible(t.visible), i.setColor(t.color)
+					}
+				}
+				_createValuesProvider(e, t) {
+					return new h.SeriesValuesProvider(e, t)
+				}
+				_showLastPriceAndChangeOnly() {
+					return u && (null === this._model.crossHairSource().pane || (0, d.isLineToolName)(a.tool.value()) || null !== this._model.lineBeingEdited())
+				}
+			}
+		},
+		621579: (e, t, s) => {
+			s.d(t, {
+				SeriesHorizontalBaseLinePaneView: () => r
+			});
+			var i = s(406059);
+			class r extends i.SeriesHorizontalLinePaneView {
+				constructor(e) {
+					super(e)
+				}
+				_updateImpl() {
+					this._lineRendererData.visible = !1;
+					const e = this._series.priceScale().mode();
+					if (!e.percentage && !e.indexedTo100) return;
+					const t = this._series.firstValue();
+					null !== t && (this._lineRendererData.visible = !0, this._lineRendererData.y = this._series.priceScale().priceToCoordinate(t, t), this._lineRendererData.color = this._series.properties().childs().baseLineColor.value())
+				}
+			}
+		},
+		406059: (e, t, s) => {
+			s.d(t, {
+				SeriesHorizontalLinePaneView: () => r
+			});
+			var i = s(350985);
+			class r extends i.HorizontalLinePaneView {
+				constructor(e) {
+					super(), this._series = e, this._model = e.model()
+				}
+			}
+		},
+		647527: (e, t, s) => {
+			s.d(t, {
+				translateSessionDescription: () => n,
+				translateSessionShortDescription: () => o,
+				translateSessionExtendedDescription: () => l
+			});
+			var i = s(575932);
+			const r = new Map([
+				["Premarket", (0, i.t)("Premarket", {
+					context: "sessions"
+				})],
+				["Postmarket", (0, i.t)("Postmarket", {
+					context: "sessions"
+				})],
+				["Regular Trading Hours", (0, i.t)("Regular trading hours", {
+					context: "sessions"
+				})],
+				["Extended Trading Hours", (0, i.t)("Extended trading hours", {
+					context: "sessions"
+				})],
+				["Electronic Trading Hours", (0, i.t)("Electronic trading hours", {
+					context: "sessions"
+				})]
+			]);
+
+			function n(e) {
+				var t;
+				return null !== (t = r.get(e)) && void 0 !== t ? t : e
+			}
+			const a = new Map([
+				["Premarket", (0, i.t)("PRE", {
+					context: "sessions"
+				})],
+				["Postmarket", (0, i.t)("POST", {
+					context: "sessions"
+				})],
+				["Regular Trading Hours", (0, i.t)("RTH", {
+					context: "sessions"
+				})],
+				["Extended Trading Hours", (0, i.t)("ETH", {
+					context: "sessions"
+				})],
+				["Electronic Trading Hours", (0, i.t)("ETH", {
+					context: "sessions"
+				})]
+			]);
+
+			function o(e) {
+				var t;
+				return null !== (t = a.get(e)) && void 0 !== t ? t : e
+			}
+
+			function l(e) {
+				var t;
+				return null !== (t = r.get(e)) && void 0 !== t ? t : e
+			}
+		},
+		996159: (e, t, s) => {
+			s.d(t, {
+				getSeriesDangerReason: () => r
+			});
+			var i = s(270369);
+
+			function r(e) {
+				if (e.isSpread()) return i.DataSourceDangerReason.Spread;
+				const t = e.symbolInfo();
+				return t && "CRYPTOCAP" === t.exchange ? i.DataSourceDangerReason.CryptoCap : null
+			}
+		},
+		97985: (e, t, s) => {
+			function i(e) {
+				return e + "â€¦"
+			}
+			s.r(t), s.d(t, {
+				appendEllipsis: () => i
+			})
+		},
+		888778: (e, t, s) => {
+			s.r(t), s.d(t, {
+				initSymbolListService: () => n
+			});
+			var i = s(564894);
+			const r = {
+				id: "SymbolListService"
+			};
+
+			function n() {
+				return Promise.all([Promise.all([s.e(93921), s.e(29594), s.e(91622), s.e(35883), s.e(44692), s.e(1026)]).then(s.bind(s, 63299)), Promise.all([s.e(93921), s.e(29594), s.e(91622), s.e(35883), s.e(44692), s.e(1026)]).then(s.bind(s, 38506)), Promise.all([s.e(93921), s.e(29594), s.e(91622), s.e(35883), s.e(44692), s.e(1026)]).then(s.bind(s, 850935)), Promise.all([s.e(93921), s.e(29594), s.e(91622), s.e(35883), s.e(44692), s.e(1026)]).then(s.bind(s, 244692))]).then((([e, t, s, n]) => {
+					if ((0, i.hasService)(r)) return (0, i.service)(r);
+					const {
+						store: a,
+						runner: o
+					} = e.configureStore(), l = o.run(t.symbolListRepositorySaga);
+					return (0, i.registerService)(r, {
+						store: a,
+						runner: o,
+						actions: {
+							addSymbols: n.addSymbolsThunk,
+							initWidget: s.initWidget,
+							saveListAs: n.saveListAsThunk,
+							createNewWatchList: n.userCreateWatchlistThunk
+						},
+						task: l
+					}), (0, i.service)(r)
+				}))
+			}
+		}
+	}
+]);

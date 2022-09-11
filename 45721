@@ -1,0 +1,2111 @@
+(self.webpackChunktradingview = self.webpackChunktradingview || []).push([
+	[45721], {
+		151293: (e, r, a) => {
+			var o = a(575932).t;
+			e.exports = [{
+				value: "",
+				name: "All Exchanges",
+				desc: o("All Exchanges"),
+				flag: "",
+				country: "",
+				group: "AllExchanges",
+				providerId: ""
+			}, {
+				value: "ASCENDEX",
+				name: "AscendEX",
+				desc: o("AscendEX"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "ascendex"
+			}, {
+				value: "BITHUMB",
+				name: "Bithumb",
+				desc: o("Bithumb"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bithumb"
+			}, {
+				value: "BITKUB",
+				name: "BITKUB",
+				desc: o("BITKUB"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitkub"
+			}, {
+				value: "MEXC",
+				name: "MEXC Global",
+				desc: o("MEXC Global"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "mexc"
+			}, {
+				value: "GATEIO",
+				name: "Gate.io",
+				desc: o("Gate.io"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "gateio"
+			}, {
+				value: "796",
+				name: "796",
+				desc: o("796"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: ""
+			}, {
+				value: "COINFLOOR",
+				name: "Coinfloor",
+				desc: o("Coinfloor"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "coinfloor"
+			}, {
+				value: "DERIBIT",
+				name: "Deribit",
+				desc: o("Deribit"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "deribit"
+			}, {
+				value: "DEFILLAMA",
+				name: "Defi Llama",
+				desc: o("Defi Llama"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "defillama"
+			}, {
+				value: "CURRENCYCOM",
+				name: "Currencycom",
+				desc: o("Currencycom"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "currencycom"
+			}, {
+				value: "GLASSNODE",
+				name: "Glassnode",
+				desc: o("Glassnode"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "glassnode"
+			}, {
+				value: "OKX",
+				name: "OKX",
+				desc: o("OKX"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "okx"
+			}, {
+				value: "PANGOLIN",
+				name: "Pangolin (Avalanche)",
+				desc: o("Pangolin (Avalanche)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "pangolin"
+			}, {
+				value: "PANCAKESWAP",
+				name: "PancakeSwap",
+				desc: o("PancakeSwap"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "pancakeswap"
+			}, {
+				value: "SPOOKYSWAP",
+				name: "SpookySwap (Fantom)",
+				desc: o("SpookySwap (Fantom)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "spookyswap"
+			}, {
+				value: "WHITEBIT",
+				name: "WhiteBIT",
+				desc: o("WhiteBIT"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "whitebit"
+			}, {
+				value: "WOONETWORK",
+				name: "WOO",
+				desc: o("WOO"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "woonetwork"
+			}, {
+				value: "DYDX",
+				name: "dYdX",
+				desc: o("dYdX"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "dydx"
+			}, {
+				value: "ADX",
+				name: "ADX",
+				desc: o("ADX â€” Abu Dhabi Securities Exchange"),
+				flag: "ae",
+				group: "Middle East / Africa",
+				country: "ae",
+				providerId: "",
+				searchTerms: [o("UAE"), o("United Arab Emirates")]
+			}, {
+				value: "DFM",
+				name: "DFM",
+				desc: o("DFM â€” Dubai Financial Market"),
+				flag: "ae",
+				group: "Middle East / Africa",
+				country: "ae",
+				providerId: "",
+				searchTerms: [o("UAE"), o("United Arab Emirates")]
+			}, {
+				value: "LSE",
+				name: "LSE",
+				desc: o("LSE â€” London Stock Exchange (UK Companies)"),
+				flag: "uk",
+				group: "Europe",
+				country: "uk",
+				providerId: "",
+				searchTerms: [o("UK"), o("United Kingdom")]
+			}, {
+				value: "LSIN",
+				name: "LSIN",
+				desc: o("LSIN â€” London Stock Exchange (International Companies)"),
+				flag: "uk",
+				group: "Europe",
+				country: "uk",
+				providerId: "",
+				searchTerms: [o("UK"), o("United Kingdom")]
+			}, {
+				value: "EUREX",
+				name: "EUREX",
+				desc: o("EUREX â€” Eurex Exchange"),
+				flag: "europe",
+				group: "Europe",
+				country: "eu",
+				providerId: ""
+			}, {
+				value: "MGEX",
+				name: "MGEX",
+				desc: o("MGEX â€” Futures"),
+				flag: "usa",
+				hideInSymbolSearch: !0,
+				group: "North America",
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "NASDAQ",
+				name: "NASDAQ",
+				desc: o("NASDAQ â€” NASDAQ Stock Market"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 1,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "NYSE",
+				name: "NYSE",
+				desc: o("NYSE â€” New York Stock Exchange"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 2,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "AMEX",
+				name: "Arca",
+				desc: o("Arca â€” NYSE Arca"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 3,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "OTC",
+				name: "OTC",
+				desc: o("OTC â€” OTC Markets"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 4,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "DJ",
+				name: "DJ",
+				desc: o("DJ â€” Dow Jones Indices"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 5,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "SP",
+				name: "SP",
+				desc: o("SP â€” S&P Indices"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 6,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "CBOE",
+				name: "CBOE",
+				desc: o("CBOE â€” Chicago Board Options Exchange"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 7,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "CBOEEU",
+				name: "CBOE EU",
+				desc: o("CBOE EU â€” European Union Indices"),
+				flag: "europe",
+				group: "Europe",
+				country: "eu",
+				providerId: ""
+			}, {
+				value: "CBOT",
+				name: "CBOT",
+				desc: o("CBOT â€” Chicago Board of Trade"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 8,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "CME",
+				name: "CME GLOBEX",
+				desc: o("CME GLOBEX â€” Chicago Mercantile Exchange Globex"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 9,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "COMEX",
+				name: "COMEX",
+				desc: o("COMEX â€” Commodity Exchange"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 10,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "NYMEX",
+				name: "NYMEX",
+				desc: o("NYMEX â€” New York Mercantile Exchange"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 11,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "ICEUS",
+				name: "ICEUS",
+				desc: o("ICEUS â€” ICE Futures U.S."),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 12,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "FAIRX",
+				name: "FairX",
+				desc: o("FairX"),
+				flag: "usa",
+				group: "North America",
+				country: "us",
+				priorityInGroup: 13,
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "CSE",
+				name: "CSE",
+				desc: o("CSE â€” Canadian Securities Exchange"),
+				flag: "canada",
+				group: "North America",
+				country: "ca",
+				priorityInGroup: 13,
+				providerId: "",
+				searchTerms: [o("Canada")]
+			}, {
+				value: "NEO",
+				name: "NEO",
+				desc: o("NEO â€” NEO Exchange"),
+				flag: "canada",
+				group: "North America",
+				country: "ca",
+				priorityInGroup: 14,
+				providerId: "",
+				searchTerms: [o("Canada")]
+			}, {
+				value: "TSX",
+				name: "TSX",
+				desc: o("TSX â€” Toronto Stock Exchange"),
+				flag: "canada",
+				group: "North America",
+				country: "ca",
+				priorityInGroup: 15,
+				providerId: "",
+				searchTerms: [o("Canada")]
+			}, {
+				value: "TSXV",
+				name: "TSXV",
+				desc: o("TSXV â€” TSX Venture Exchange"),
+				flag: "canada",
+				group: "North America",
+				country: "ca",
+				priorityInGroup: 16,
+				providerId: "",
+				searchTerms: [o("Canada")]
+			}, {
+				value: "MOEX",
+				name: "MOEX",
+				desc: o("MOEX â€” Moscow Exchange"),
+				flag: "russia",
+				group: "Europe",
+				country: "ru",
+				providerId: "",
+				searchTerms: [o("Russian Federation")]
+			}, {
+				value: "MYX",
+				name: "MYX",
+				desc: o("MYX â€” Bursa Malaysia Berhad"),
+				flag: "malaysia",
+				group: "Asia / Pacific",
+				country: "my",
+				providerId: "",
+				searchTerms: [o("Malaysia")]
+			}, {
+				value: "FTSEMYX",
+				name: "FTSE",
+				desc: o("FTSE â€” FTSE Indices"),
+				flag: "malaysia",
+				group: "Asia / Pacific",
+				country: "my",
+				providerId: "",
+				searchTerms: [o("Malaysia")]
+			}, {
+				value: "HOSE",
+				name: "HOSE",
+				desc: o("HOSE â€” Ho Chi Minh City Stock Exchange"),
+				flag: "vietnam",
+				group: "Asia / Pacific",
+				country: "vn",
+				providerId: "",
+				searchTerms: [o("Vietnam")]
+			}, {
+				value: "HNX",
+				name: "HNX",
+				desc: o("HNX â€” Hanoi Stock Exchange"),
+				flag: "vietnam",
+				group: "Asia / Pacific",
+				country: "vn",
+				providerId: "",
+				searchTerms: [o("Vietnam")]
+			}, {
+				value: "UPCOM",
+				name: "HNX",
+				desc: o("HNX â€” Hanoi Stock Exchange (UPCoM)"),
+				flag: "vietnam",
+				group: "Asia / Pacific",
+				country: "vn",
+				providerId: "",
+				searchTerms: [o("Vietnam")]
+			}, {
+				value: "BITSTAMP",
+				name: "Bitstamp",
+				desc: o("Bitstamp"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitstamp"
+			}, {
+				value: "ACTIVTRADES",
+				name: "ActivTrades",
+				desc: o("ActivTrades"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "activtrades"
+			}, {
+				value: "BLACKBULL",
+				name: "BlackBull Markets",
+				desc: o("BlackBull Markets"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "blackbullmarkets"
+			}, {
+				value: "VANTAGE",
+				name: "Vantage FX",
+				desc: o("Vantage FX"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "vantagefx"
+			}, {
+				value: "VELOCITY",
+				name: "Velocity Trade",
+				desc: o("Velocity Trade"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "velocitytrade"
+			}, {
+				value: "FX",
+				name: "FXCM",
+				desc: o("FXCM"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "fxcm"
+			}, {
+				value: "FXOPEN",
+				name: "FXOpen",
+				desc: o("FXOpen"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "fxopen"
+			}, {
+				value: "EIGHTCAP",
+				name: "Eightcap",
+				desc: o("Eightcap"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "eightcap"
+			}, {
+				value: "MERCADO",
+				name: "Mercado",
+				desc: o("Mercado"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "mercado"
+			}, {
+				value: "BTCE",
+				name: "BTC-e",
+				desc: o("BTC-E"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: ""
+			}, {
+				value: "BTCYOU",
+				name: "BTCYou",
+				desc: o("BTCYou"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "btcyou"
+			}, {
+				value: "HONEYSWAP",
+				name: "Honeyswap (xDai)",
+				desc: o("Honeyswap (xDai)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "honeyswap"
+			}, {
+				value: "HONEYSWAPPOLYGON",
+				name: "Honeyswap (Polygon)",
+				desc: o("Honeyswap (Polygon)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "honeyswap"
+			}, {
+				value: "BSE",
+				name: "BSE",
+				desc: o("BSE â€” Bombay Stock Exchange"),
+				flag: "india",
+				group: "Asia / Pacific",
+				country: "in",
+				providerId: "",
+				searchTerms: [o("India")]
+			}, {
+				value: "NYMEX_MINI",
+				name: "NYMEX E-mini",
+				desc: o("NYMEX E-mini â€” New York Mercantile Exchange"),
+				flag: "usa",
+				group: "North America",
+				hideInSymbolSearch: !0,
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "COMEX_MINI",
+				name: "COMEX E-mini",
+				desc: o("COMEX E-mini â€” Commodity Exchange"),
+				flag: "usa",
+				group: "North America",
+				hideInSymbolSearch: !0,
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "ICEEUR",
+				name: "ICEEUR",
+				desc: o("ICEEUR â€” ICE Futures Europe"),
+				flag: "europe",
+				group: "Europe",
+				country: "eu",
+				providerId: ""
+			}, {
+				value: "NSE",
+				name: "NSE",
+				desc: o("NSE â€” National Stock Exchange of India"),
+				flag: "india",
+				group: "Asia / Pacific",
+				country: "in",
+				providerId: "",
+				searchTerms: [o("India")]
+			}, {
+				value: "MCX",
+				name: "MCX",
+				desc: o("MCX â€” Multi Commodity Exchange"),
+				flag: "india",
+				group: "Asia / Pacific",
+				country: "in",
+				providerId: "",
+				searchTerms: [o("India")]
+			}, {
+				value: "KCBT",
+				name: "KCBT",
+				desc: o("KCBT Futures"),
+				flag: "usa",
+				hideInSymbolSearch: !0,
+				group: "North America",
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "OKCOIN",
+				name: "OKCoin",
+				desc: o("OKCoin"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "okcoin"
+			}, {
+				value: "CBOT_MINI",
+				name: "CBOT E-mini",
+				desc: o("CBOT E-mini â€” Chicago Board of Trade"),
+				flag: "usa",
+				group: "North America",
+				hideInSymbolSearch: !0,
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "KRAKEN",
+				name: "Kraken",
+				desc: o("Kraken"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "kraken"
+			}, {
+				value: "KUCOIN",
+				name: "KuCoin",
+				desc: o("KuCoin"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "kucoin"
+			}, {
+				value: "MAIAR",
+				name: "Maiar",
+				desc: o("Maiar"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "maiar"
+			}, {
+				value: "CME_MINI",
+				name: "CME E-mini",
+				desc: o("CME GLOBEX E-mini â€” Chicago Mercantile Exchange Globex"),
+				flag: "usa",
+				group: "North America",
+				hideInSymbolSearch: !0,
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "DJ",
+				name: "DJ",
+				desc: o("DJ â€” Dow Jones Indexes"),
+				flag: "usa",
+				hideInSymbolSearch: !0,
+				group: "North America",
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "SP",
+				name: "SP",
+				desc: o("SP â€” S&P Indexes"),
+				flag: "usa",
+				hideInSymbolSearch: !0,
+				group: "North America",
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "BTCCHINA",
+				name: "BTC China",
+				desc: o("BTC China"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: ""
+			}, {
+				value: "HUOBI",
+				name: "Huobi",
+				desc: o("Huobi"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "huobi"
+			}, {
+				value: "KORBIT",
+				name: "Korbit",
+				desc: o("Korbit"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "korbit"
+			}, {
+				value: "THEROCKTRADING",
+				name: "The Rock Trading",
+				desc: o("The Rock Trading"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "therocktrading"
+			}, {
+				value: "TIMEX",
+				name: "TimeX",
+				desc: o("TimeX"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "timex"
+			}, {
+				value: "ANX",
+				name: "ANX",
+				desc: o("ANX"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: ""
+			}, {
+				value: "MEXBT",
+				name: "meXBT",
+				desc: o("meXBT"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: ""
+			}, {
+				value: "FTX",
+				name: "FTX",
+				desc: o("FTX"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "ftx"
+			}, {
+				value: "GEMINI",
+				name: "Gemini",
+				desc: o("Gemini"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "gemini"
+			}, {
+				value: "BITVC",
+				name: "BitVC",
+				desc: o("BitVC"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: ""
+			}, {
+				value: "BITYES",
+				name: "BitYes",
+				desc: o("BitYes"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: ""
+			}, {
+				value: "BNC",
+				name: "BNC",
+				desc: o("BNC"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: ""
+			}, {
+				value: "BITFLYER",
+				name: "bitFlyer",
+				desc: o("bitFlyer"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitflyer"
+			}, {
+				value: "BYBIT",
+				name: "Bybit",
+				desc: o("Bybit"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bybit"
+			}, {
+				value: "BITMEX",
+				name: "BitMEX",
+				desc: o("BitMEX"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitmex"
+			}, {
+				value: "BITPANDAPRO",
+				name: "Bitpanda Pro",
+				desc: o("Bitpanda Pro"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitpanda"
+			}, {
+				value: "CAPITALCOM",
+				name: "Capital.com",
+				desc: o("Capital.com"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "capitalcom"
+			}, {
+				value: "COINEX",
+				name: "CoinEx",
+				desc: o("CoinEx"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "coinex"
+			}, {
+				value: "EXMO",
+				name: "EXMO",
+				desc: o("EXMO"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "exmo2"
+			}, {
+				value: "INTOTHEBLOCK",
+				name: "IntoTheBlock",
+				desc: o("IntoTheBlock"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "intotheblock"
+			}, {
+				value: "EASYMARKETS",
+				name: "easyMarkets",
+				desc: o("easyMarkets"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "easymarkets"
+			}, {
+				value: "FOREXCOM",
+				name: "FOREX.com",
+				desc: o("FOREX.com"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "gain"
+			}, {
+				value: "FX_IDC",
+				name: "ICE",
+				desc: o("ICE Data Services"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "ice"
+			}, {
+				value: "GLOBALPRIME",
+				name: "GLOBALPRIME",
+				desc: o("Global Prime"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "globalprime"
+			}, {
+				value: "IBROKER",
+				name: "iBroker",
+				desc: o("iBroker"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "ibroker"
+			}, {
+				value: "CEXIO",
+				name: "CEX.IO",
+				desc: o("CEX.IO"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "cexio"
+			}, {
+				value: "BITSO",
+				name: "Bitso",
+				desc: o("Bitso"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitso"
+			}, {
+				value: "BITFINEX",
+				name: "Bitfinex",
+				desc: o("Bitfinex"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitfinex"
+			}, {
+				value: "MTGOX",
+				name: "Mt.Gox",
+				desc: o("Mt.Gox"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				hideInSymbolSearch: !0,
+				country: "",
+				providerId: "mtgox"
+			}, {
+				value: "PHEMEX",
+				name: "Phemex",
+				desc: o("Phemex"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "phemex"
+			}, {
+				value: "POLONIEX",
+				name: "Poloniex",
+				desc: o("Poloniex"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "poloniex"
+			}, {
+				value: "QUICKSWAP",
+				name: "QuickSwap (Polygon)",
+				desc: o("QuickSwap (Polygon)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "quickswap"
+			}, {
+				value: "SUSHISWAP",
+				name: "SushiSwap (Ethereum)",
+				desc: o("SushiSwap (Ethereum)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "sushiswap"
+			}, {
+				value: "SUSHISWAPPOLYGON",
+				name: "SushiSwap (Polygon)",
+				desc: o("SushiSwap (Polygon)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "sushiswap"
+			}, {
+				value: "TRADERJOE",
+				name: "Trader Joe (Avalanche)",
+				desc: o("Trader Joe (Avalanche)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "traderjoe"
+			}, {
+				value: "TRADESTATION",
+				name: "TradeStation",
+				desc: o("TradeStation"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "tradestation"
+			}, {
+				value: "UNISWAP",
+				name: "Uniswap v2 (Ethereum)",
+				desc: o("Uniswap v2 (Ethereum)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "uniswap"
+			}, {
+				value: "UNISWAP3ETH",
+				name: "Uniswap v3 (Ethereum)",
+				desc: o("Uniswap v3 (Ethereum)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "uniswap"
+			}, {
+				value: "UNISWAP3POLYGON",
+				name: "Uniswap v3 (Polygon)",
+				desc: o("Uniswap v3 (Polygon)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "uniswap"
+			}, {
+				value: "UNISWAP3ARBITRUM",
+				name: "Uniswap v3 (Arbitrum)",
+				desc: o("Uniswap v3 (Arbitrum)"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "uniswap"
+			}, {
+				value: "UPBIT",
+				name: "UpBit",
+				desc: o("UpBit"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "upbit"
+			}, {
+				value: "BINGX",
+				name: "BingX",
+				desc: o("BingX"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bingx"
+			}, {
+				value: "BTSE",
+				name: "BTSE",
+				desc: o("BTSE"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "btse"
+			}, {
+				value: "BITCOKE",
+				name: "BitCoke",
+				desc: o("BitCoke"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitcoke"
+			}, {
+				value: "BITTREX",
+				name: "Bittrex",
+				desc: o("Bittrex"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bittrex"
+			}, {
+				value: "BINANCE",
+				name: "Binance",
+				desc: o("Binance"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "binance"
+			}, {
+				value: "BITGET",
+				name: "Bitget",
+				desc: o("Bitget"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "bitget"
+			}, {
+				value: "BINANCEUS",
+				name: "Binance US",
+				desc: o("Binance US"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "binance"
+			}, {
+				value: "DELTA",
+				name: "Delta",
+				desc: o("Delta"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "delta"
+			}, {
+				value: "BCBA",
+				name: "BYMA",
+				desc: o("BYMA â€” Argentine Stock Exchanges and Markets"),
+				flag: "argentina",
+				group: "Mexico and South America",
+				country: "ar",
+				providerId: "",
+				searchTerms: [o("Argentina")]
+			}, {
+				value: "MATBAROFEX",
+				name: "ROFEX",
+				desc: o("ROFEX â€” MATBA ROFEX"),
+				flag: "argentina",
+				group: "Mexico and South America",
+				country: "ar",
+				providerId: "",
+				searchTerms: [o("Argentina")]
+			}, {
+				value: "BMFBOVESPA",
+				name: "B3",
+				desc: o("B3 â€” Brasil Bolsa Balcao S.A."),
+				flag: "brasil",
+				group: "Mexico and South America",
+				country: "br",
+				providerId: "",
+				searchTerms: [o("Brazil")]
+			}, {
+				value: "BMV",
+				name: "BMV",
+				desc: o("BMV â€” Mexican Stock Exchange"),
+				flag: "mexico",
+				group: "Mexico and South America",
+				country: "mx",
+				providerId: "",
+				searchTerms: [o("Mexico")]
+			}, {
+				value: "BVL",
+				name: "BVL",
+				desc: o("BVL â€” Bolsa de Valores de Lima"),
+				flag: "peru",
+				group: "Mexico and South America",
+				country: "pe",
+				providerId: "",
+				searchTerms: [o("Peru")]
+			}, {
+				value: "BCS",
+				name: "SSE",
+				desc: o("SSE â€” Santiago Stock Exchange"),
+				flag: "chile",
+				group: "Mexico and South America",
+				country: "cl",
+				providerId: "",
+				searchTerms: [o("Chile")]
+			}, {
+				value: "BVC",
+				name: "BVC",
+				desc: o("BVC â€” Bolsa de Valores de Colombia"),
+				flag: "colombia",
+				group: "Mexico and South America",
+				country: "co",
+				providerId: "",
+				searchTerms: [o("Colombia")]
+			}, {
+				value: "BVCV",
+				name: "BVC",
+				desc: o("BVC â€” Caracas Stock Exchange"),
+				flag: "venezuela",
+				group: "Mexico and South America",
+				country: "ve",
+				providerId: "",
+				searchTerms: [o("Venezuela")]
+			}, {
+				value: "NAG",
+				name: "NSE",
+				desc: o("NSE â€” Nagoya Stock Exchange"),
+				flag: "japan",
+				group: "Asia / Pacific",
+				country: "jp",
+				providerId: "",
+				searchTerms: [o("Japan")]
+			}, {
+				value: "TSE",
+				name: "TSE",
+				desc: o("TSE â€” Tokyo Stock Exchange"),
+				flag: "japan",
+				group: "Asia / Pacific",
+				country: "jp",
+				providerId: "",
+				searchTerms: [o("Japan")]
+			}, {
+				value: "TFEX",
+				name: "TFEX",
+				desc: o("TFEX â€” Thailand Futures Exchange"),
+				flag: "thailand",
+				group: "Asia / Pacific",
+				country: "th",
+				providerId: "",
+				searchTerms: [o("Thailand")]
+			}, {
+				value: "TFX",
+				name: "TFX",
+				desc: o("TFX â€” Tokyo Financial Exchange"),
+				flag: "japan",
+				group: "Asia / Pacific",
+				country: "jp",
+				providerId: "",
+				searchTerms: [o("Japan")]
+			}, {
+				value: "TOCOM",
+				name: "TOCOM",
+				desc: o("TOCOM â€” Tokyo Commodity Exchange"),
+				flag: "japan",
+				group: "Asia / Pacific",
+				country: "jp",
+				providerId: "",
+				searchTerms: [o("Japan")]
+			}, {
+				value: "OSE",
+				name: "OSE",
+				desc: o("OSE â€” Osaka Exchange"),
+				flag: "japan",
+				group: "Asia / Pacific",
+				country: "jp",
+				providerId: "",
+				searchTerms: [o("Japan")]
+			}, {
+				value: "SGX",
+				name: "SGX",
+				desc: o("SGX â€” Singapore Stock Exchange"),
+				flag: "singapore",
+				group: "Asia / Pacific",
+				country: "sg",
+				providerId: "",
+				searchTerms: [o("Singapore")]
+			}, {
+				value: "ICESG",
+				name: "ICE Futures Singapore",
+				desc: o("ICE Futures Singapore"),
+				flag: "singapore",
+				group: "Asia / Pacific",
+				country: "sg",
+				providerId: "",
+				searchTerms: [o("Singapore")]
+			}, {
+				value: "SAPSE",
+				name: "SSE",
+				desc: o("SSE â€” Sapporo Securities Exchange"),
+				flag: "japan",
+				group: "Asia / Pacific",
+				country: "jp",
+				providerId: "",
+				searchTerms: [o("Japan")]
+			}, {
+				value: "FSE",
+				name: "FSE",
+				desc: o("FSE â€” Fukuoka Stock Exchange"),
+				flag: "japan",
+				group: "Asia / Pacific",
+				country: "jp",
+				providerId: "",
+				searchTerms: [o("Japan")]
+			}, {
+				value: "TPEX",
+				name: "TPEx",
+				desc: o("TPEx â€” Taipei Exchange"),
+				flag: "taiwan",
+				group: "Asia / Pacific",
+				country: "tw",
+				providerId: "",
+				searchTerms: [o("Taiwan")]
+			}, {
+				value: "TWSE",
+				name: "TWSE",
+				desc: o("TWSE â€” Taiwan Stock Exchange"),
+				flag: "taiwan",
+				group: "Asia / Pacific",
+				country: "tw",
+				providerId: "",
+				searchTerms: [o("Taiwan")]
+			}, {
+				value: "SET",
+				name: "SET",
+				desc: o("SET â€” Stock Exchange of Thailand"),
+				flag: "thailand",
+				group: "Asia / Pacific",
+				country: "th",
+				providerId: "",
+				searchTerms: [o("Thailand")]
+			}, {
+				value: "KRX",
+				name: "KRX",
+				desc: o("KRX â€” Korea Stock Exchange"),
+				flag: "south_korea",
+				group: "Asia / Pacific",
+				country: "kr",
+				providerId: "",
+				searchTerms: [o("South Korea")]
+			}, {
+				value: "BAHRAIN",
+				name: "BSE",
+				desc: o("BSE â€” Bahrain Stock Exchange"),
+				flag: "bahrain",
+				group: "Middle East / Africa",
+				country: "bh",
+				providerId: "",
+				searchTerms: [o("Bahrain")]
+			}, {
+				value: "ATHEX",
+				name: "ATHEX",
+				desc: o("ATHEX â€” Athens Stock Exchange"),
+				flag: "greece",
+				group: "Europe",
+				country: "gr",
+				providerId: ""
+			}, {
+				value: "BELEX",
+				name: "BELEX",
+				desc: o("BELEX â€” Belgrade Stock Exchange"),
+				flag: "serbia",
+				group: "Europe",
+				country: "rs",
+				providerId: "",
+				searchTerms: [o("Serbia")]
+			}, {
+				value: "EGX",
+				name: "EGX",
+				desc: o("EGX â€” Egyptian Exchange"),
+				flag: "egypt",
+				group: "Middle East / Africa",
+				country: "eg",
+				providerId: "",
+				searchTerms: [o("Egypt")]
+			}, {
+				value: "TADAWUL",
+				name: "Tadawul",
+				desc: o("Tadawul â€” Saudi Stock Exchange"),
+				flag: "saudi_arabia",
+				group: "Middle East / Africa",
+				country: "sa",
+				providerId: "",
+				searchTerms: [o("Saudi Arabia")]
+			}, {
+				value: "IDX",
+				name: "IDX",
+				desc: o("IDX â€” Indonesia Stock Exchange"),
+				flag: "indonesia",
+				group: "Asia / Pacific",
+				country: "id",
+				providerId: "",
+				searchTerms: [o("Indonesia")]
+			}, {
+				value: "HSI",
+				name: "HSI",
+				desc: o("HSI â€” Hang Seng Indices"),
+				flag: "hong_kong",
+				group: "Asia / Pacific",
+				country: "hk",
+				providerId: "",
+				searchTerms: [o("Hong Kong")]
+			}, {
+				value: "QSE",
+				name: "QSE",
+				desc: o("QSE â€” Qatar Stock Exchange"),
+				flag: "qatar",
+				group: "Middle East / Africa",
+				country: "qa",
+				providerId: "",
+				searchTerms: [o("Qatar")]
+			}, {
+				value: "OANDA",
+				name: "OANDA",
+				desc: o("OANDA"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "oanda"
+			}, {
+				value: "SAXO",
+				name: "Saxo",
+				desc: o("Saxo"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "saxobank"
+			}, {
+				value: "PEPPERSTONE",
+				name: "Pepperstone",
+				desc: o("Pepperstone"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "pepperstone"
+			}, {
+				value: "PHILLIPNOVA",
+				name: "Phillip Nova",
+				desc: o("Phillip Nova"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "phillipnova"
+			}, {
+				value: "SKILLING",
+				name: "SKILLING",
+				desc: o("SKILLING"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "skilling"
+			}, {
+				value: "EURONEXT",
+				name: "Euronext",
+				desc: o("Euronext â€” Euronext NV"),
+				flag: "europe",
+				group: "Europe",
+				country: "eu",
+				providerId: ""
+			}, {
+				value: "EURONEXTAMS",
+				name: "EURONEXTAMS",
+				desc: o("Euronext â€” Euronext Amsterdam"),
+				flag: "netherlands",
+				group: "Europe",
+				country: "nl",
+				providerId: "",
+				searchTerms: [o("Netherlands")]
+			}, {
+				value: "EURONEXTBRU",
+				name: "EURONEXTBRU",
+				desc: o("Euronext â€” Euronext Brussels"),
+				flag: "belgium",
+				group: "Europe",
+				country: "be",
+				providerId: "",
+				searchTerms: [o("Belgium")]
+			}, {
+				value: "EURONEXTLIS",
+				name: "EURONEXTLIS",
+				desc: o("Euronext â€” Euronext Lisbon"),
+				flag: "portugal",
+				group: "Europe",
+				country: "pt",
+				providerId: "",
+				searchTerms: [o("Portugal")]
+			}, {
+				value: "EURONEXTPAR",
+				name: "EURONEXTPAR",
+				desc: o("Euronext â€” Euronext Paris"),
+				flag: "france",
+				group: "Europe",
+				country: "fr",
+				providerId: "",
+				searchTerms: [o("France")]
+			}, {
+				value: "OSL",
+				name: "EURONEXTOSE",
+				desc: o("Euronext â€” Euronext Oslo"),
+				flag: "norway",
+				group: "Europe",
+				country: "no",
+				providerId: "",
+				searchTerms: [o("Norway")]
+			}, {
+				value: "OMX",
+				name: "OMX",
+				desc: o("OMX â€” Nasdaq OMX Group"),
+				flag: "europe",
+				group: "Europe",
+				country: "eu",
+				providerId: ""
+			}, {
+				value: "FWB",
+				name: "FWB",
+				desc: o("FWB â€” Frankfurt Stock Exchange"),
+				flag: "germany",
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "FRA",
+				name: "FRA",
+				desc: o("FRA â€” Frankfurt Stock Exchange"),
+				flag: "germany",
+				hideInSymbolSearch: !0,
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "SWB",
+				name: "SWB",
+				desc: o("SWB â€” Stuttgart Stock Exchange"),
+				flag: "germany",
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "XETR",
+				name: "XETR",
+				desc: o("XETR â€” Xetra"),
+				flag: "germany",
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "BME",
+				name: "BME",
+				desc: o("BME â€” Bolsa de Madrid"),
+				flag: "spain",
+				group: "Europe",
+				country: "es",
+				providerId: "",
+				searchTerms: [o("Spain")]
+			}, {
+				value: "BSSE",
+				name: "BSSE",
+				desc: o("BSSE â€” Bratislava Stock Exchange"),
+				flag: "slovakia",
+				group: "Europe",
+				country: "sk",
+				providerId: "",
+				searchTerms: [o("Slovakia")]
+			}, {
+				value: "BVB",
+				name: "BVB",
+				desc: o("BVB â€” Bucharest Stock Exchange"),
+				flag: "romania",
+				group: "Europe",
+				country: "ro",
+				providerId: "",
+				searchTerms: [o("Romania")]
+			}, {
+				value: "BET",
+				name: "BET",
+				desc: o("BET â€” Budapest Stock Exchange"),
+				flag: "hungary",
+				group: "Europe",
+				country: "hu",
+				providerId: "",
+				searchTerms: [o("Hungary")]
+			}, {
+				value: "GPW",
+				name: "GPW",
+				desc: o("GPW â€” Warsaw Stock Exchange"),
+				flag: "poland",
+				group: "Europe",
+				country: "pl",
+				providerId: "",
+				searchTerms: [o("Poland")]
+			}, {
+				value: "NEWCONNECT",
+				name: "GPW â€” NewConnect",
+				desc: o(" GPW â€” NewConnect"),
+				flag: "poland",
+				group: "Europe",
+				country: "pl",
+				providerId: "",
+				searchTerms: [o("Poland")]
+			}, {
+				value: "LUXSE",
+				name: "LUXSE",
+				desc: o("LuxSE â€” Luxembourg Stock Exchange"),
+				flag: "luxembourg",
+				group: "Europe",
+				country: "lu",
+				providerId: "",
+				searchTerms: [o("Luxembourg")]
+			}, {
+				value: "MIL",
+				name: "MIL",
+				desc: o("MIL â€” Milan Stock Exchange"),
+				flag: "italy",
+				group: "Europe",
+				country: "it",
+				providerId: "",
+				searchTerms: [o("Italy")]
+			}, {
+				value: "NGM",
+				name: "NGM",
+				desc: o("NGM â€” Nordic Growth Market"),
+				flag: "sweden",
+				group: "Europe",
+				country: "se",
+				providerId: "",
+				searchTerms: [o("Sweden")]
+			}, {
+				value: "BER",
+				name: "BER",
+				desc: o("BER â€” Berlin Stock Exchange"),
+				flag: "germany",
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "DUS",
+				name: "DUS",
+				desc: o("DUS â€” Dusseldorf Stock Exchange"),
+				flag: "germany",
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "HAM",
+				name: "HAM",
+				desc: o("HAM â€” Hamburg Stock Exchange"),
+				flag: "germany",
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "HAN",
+				name: "HAN",
+				desc: o("HAN â€” Hanover Stock Exchange"),
+				flag: "germany",
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "MUN",
+				name: "MUN",
+				desc: o("MUN â€” Munich Stock Exchange"),
+				flag: "germany",
+				group: "Europe",
+				country: "de",
+				providerId: "",
+				searchTerms: [o("Germany")]
+			}, {
+				value: "MILSEDEX",
+				name: "MILSEDEX",
+				desc: o("MILSEDEX â€” Milan Stock Exchange"),
+				flag: "italy",
+				group: "Europe",
+				hideInSymbolSearch: !0,
+				country: "it",
+				providerId: "",
+				searchTerms: [o("Italy")]
+			}, {
+				value: "IST",
+				name: "IST",
+				desc: o("IST â€” Istanbul Stock Exchange"),
+				flag: "turkey",
+				hideInSymbolSearch: !0,
+				group: "Europe",
+				country: "tr",
+				providerId: "",
+				searchTerms: [o("Turkey")]
+			}, {
+				value: "BIST",
+				name: "BIST",
+				desc: o("BIST â€” Borsa Istanbul"),
+				flag: "turkey",
+				group: "Europe",
+				country: "tr",
+				providerId: "",
+				searchTerms: [o("Turkey")]
+			}, {
+				value: "TASE",
+				name: "TASE",
+				desc: o("TASE â€” Tel Aviv Stock Exchange"),
+				flag: "israel",
+				group: "Middle East / Africa",
+				country: "il",
+				providerId: "",
+				searchTerms: [o("Israel")]
+			}, {
+				value: "SIX",
+				name: "SIX",
+				desc: o("SIX â€” SIX Swiss Exchange"),
+				flag: "switzerland",
+				group: "Europe",
+				country: "ch",
+				providerId: "",
+				searchTerms: [o("Switzerland")]
+			}, {
+				value: "BX",
+				name: "BX",
+				desc: o("BX â€” BX Swiss"),
+				flag: "switzerland",
+				group: "Europe",
+				country: "ch",
+				providerId: "",
+				searchTerms: [o("Switzerland")]
+			}, {
+				value: "ASX",
+				name: "ASX",
+				desc: o("ASX â€” Australian Securities Exchange"),
+				flag: "australia",
+				group: "Asia / Pacific",
+				country: "au",
+				providerId: "",
+				searchTerms: [o("Australia")]
+			}, {
+				value: "CHIXAU",
+				name: "Cboe Australia",
+				desc: o("Cboe Australia"),
+				flag: "australia",
+				group: "Asia / Pacific",
+				country: "au",
+				providerId: "",
+				searchTerms: [o("Australia")]
+			}, {
+				value: "NZX",
+				name: "NZX",
+				desc: o("NZX â€” New Zealand Stock Exchange"),
+				flag: "new_zealand",
+				group: "Asia / Pacific",
+				country: "nz",
+				providerId: "",
+				searchTerms: [o("New Zealand")]
+			}, {
+				value: "SSE",
+				name: "SSE",
+				desc: o("SSE â€” Shanghai Stock Exchange"),
+				flag: "china",
+				group: "Asia / Pacific",
+				country: "cn",
+				providerId: "",
+				searchTerms: [o("China")]
+			}, {
+				value: "SZSE",
+				name: "SZSE",
+				desc: o("SZSE â€” Shenzhen Stock Exchange"),
+				flag: "china",
+				group: "Asia / Pacific",
+				country: "cn",
+				providerId: "",
+				searchTerms: [o("China")]
+			}, {
+				value: "HKEX",
+				name: "HKEX",
+				desc: o("HKEX â€” Hong Kong Exchange"),
+				flag: "hong_kong",
+				group: "Asia / Pacific",
+				country: "hk",
+				providerId: "",
+				searchTerms: [o("Hong Kong")]
+			}, {
+				value: "PSE",
+				name: "PSE",
+				desc: o("PSE â€” Philippine Stock Exchange"),
+				flag: "philippines",
+				group: "Asia / Pacific",
+				country: "ph",
+				providerId: "",
+				searchTerms: [o("Philippines")]
+			}, {
+				value: "NSENG",
+				name: "NSE",
+				desc: o("NSE â€” Nigerian Stock Exchange"),
+				flag: "nigeria",
+				group: "Middle East / Africa",
+				country: "ng",
+				providerId: "",
+				searchTerms: [o("Nigeria")]
+			}, {
+				value: "JSE",
+				name: "JSE",
+				desc: o("JSE â€” Johannesburg Stock Exchange"),
+				flag: "south_africa",
+				group: "Middle East / Africa",
+				country: "za",
+				providerId: "",
+				searchTerms: [o("South Africa")]
+			}, {
+				value: "COINBASE",
+				name: "Coinbase",
+				desc: o("Coinbase"),
+				flag: "bitcoin",
+				group: "Cryptocurrency",
+				country: "",
+				providerId: "coinbase"
+			}, {
+				value: "CITYINDEX",
+				name: "City Index",
+				desc: o("City Index"),
+				flag: "forex",
+				group: "Forex",
+				country: "",
+				providerId: "cityindex"
+			}, {
+				value: "USI",
+				name: "USI",
+				desc: o("USI"),
+				flag: "usa",
+				hideInSymbolSearch: !0,
+				group: "North America",
+				country: "us",
+				providerId: "",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "OMXHEX",
+				name: "HEX",
+				desc: o("HEX â€” Nasdaq Helsinki"),
+				flag: "finland",
+				group: "Europe",
+				country: "fi",
+				providerId: "",
+				searchTerms: [o("Finland")]
+			}, {
+				value: "OMXICE",
+				name: "ICEX",
+				desc: o("ICEX â€” Nasdaq Iceland"),
+				flag: "iceland",
+				group: "Europe",
+				country: "is",
+				providerId: "",
+				searchTerms: [o("Iceland")]
+			}, {
+				value: "OMXCOP",
+				name: "CSE",
+				desc: o("CSE â€” Nasdaq Copenhagen"),
+				flag: "denmark",
+				group: "Europe",
+				country: "dk",
+				providerId: "",
+				searchTerms: [o("Denmark")]
+			}, {
+				value: "OMXSTO",
+				name: "STO",
+				desc: o("STO â€” Nasdaq Stockholm"),
+				flag: "sweden",
+				group: "Europe",
+				country: "se",
+				providerId: "",
+				searchTerms: [o("Sweden")]
+			}, {
+				value: "OMXVSE",
+				name: "VSE",
+				desc: o("VSE â€” Nasdaq Vilnius"),
+				flag: "lithuania",
+				group: "Europe",
+				country: "lt",
+				providerId: "",
+				searchTerms: [o("Lithuania")]
+			}, {
+				value: "OMXTSE",
+				name: "TALSE",
+				desc: o("TALSE â€” Nasdaq Tallinn"),
+				flag: "estonia",
+				group: "Europe",
+				country: "ee",
+				providerId: "",
+				searchTerms: [o("Estonia")]
+			}, {
+				value: "OMXRSE",
+				name: "OMXR",
+				desc: o("OMXR â€” Nasdaq Riga"),
+				flag: "latvia",
+				group: "Europe",
+				country: "lv",
+				providerId: "",
+				searchTerms: [o("Latvia")]
+			}, {
+				value: "OMXNORDIC",
+				name: "OMXNORDIC",
+				desc: o("OMXNORDIC"),
+				flag: "europe",
+				hideInSymbolSearch: !0,
+				group: "Europe",
+				country: "eu",
+				providerId: ""
+			}, {
+				value: "OMXBALTIC",
+				name: "OMXBALTIC",
+				desc: o("OMXBALTIC"),
+				flag: "europe",
+				hideInSymbolSearch: !0,
+				group: "Europe",
+				country: "eu",
+				providerId: ""
+			}, {
+				value: "FRED",
+				name: "FRED",
+				desc: o("Federal Reserve Economic Data"),
+				flag: "usa",
+				group: "Economy",
+				country: "",
+				providerId: "fred2",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "ISM",
+				name: "ISM",
+				desc: o("Institute for Supply Management"),
+				flag: "usa",
+				group: "Economy",
+				country: "",
+				providerId: "quandl_ism",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "FRBNY",
+				name: "FRBNY",
+				desc: o("Federal Reserve Bank of New York"),
+				flag: "usa",
+				group: "Economy",
+				country: "",
+				providerId: "quandl_frbny",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "FRBP",
+				name: "FRBP",
+				desc: o("Federal Reserve Bank of Philadelphia"),
+				flag: "usa",
+				group: "Economy",
+				country: "",
+				providerId: "quandl_frbp",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}, {
+				value: "ECONOMICS",
+				name: "Trading Economics",
+				desc: o("World economic data"),
+				flag: "usa",
+				group: "Economy",
+				country: "",
+				providerId: "economics",
+				searchTerms: [o("USA"), o("The United States of America")]
+			}]
+		},
+		500937: (e, r, a) => {
+			var o = a(575932).t;
+			e.exports = [{
+				name: o("All"),
+				value: ""
+			}, {
+				name: o("Stocks"),
+				value: "stock"
+			}, {
+				name: o("Futures"),
+				value: "futures"
+			}, {
+				name: o("Forex"),
+				value: "forex"
+			}, {
+				name: o("CFD"),
+				value: "cfd"
+			}, {
+				name: o("Crypto"),
+				value: "bitcoin,crypto"
+			}, {
+				name: o("Indices"),
+				value: "index"
+			}, {
+				name: o("Bonds"),
+				value: "bond"
+			}, {
+				name: o("Economy"),
+				value: "economic"
+			}]
+		},
+		48192: (e, r, a) => {
+			"use strict";
+			a.d(r, {
+				AuthToken: () => u
+			});
+			var o = a(97639),
+				n = a.n(o),
+				c = a(911905),
+				i = a(86674);
+			const t = (0, c.getLogger)("ChartApi.AuthToken", {
+				color: "#173"
+			});
+			class u {
+				constructor() {
+					this.invalidated = new(n()), this._tid = 0, window.loginStateChange || (window.loginStateChange = new(n())), window.loginStateChange.subscribe(this, (e => {
+						e || (this._set(window.user.auth_token), this.invalidated.fire())
+					})), this._set(window.user.auth_token)
+				}
+				get(e) {
+					return window.is_authenticated ? !e && performance.now() < this._cache.monoValidThru && Date.now() < this._cache.wallValidThru ? (t.logInfo(`Using cached token ${this._cache.token}`), Promise.resolve(this._cache.token)) : this._fetch(Boolean(e), 0).then((e => {
+						if (!window.is_authenticated) throw new Error("User logged out while the request was in flight");
+						return this._set(e), e
+					})).catch((e => (t.logError(`Error fetching new token: ${e&&e.message}`), ""))) : Promise.resolve("")
+				}
+				reset() {
+					this._set(void 0), this.invalidated.fire()
+				}
+				_set(e) {
+					if (window.is_authenticated && void 0 !== e) {
+						const r = function(e) {
+							if ("" === e) return 144e5;
+							try {
+								const r = JSON.parse(atob(e.split(".")[1].replace(/-/g, "+").replace(/_/g, "/"))),
+									a = 1e3 * (r.exp - r.iat);
+								if (!isFinite(a)) throw new Error("invalid expiration");
+								return Math.max(a - 3e5, 3e5)
+							} catch (r) {
+								return t.logError(`${e} is invalid: ${r.message}`), 144e5
+							}
+						}(e);
+						this._cache = {
+							token: e,
+							monoValidThru: performance.now() + r,
+							wallValidThru: Date.now() + r
+						}, clearTimeout(this._tid), this._tid = setTimeout((() => this.reset()), r), t.logInfo(`Cached for ${r} ms: ${e}`)
+					} else this._cache = {
+						token: "",
+						monoValidThru: -1 / 0,
+						wallValidThru: -1 / 0
+					}, clearTimeout(this._tid), t.logInfo("Cache dropped")
+				}
+				_fetch(e, r) {
+					return t.logNormal(`Fetching a new token, grabSession=${e}`), (0, i.fetch)("/quote_token/", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/x-www-form-urlencoded"
+						},
+						body: e ? "grabSession=true" : ""
+					}).then((e => {
+						if (!e.ok) throw new Error(`Response status is not ok: ${e.status}`);
+						return e.json().then(String)
+					}), (a => {
+						if (r >= 3) throw a;
+						return t.logWarn("Request failed, will retry"),
+							function(e) {
+								return new Promise((r => setTimeout(r, 1e3 * e)))
+							}(r).then((() => this._fetch(e, r + 1)))
+					}))
+				}
+			}
+		},
+		761850: (e, r, a) => {
+			"use strict";
+			var o = a(270617).declareClassAsPureInterface;
+
+			function n() {}
+			TradingView.WEB_SOCKET_WAS_CONNECTED = !1, n.REBIND_STUDY_STANDALONE_TO_CHILD = 1, n.REBIND_STUDY_CHILD_TO_STANDALONE = 2, n.prototype.defaultWatchlistSymbols = function() {}, n.prototype.defaultResolutions = function() {}, n.prototype.availableCurrencies = function() {}, n.prototype.availableUnits = function() {}, n.prototype.supportedSymbolsTypes = function() {}, n.prototype.supportedExchangesList = function() {}, n.prototype.symbolsGrouping = function() {}, n.prototype.quoteCreateSession = function(e) {}, n.prototype.quoteDeleteSession = function(e) {}, n.prototype.quoteSetFields = function(e, r) {}, n.prototype.quoteAddSymbols = function(e, r) {}, n.prototype.quoteRemoveSymbols = function(e, r) {}, n.prototype.quoteFastSymbols = function(e, r) {}, n.prototype.depthCreateSession = function(e, r, a) {}, n.prototype.depthDeleteSession = function(e) {}, n.prototype.depthSetSymbol = function(e, r) {}, n.prototype.depthClearSymbol = function(e) {}, n.prototype.depthSetScale = function(e, r) {}, n.prototype.chartCreateSession = function(e, r) {}, n.prototype.chartDeleteSession = function(e) {}, n.prototype.createSession = function(e, r) {}, n.prototype.removeSession = function(e) {}, n.prototype.connected = function() {}, n.prototype.connect = function() {}, n.prototype.disconnect = function() {}, n.prototype.switchTimezone = function(e, r) {}, n.prototype.resolveSymbol = function(e, r, a, o) {}, n.prototype.createSeries = function(e, r, a, o, n, c, i, t) {}, n.prototype.removeSeries = function(e, r, a) {}, n.prototype.modifySeries = function(e, r, a, o, n, c, i) {}, n.prototype.requestMoreData = function(e, r, a, o) {}, n.prototype.requestMetadata = function(e, r, a) {}, n.prototype.isCanCreateStudy = function(e, r) {}, n.prototype.createStudy = function(e, r, a, o, n, c, i) {}, n.prototype.rebindStudy = function(e, r, a, o, n, c, i, t) {},
+				n.prototype.removeStudy = function(e, r, a) {}, n.prototype.modifyStudy = function(e, r, a, o, n) {}, n.prototype.createPointset = function(e, r, a, o, n, c, i) {}, n.prototype.modifyPointset = function(e, r, a, o, n) {}, n.prototype.removePointset = function(e, r, a) {}, n.prototype.requestMoreTickmarks = function(e, r, a, o) {}, n.prototype.requestFirstBarTime = function(e, r, a, o) {}, n.prototype._invokeHandler = function(e, r) {}, n.prototype._sendRequest = function(e, r) {}, n.prototype._onMessage = function(e) {}, n.prototype._dispatchNotification = function(e) {}, n.prototype._invokeNotificationHandler = function(e, r, a) {}, n.prototype._notifySessions = function(e) {}, n.prototype.unpack = function(e) {}, n.prototype.searchSymbols = function(e, r, a, o, n, c, i, t, u, s) {}, n.prototype.serverTimeOffset = function() {}, n.prototype.getMarks = function(e, r, a, o, n) {}, n.prototype.getTimescaleMarks = function(e, r, a, o, n) {}, o(n, "ChartApiInterface"), e.exports.HandlerInfo = function(e, r) {
+					this.handler = e, this.customId = r
+				}, e.exports.ChartApiInterface = n
+		},
+		285055: (e, r, a) => {
+			"use strict";
+			var o, n;
+
+			function c(e, r) {
+				return "period-back" === e.type && "period-back" === r.type ? e.value === r.value : "time-range" === e.type && "time-range" === r.type && (e.from === r.from && e.to === r.to)
+			}
+			a.d(r, {
+					Helpers: () => o,
+					TIMEFRAMETYPE: () => n,
+					areEqualTimeFrames: () => c
+				}),
+				function(e) {
+					e.extractErrorReason = function(e) {
+						return e.params[1]
+					}
+				}(o || (o = {})),
+				function(e) {
+					e.PeriodBack = "period-back", e.TimeRange = "time-range"
+				}(n || (n = {}))
+		},
+		99177: (e, r, a) => {
+			"use strict";
+
+			function o(e) {
+				if (void 0 === e) return "";
+				if (e instanceof Error) {
+					let r = e.message;
+					return e.stack && (r += " " + e.stack), r
+				}
+				return "string" == typeof e ? e.toString() : JSON.stringify(e)
+			}
+			a.d(r, {
+				errorToString: () => o
+			})
+		},
+		709404: (e, r, a) => {
+			"use strict";
+			a.d(r, {
+				exchanges: () => n
+			});
+			var o = a(151293);
+			const n = o
+		},
+		849204: (e, r, a) => {
+			"use strict";
+			a.r(r), a.d(r, {
+				LogoSize: () => o,
+				LogoUrlResolver: () => i,
+				getLogoUrlResolver: () => u
+			});
+			var o, n = a(588537),
+				c = a(588948);
+			! function(e) {
+				e[e.Medium = 0] = "Medium", e[e.Large = 1] = "Large"
+			}(o || (o = {}));
+			class i {
+				constructor(e) {
+					(0, n.assert)("" !== e, "S3 base url must be a non-empty string"), this._baseUrl = e
+				}
+				getSymbolLogoUrl(e, r) {
+					switch ((0, n.assert)("" !== e, "logo id must be a non-empty string"), r) {
+						case o.Medium:
+							return this._baseUrl + `${e}.svg`;
+						case o.Large:
+							return this._baseUrl + `${e}--big.svg`
+					}
+				}
+				getCountryFlagUrl(e, r) {
+					return this.getSymbolLogoUrl("country/" + e, r)
+				}
+				getCryptoLogoUrl(e, r) {
+					return this.getSymbolLogoUrl("crypto/" + e, r)
+				}
+				getProviderLogoUrl(e, r) {
+					return this.getSymbolLogoUrl("provider/" + e, r)
+				}
+			}
+			let t;
+
+			function u() {
+				if (!t) {
+					const e = (0, c.getInitData)(),
+						r = e.settings ? e.settings.S3_LOGO_SERVICE_BASE_URL : "";
+					t = new i(r)
+				}
+				return t
+			}
+		}
+	}
+]);

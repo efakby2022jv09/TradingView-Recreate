@@ -1,0 +1,905 @@
+"use strict";
+(self.webpackChunktradingview = self.webpackChunktradingview || []).push([
+	[47872], {
+		435798: e => {
+			e.exports = function() {
+				this.set_broker = function(e) {
+					return [e]
+				}, this.set_data_quality = function() {
+					return ["low"]
+				}, this.quote_create_session = function(e) {
+					return [e]
+				}, this.quote_delete_session = function(e) {
+					return [e]
+				}, this.quote_set_fields = function(e, t) {
+					return [e].concat(t)
+				}, this.quote_add_symbols = function(e, t) {
+					return [e].concat(t)
+				}, this.quote_remove_symbols = function(e, t) {
+					return [e].concat(t)
+				}, this.quote_fast_symbols = function(e, t) {
+					return [e].concat(t)
+				}, this.quote_hibernate_all = function(e) {
+					return [e]
+				}, this.depth_create_session = function(e, t, n) {
+					return [e, t, n]
+				}, this.depth_delete_session = function(e) {
+					return [e]
+				}, this.depth_set_symbol = function(e, t) {
+					return [e, t]
+				}, this.depth_clear_symbol = function(e) {
+					return [e]
+				}, this.depth_set_scale = function(e, t) {
+					return [e, t]
+				}, this.chart_create_session = function(e, t) {
+					return [e, t ? "disable_statistics" : ""]
+				}, this.chart_delete_session = function(e) {
+					return [e]
+				}, this.set_auth_token = function(e) {
+					return [e]
+				}, this.set_locale = function(e, t) {
+					return [e, t]
+				}, this.switch_timezone = function(e, t) {
+					return [e, t]
+				}, this.resolve_symbol = function(e, t, n) {
+					return [e, t, n]
+				}, this.create_series = function(e, t, n, o, s, r, i) {
+					return [e, t, n = n || "", o, s, r, i]
+				}, this.remove_series = function(e, t) {
+					return [e, t]
+				}, this.modify_series = function(e, t, n, o, s, r) {
+					return [e, t, n = n || "", o, s, r]
+				}, this.request_more_data = function(e, t, n) {
+					return [e, t, n]
+				}, this.request_studies_metadata = function(e, t) {
+					return [e, t]
+				}, this.create_study = function(e, t, n, o, s, r) {
+					return [e, t, n = n || "", o, s].concat(r)
+				}, this.create_child_study = function(e, t, n, o, s, r) {
+					return this.create_study(e, t, n, o, s, r)
+				}, this.child_study_rebind = function(e, t, n, o, s, r) {
+					return [e, t, n = n || "", o, s].concat(r)
+				}, this.remove_study = function(e, t) {
+					return [e, t]
+				}, this.modify_study = function(e, t, n, o) {
+					return [e, t, n = n || ""].concat(o)
+				}, this.create_pointset = function(e, t, n, o, s, r) {
+					return [e, t, n = n || "", o, s].concat(r)
+				}, this.modify_pointset = function(e, t, n, o) {
+					return [e, t, n = n || ""].concat(o)
+				}, this.remove_pointset = function(e, t) {
+					return [e, t]
+				}, this.request_more_tickmarks = function(e, t, n) {
+					return [e, t, n]
+				}, this.get_first_bar_time = function(e, t, n) {
+					return [e, t, n]
+				}, this.replay_create_session = function(e) {
+					return [e]
+				}, this.replay_delete_session = function(e) {
+					return [e]
+				}, this.replay_reset = function(e, t, n) {
+					return [e, t, n]
+				}, this.replay_start = function(e, t, n) {
+					return [e, t, n]
+				}, this.replay_stop = function(e, t) {
+					return [e, t]
+				}, this.replay_step = function(e, t, n) {
+					return [e, t, n]
+				}, this.replay_add_series = function(e, t, n, o) {
+					return [e, t, n, o]
+				}, this.replay_remove_series = function(e, t, n, o) {
+					return [e, t, n, o]
+				}, this.replay_set_resolution = function(e, t, n) {
+					return [e, t, n]
+				}, this.convertTimescaleResponse = function(e) {
+					for (var t = e.marks, n = 0; n < t.length; ++n) t[n] = {
+						span: t[n][0],
+						time: t[n][1],
+						index: t[n][2]
+					};
+					if (void 0 !== e.index_diff) {
+						var o = e.index_diff;
+						for (n = 0; n < o.length; ++n) o[n] = {
+							old: o[n][0],
+							new: o[n][1]
+						}
+					} else e.index_diff = [];
+					return e
+				};
+				var e = this;
+				this.getDataUpdateObjects = function(t) {
+						return e.getTimescaleObjects(t)
+					}, this.getTimescaleObjects = function(e) {
+						return e.params[0]
+					}, this.getTimescaleChangeset = function(e) {
+						return e.params[1]
+					},
+					this.prepareDataUpdateObjects = function(e, t, n) {
+						for (var o in t) {
+							var s = t[o],
+								r = {};
+							for (var i in r.customId = o, r.turnaround = s.turnaround, r.plots = s.series ? s.series : s.plots, s.ns && (r.nonseries = s.ns), s.lbs && (r.lastBar = {
+									closeTime: s.lbs.bar_close_time
+								}), r.plots)
+								for (var a in r.plots[i].value) 1e100 === r.plots[i].value[a] && (r.plots[i].value[a] = void 0);
+							n(e, o, {
+								method: "data_update",
+								params: r
+							})
+						}
+					}, this.unpack = function(e) {
+						var t, n;
+
+						function o(e) {
+							return e.index = e.i, e.value = e.v, delete e.i, delete e.v, e
+						}
+
+						function s(e) {
+							for (n in e) e[n].t && (e[n].turnaround = e[n].t), e[n].s && !e[n].series && (e[n].series = e[n].s.map(o)), e[n].st && !e[n].series && (e[n].series = e[n].st.map(o))
+						}
+						switch ((e = JSON.parse(e)).m && e.p && (e.method = e.m, e.params = e.p, e.time = e.t), t = e.params[1], e.method) {
+							case "qsd":
+								e.method = "quote_symbol_data", t.symbolname = t.n, t.status = t.s, t.values = t.v, t.values.change = t.v.ch, t.values.last_price = t.v.lp, t.values.change_percent = t.v.chp, delete t.n, delete t.s, delete t.v, delete t.values.ch, delete t.values.lp, delete t.values.chp;
+								break;
+							case "du":
+								e.method = "data_update", s(t);
+								break;
+							case "clear_data":
+								for (n in t) t[n].turnaround = t[n].t;
+								break;
+							case "timescale_update":
+								s(t)
+						}
+						return e
+					}, this.prepareEncodeMessage = function(e, t) {
+						return JSON.stringify({
+							m: e,
+							p: t
+						})
+					}
+			}
+		},
+		247872: (e, t, n) => {
+			e = n.nmd(e);
+			var o = !1,
+				s = !1,
+				r = !1,
+				i = n(12481).default,
+				a = n(451902).showTooManyStudiesNotice,
+				u = n(761850),
+				d = u.ChartApiInterface,
+				c = u.HandlerInfo,
+				_ = n(48192).AuthToken,
+				l = n(66974),
+				h = n(175203).telemetry,
+				p = n(435798),
+				T = n(611688),
+				S = n(97128);
+			n(635625);
+			var f = n(560507).enabled,
+				m = n(560507).getConfig,
+				C = n(833813).ProductFeatures,
+				g = n(270617).requireFullInterfaceImplementation,
+				y = n(262325),
+				D = n(125226).isFeatureEnabled,
+				A = n(95935).randomHash,
+				v = n(723475).ResponseMethods,
+				w = n(911905),
+				I = w.getLogger("ChartApi.Core", {
+					color: "#706"
+				}),
+				E = w.getLogger("ChartApi.ChartSession", {
+					color: "#706"
+				}),
+				b = w.getLogger("ChartApi.ChartSession", {
+					highRate: !0,
+					maxCount: 100,
+					color: "#706"
+				}),
+				U = w.getLogger("ChartApi.ChartSession", {
+					maxCount: 0,
+					color: "#706"
+				}),
+				B = w.getLogger("ChartApi.ChartSession", {
+					maxCount: 50,
+					color: "#706"
+				}),
+				k = w.getLogger("ChartApi.QuoteSession", {
+					maxCount: 50,
+					color: "#660"
+				}),
+				R = w.getLogger("ChartApi.QuoteSession", {
+					highRate: !0,
+					maxCount: 10,
+					color: "#660"
+				}),
+				X = w.getLogger("ChartApi.TrafficMeter", {
+					maxCount: 20,
+					color: "#268"
+				}),
+				N = n(277714),
+				P = n(709404).exchanges,
+				M = n(500937),
+				V = n(99177).errorToString,
+				L = n(86674).fetch,
+				O = n(582919),
+				F = n(285055).TIMEFRAMETYPE,
+				{
+					getLogoUrlResolver: q,
+					LogoSize: H
+				} = n(849204),
+				x = D("broker_id_session"),
+				Y = D("websocket_send_locale");
+
+			function Q(e) {
+				function t(e) {
+					if (0 === e) return "0";
+					var t = parseInt(Math.floor(Math.log(e) / Math.log(1024)));
+					return Math.round(e / Math.pow(1024, t), 2) + ["", "KB", "MB", "GB", "TB"][t]
+				}
+				this._banInfo = new y(null), this._isAuthTokenLoaded = !1, this._authTokenDfd = null, this._notificationHandlers = {}, this._sessions = {}, this._dataHandleModule = new p, this.studyCounter = 0, this.childStudyCounter = 0, this._sendingQueuedRequestsCount = 0, this._pendingMessagesQueue = [], this._brokerId = "", this._serverTimeOffset = 0, this._serverTimeBasePoint = Date.now() - performance.now(), this._trafficStats = {
+						total: 0,
+						sinceConnect: 0,
+						lastChunk: 0
+					}, this._wsBackendConnection = e,
+					this._wsBackendConnection.onReconnect(this._bindSocketEvents.bind(this)), this._wsBackendConnection.setLogger(I, w.getLogHistory), this._wsBackendConnection.setTelemetry(h), this._bindSocketEvents(), this._lowQualityEnabled = !1, this._turnaroundPrefix = A(), this._turnaroundIndex = 0, this._modifyStudyMap = new Map, setInterval(function() {
+						X.logNormal("Last 30 seconds:" + t(this._trafficStats.lastChunk) + " Since last connect:" + t(this._trafficStats.sinceConnect) + " Total traffic:" + t(this._trafficStats.total)), this._trafficStats.lastChunk = 0
+					}.bind(this), 3e4)
+			}
+			Q.prototype.defaultWatchlistSymbols = function() {
+				var e = N[window.locale];
+				return void 0 === e && (e = N.default), e
+			}, Q.prototype.defaultResolutions = function() {
+				var e = ["1", "3", "5", "15", "30", "45", "60", "120", "180", "240", "1D", "1W", "1M", "1000R", "100R", "10R", "1R"];
+				if (!T.enabled("widget")) {
+					return ["1S", "5S", "10S", "15S", "30S"].concat(e)
+				}
+				return e
+			};
+			var G = null;
+
+			function K() {
+				if (null === G) {
+					const e = document.querySelector('link[rel~="conversions-config"]'),
+						t = new URL(e.href);
+					G = L(t.toString(), {
+						method: "GET"
+					}).then((function(e) {
+						if (!e.ok) throw new Error("Response status is not success");
+						return e.json()
+					})).then((e => {
+						const t = q();
+						return e.currencies.forEach((e => {
+							void 0 !== e.logoid && (e.logoUrl = t.getSymbolLogoUrl(e.logoid, H.Medium))
+						})), e
+					}))
+				}
+				return G
+			}
+
+			function J(e) {
+				if (null === e) return "";
+				if (e.type === F.PeriodBack) {
+					var t = e.value;
+					return "YTD" !== t && "D" === t.slice(-1) && (t = t.slice(0, -1)), t
+				}
+				return "r," + e.from + ":" + e.to
+			}
+			Q.prototype.availableCurrencies = function() {
+					return K().then((e => e.currencies))
+				}, Q.prototype.availableUnits = function() {
+					return K().then((e => {
+						const t = {};
+						for (const n of e.units) t[n.type] || (t[n.type] = []), t[n.type].push(n);
+						return t
+					}))
+				}, Q.prototype.supportedSymbolsTypes = function() {
+					return "bovespa" === TradingView.widgetCustomer ? M.filter((function(e) {
+						return -1 !== ["", "stock", "futures", "index"].indexOf(e.value)
+					})) : "cme" === TradingView.widgetCustomer ? M.filter((function(e) {
+						return e.value !== S.types.QUANDL
+					})) : M
+				}, Q.prototype.supportedExchangesList = function() {
+					return P
+				}, Q.prototype.symbolsGrouping = function() {
+					return {
+						futures: /^(.+?)([12]!|\w\d{4})?$/
+					}
+				}, Q.prototype.enableLowQualityMode = function() {
+					this._lowQualityEnabled = !0, this._sendLowQualityModeIfEnabled()
+				}, Q.prototype._sendLowQualityModeIfEnabled = function() {
+					this._lowQualityEnabled && this.connected() && this._sendRequest("set_data_quality", [])
+				}, Q.prototype.setLoadNew = function(e) {
+					this._loadNewBars = !!e
+				}, Q.prototype.quoteCreateSession = function(e) {
+					return this._sendRequest("quote_create_session", [e])
+				}, Q.prototype.quoteDeleteSession = function(e) {
+					return this._sendRequest("quote_delete_session", [e])
+				}, Q.prototype.quoteSetFields = function(e, t) {
+					return this._sendRequest("quote_set_fields", [e, t])
+				}, Q.prototype.quoteAddSymbols = function(e, t) {
+					return this._sendRequest("quote_add_symbols", [e, t])
+				}, Q.prototype.quoteRemoveSymbols = function(e, t) {
+					return this._sendRequest("quote_remove_symbols", [e, t])
+				}, Q.prototype.quoteFastSymbols = function(e, t) {
+					return this._sendRequest("quote_fast_symbols", [e, t])
+				}, Q.prototype.quoteHibernateAll = function(e) {
+					return this._sendRequest("quote_hibernate_all", [e])
+				},
+				Q.prototype.depthCreateSession = function(e, t, n) {
+					return this._sendRequest("depth_create_session", [e, t, n])
+				}, Q.prototype.depthDeleteSession = function(e) {
+					return this._sendRequest("depth_delete_session", [e])
+				}, Q.prototype.depthSetSymbol = function(e, t) {
+					return this._sendRequest("depth_set_symbol", [e, t])
+				}, Q.prototype.depthClearSymbol = function(e) {
+					return this._sendRequest("depth_clear_symbol", [e])
+				}, Q.prototype.depthSetScale = function(e, t) {
+					return this._sendRequest("depth_set_scale", [e, t])
+				}, Q.prototype.chartCreateSession = function(e, t) {
+					return this._sendRequest("chart_create_session", [e, t])
+				}, Q.prototype.chartDeleteSession = function(e) {
+					return this._sendRequest("chart_delete_session", [e])
+				}, Q.prototype.createSession = function(e, t) {
+					this._sessions[e] = t, this._notificationHandlers[e] = {}, this.connected() && this._isAuthTokenLoaded && t.onMessage({
+						method: "connected",
+						params: []
+					})
+				}, Q.prototype.removeSession = function(e) {
+					delete this._sessions[e], delete this._notificationHandlers[e]
+				}, Q.prototype.connected = function() {
+					return !!this._isConnected
+				}, Q.prototype._bindSocketEvents = function() {
+					var e = this;
+					this.connectDfd = new Promise((function(t, n) {
+						e._wsBackendConnection.on("connect", (function() {
+							e._onConnect(), t()
+						})), e._wsBackendConnection.on("message", e._onMessage.bind(e)), e._wsBackendConnection.on("disconnect", (function() {
+							e._authTokenDfd && (e._authTokenDfd = null), delete e._isConnected, e.studyCounter = 0, e._notifySessions({
+								method: "disconnected",
+								params: []
+							}), e._banInfo.value() || delete e._metadataCallback, e._disconnectCount = (e._disconnectCount || 0) + 1, e._wsBackendConnection.isConnected() && (e._telemetryDisconnectTimeout = setTimeout((function() {
+								h.sendChartReport("disconnect")
+							}), 5e3), e._wsBackendConnection.isMaxReconnects() && (e._notifySessions({
+								method: "reconnect_bailout",
+								params: []
+							}), n(), h.sendChartReport("reconnect_bailout")))
+						}))
+					}))
+				}, Q.prototype.setBroker = function(e) {
+					return e === this._brokerId || (this._brokerId = e, this._sendBrokerIdToSession(this._brokerId))
+				}, Q.prototype.serverTimeOffset = function() {
+					return this._serverTimeOffset
+				}, Q.prototype.serverTime = function() {
+					return Math.round(this._serverTimeBasePoint + performance.now())
+				}, Q.disconnectReason = function(e) {
+					return 1e3 === e ? "Normal closure, meaning that the purpose for which the connection was established has been fulfilled." : 1001 === e ? 'An endpoint is "going away", such as a server going down or a browser having navigated away from a page.' : 1002 === e ? "An endpoint is terminating the connection due to a protocol error" : 1003 === e ? "An endpoint is terminating the connection because it has received a type of data it cannot accept (e.g., an endpoint that understands only text data MAY send this if it receives a binary message)." : 1004 === e ? "Reserved. The specific meaning might be defined in the future." : 1005 === e ? "No status code was actually present." : 1006 === e ? "The connection was closed abnormally, e.g., without sending or receiving a Close control frame" : 1007 === e ? "An endpoint is terminating the connection because it has received data within a message that was not consistent with the type of the message (e.g., non-UTF-8 [http://tools.ietf.org/html/rfc3629] data within a text message)." : 1008 === e ? 'An endpoint is terminating the connection because it has received a message that "violates its policy". This reason is given either if there is no other sutible reason, or if there is a need to hide specific details about the policy.' : 1009 === e ? "An endpoint is terminating the connection because it has received a message that is too big for it to process." : 1010 === e ? "An endpoint (client) is terminating the connection because it has expected the server to negotiate one or more extension, but the server didn't return them in the response message of the WebSocket handshake. <br /> Specifically, the extensions that are needed are: " + event.reason : 1011 === e ? "A server is terminating the connection because it encountered an unexpected condition that prevented it from fulfilling the request." : 1015 === e ? "The connection was closed due to a failure to perform a TLS handshake (e.g., the server certificate can't be verified)." : "Unknown reason"
+				}, Q.prototype._sendBrokerIdToSession = function(e) {
+					return !x || this._sendRequest("set_broker", [e])
+				}, Q.prototype._getAuthTokenDfd = function(e) {
+					if (this._loadNewBars) return Promise.resolve("load_new_token");
+					if (T.enabled("widget") || -1 !== window.location.search.indexOf("widget_token") || -1 !== window.location.hash.indexOf("widget_token")) {
+						var t = window.TradingView && window.TradingView.widgetCustomer || "";
+						return Promise.resolve(O[t] || "widget_user_token")
+					}
+					if (!window.is_authenticated) return Promise.resolve("unauthorized_user_token");
+					var n = this;
+					if (!n._authTokenManager) {
+						var o = new _;
+						n._authTokenManager = o, n._authTokenManager.invalidated.subscribe(null, (function(e) {
+							n._authTokenManager.get().then((function(e) {
+								e && n.connected() && n._sendRequest("set_auth_token", [e])
+							}))
+						}))
+					}
+					return n._authTokenManager.get(e)
+				}, Q.prototype._onConnect = function() {
+					if (!this.connected()) {
+						this._trafficStats.sinceConnect = 0, this._isAuthTokenLoaded = !1;
+						var e = this;
+						if (this._connectOnlyOptions = this._connectOnlyOptions || {}, this._authTokenDfd = this._getAuthTokenDfd(this._connectOnlyOptions.tokenGrabSession), this._connectOnlyOptions = {},
+							this.sessionid = this._wsBackendConnection.getSessionId(), this.sessionid && !this._isConnected) {
+							this._pendingMessagesQueue = [], this._sendingQueuedRequestsCount = 0, this._isConnected = !0, this._banInfo.setValue(null);
+							var t = JSON.parse(this.sessionid);
+							this._sendLowQualityModeIfEnabled(), this._metadataServerHash = t.studies_metadata_hash || null;
+							var n = this._wsBackendConnection.getConnectionEstablished();
+							try {
+								var o = (performance.now() - n) / 1e3,
+									r = t.timestamp + o;
+								this._serverTimeOffset = r - Date.now() / 1e3, this._serverTimeBasePoint = Math.round(1e3 * t.timestamp - n)
+							} catch (e) {
+								this._serverTimeOffset = 0, this._serverTimeBasePoint = Date.now() - performance.now()
+							}
+							if (I.logInfo("Time shift with server:" + Math.round(this._serverTimeOffset) + " seconds."), this._authTokenDfd) {
+								this._sendingQueuedRequestsCount += 1, I.logInfo("Wait for auth token before send messages");
+								var i = this._authTokenDfd;
+								i.then((function(t) {
+									if (null !== e._authTokenDfd && e._authTokenDfd === i) {
+										if (I.logNormal("Auth token request is finished, token: " + Boolean(t)), e._authTokenDfd = null, t) {
+											const n = [{
+												method: "set_auth_token",
+												args: [t]
+											}];
+											if (Y) {
+												const e = window.initData && window.initData.currentLocaleInfo;
+												e && n.push({
+													method: "set_locale",
+													args: [e.iso, e.flag.toUpperCase()]
+												})
+											}
+											e._pendingMessagesQueue.unshift(...n)
+										}
+										e._onSendingQueueRequestFinished(), e._isAuthTokenLoaded = !0, e._notifySessions({
+											method: "connected",
+											params: []
+										})
+									} else I.logNormal("Comes auth token after requesting new token or after socket disconnected")
+								})).catch((function(e) {
+									I.logNormal(V(e))
+								}))
+							} else I.logWarn("Deferred auth token object is not valid"), this._isAuthTokenLoaded = !0;
+							"" !== this._brokerId && this._sendBrokerIdToSession(this._brokerId);
+							var a = this._wsBackendConnection.getConnectionStart();
+							TradingView.WEB_SOCKET_WAS_CONNECTED = !0, h.setSessionInfo(this.sessionid), h.sendChartReport("websocket_connected"), h.sendChartReport("websocket_connection_time_frame", {
+								value: n - a
+							}), h.sendChartReport("reconnect_count_frame", {
+								value: this._wsBackendConnection.getReconnectCount()
+							}), h.sendChartReport("redirect_count_frame", {
+								value: this._wsBackendConnection.getRedirectCount()
+							}), s || (s = !0, h.sendChartReport("before_websocket_connection_time_frame", {
+								value: a
+							})), this._wsBackendConnection.resetCounters(), clearTimeout(this._telemetryDisconnectTimeout)
+						}
+					}
+				}, Q.prototype.connect = function(e) {
+					this._connectOnlyOptions = e, this._wsBackendConnection.isConnected() || this._wsBackendConnection.isConnecting() || this._wsBackendConnection.connect()
+				}, Q.prototype.disconnect = function(e) {
+					return this._wsBackendConnection.disconnect(), !0
+				}, Q.prototype.switchTimezone = function(e, t) {
+					return this._sendRequest("switch_timezone", [e, t])
+				}, Q.prototype.resolveSymbol = function(e, t, n, o) {
+					return h.timeCounters.series["resolve_symbol_" + e] = window.performance.now(), this._notificationHandlers[e][t] = new c(o, t), this._sendRequest("resolve_symbol", [e, t, n])
+				}, Q.prototype.createSeries = function(e, t, n, o, s, r, i, a) {
+					this._notificationHandlers[e][t] = new c(a, t), h.timeCounters.series.marks.push("create_series_" + e);
+					const u = J(i);
+					return this._sendRequest("create_series", [e, t, n, o, s, r, u])
+				}, Q.prototype.removeSeries = function(e, t) {
+					return delete this._notificationHandlers[e][t], this._sendRequest("remove_series", [e, t])
+				}, Q.prototype.modifySeries = function(e, t, n, o, s, r, i) {
+					this._notificationHandlers[e][t] = new c(i, t);
+					const a = J(r);
+					return this._sendRequest("modify_series", [e, t, n, o, s, a])
+				}, Q.prototype.requestMoreData = function(e, t, n, o) {
+					if ("number" != typeof n) throw new Error("unsupported request to load more data, bars=" + n);
+					return this._notificationHandlers[e][t] = new c(o, t), this._sendRequest("request_more_data", [e, t, n])
+				}, Q.prototype.requestMetadata = function(e, t, n) {
+					var o = this;
+					if (o._metadataCallback) o._metadataCallback.handlers.push(n);
+					else {
+						var s = T.enabled("widget"),
+							r = s ? "studies_metadata_widget" : "studies_metadata",
+							i = "pro_hash",
+							a = [];
+						o._metadataCallback = function(e) {
+							o._metadataCallback = null, TVLocalForage.setItem(r, TradingView.clone(e)).then((function() {
+								if (I.logNormal("Updated studies_metadata cache"), !s) {
+									var e = pro.hash();
+									TVLocalForage.setItem(i, TradingView.clone(e)).then((function() {
+										I.logNormal("Updated pro_hash cache")
+									})).catch((function(e) {
+										I.logError("Cannot update pro_hash cache, reason: " + e)
+									}))
+								}
+							})).catch((function(e) {
+								I.logError("Cannot update studies_metadata cache, reason: " + e)
+							}));
+							for (var t = 0; t < a.length; t++) {
+								(0, a[t])(TradingView.clone(e))
+							}
+						}, o._metadataCallback.handlers = a, o._metadataCallback.handlers.push(n), I.logNormal("Requesting pro hash"), TVLocalForage.getItem(i).then((function(n) {
+							var i = pro.hash();
+							null !== n && n === i || s ? (I.logNormal("Pro hash has not changed, requesting from local"), TVLocalForage.getItem(r).then((function(n) {
+								var s = null !== n && n.params[1].hash || null;
+								if (null === s || null === o._metadataServerHash || o._metadataServerHash !== s) return I.logNormal("Metadata hash has changed (cached:'" + s + "', server:'" + o._metadataServerHash + "'')"), void o._requestMetadataFromServer(e, t, o._metadataCallback);
+								if (pro.hasPackage("tv-volumebyprice") && void 0 === n.params[1].metainfo.find((function(e) {
+										return e.id.includes("@tv-volumebyprice")
+									}))) return I.logNormal("De-sync detected! pro.hash contains VbPR studies, but data from cache doesn't and pro.hash isn't changed, pro.hash=" + i), void o._requestMetadataFromServer(e, t, o._metadataCallback);
+								if (I.logNormal("Using studies_metadata from browser cache"), o._metadataCallback) {
+									for (var r = 0; r < o._metadataCallback.handlers.length; r++) {
+										(0, o._metadataCallback.handlers[r])(TradingView.clone(n))
+									}
+									o._metadataCallback = null
+								} else I.logWarn("Cached metadata received, but callback expired")
+							})).catch((function(n) {
+								I.logError("Cannot get studies_metadata, reason: " + n), o._requestMetadataFromServer(e, t, o._metadataCallback)
+							}))) : (I.logNormal("Pro hash has changed (cached: '" + n + "', current:'" + i + "')"), o._requestMetadataFromServer(e, t, o._metadataCallback))
+						})).catch((function(n) {
+							I.logError("Cannot get studies_metadata, reason: " + n), o._requestMetadataFromServer(e, t, o._metadataCallback)
+						}))
+					}
+				}, Q.prototype.authTokenManager = function() {
+					return this._authTokenManager
+				}, Q.prototype._requestMetadataFromServer = function(e, t, n) {
+					return !!n && (I.logNormal("Request studies_metadata from server"), this._notificationHandlers[e][t] = new c(n, t),
+						this._sendRequest("request_studies_metadata", [e, t]))
+				}, Q.prototype.isCanCreateStudy = function(e, t) {
+					if (!f(C.STUDY_ON_STUDY)) return !1;
+					var n = m(C.STUDY_ON_STUDY);
+					return !0 === e ? this.childStudyCounter < n.child_limit : this.studyCounter < n.limit
+				}, Q.prototype.createStudy = function(e, t, n, o, s, r, i, u) {
+					if (!this.isCanCreateStudy()) return a(), !1;
+					this._notificationHandlers[e][t] = new c(i, t);
+					var d = this._sendRequest(!0 === u ? "create_child_study" : "create_study", [e, t, n, o, s, r]);
+					return !1 !== d && (this.studyCounter++, u && this.childStudyCounter++, d)
+				}, Q.prototype.rebindStudy = function(e, t, n, o, s, r, i, a) {
+					if (a === d.REBIND_STUDY_STANDALONE_TO_CHILD) {
+						if (!this.isCanCreateStudy(!0)) return !1;
+						this.childStudyCounter++
+					} else a === d.REBIND_STUDY_CHILD_TO_STANDALONE && this.childStudyCounter--;
+					return n = n || "", this._notificationHandlers[e][t] = new c(i, t), this._sendRequest("child_study_rebind", [e, t, n, o, s, r]), !0
+				}, Q.prototype.removeStudy = function(e, t, n) {
+					const o = e + t;
+					delete this._notificationHandlers[e][t], this._modifyStudyMap.has(o) && this._modifyStudyMap.get(o).flush();
+					var s = this._sendRequest("remove_study", [e, t]);
+					return !1 !== s && (this._modifyStudyMap.delete(o), this.studyCounter--, n && this.childStudyCounter--, s)
+				}, Q.prototype.modifyStudy = function(e, t, n, o, s) {
+					const r = e + t;
+					if (this._notificationHandlers[e][t] = new c(s, t), this._modifyStudyMap.has(r)) return this._modifyStudyMap.get(r)(e, t, n, o); {
+						const s = i(((e, t, n, o) => this._sendRequest("modify_study", [e, t, n, o])), 500, {
+							maxWait: 550
+						});
+						return this._modifyStudyMap.set(r, s), s(e, t, n, o)
+					}
+				}, Q.prototype.createPointset = function(e, t, n, o, s, r, i) {
+					return this._notificationHandlers[e][t] = new c(i, t), this._sendRequest("create_pointset", [e, t, n, o, s, r])
+				}, Q.prototype.modifyPointset = function(e, t, n, o, s) {
+					return this._notificationHandlers[e][t] = new c(s, t), this._sendRequest("modify_pointset", [e, t, n, o])
+				}, Q.prototype.removePointset = function(e, t, n) {
+					return this._notificationHandlers[e][t] = new c(n, t), this._sendRequest("remove_pointset", [e, t])
+				}, Q.prototype.requestMoreTickmarks = function(e, t, n, o) {
+					return this._notificationHandlers[e][t] = new c(o, t), this._sendRequest("request_more_tickmarks", [e, t, n])
+				}, Q.prototype.requestFirstBarTime = function(e, t, n, o) {
+					return this._notificationHandlers[e][t] = new c(o, t), this._sendRequest("get_first_bar_time", [e, t, n])
+				}, Q.prototype._generateNextTurnaround = function() {
+					var e = this._turnaroundPrefix + this._turnaroundIndex;
+					return this._turnaroundIndex += 1, e
+				}, Q.prototype.replayCreateSession = function(e) {
+					return this._sendRequest("replay_create_session", [e])
+				}, Q.prototype.replayDeleteSession = function(e) {
+					return this._sendRequest("replay_delete_session", [e])
+				}, Q.prototype.replayReset = function(e, t, n) {
+					var o = this._generateNextTurnaround();
+					return this._notificationHandlers[e][o] = new c(n, o), this._sendRequest("replay_reset", [e, o, t])
+				}, Q.prototype.replayStart = function(e, t, n) {
+					var o = this._generateNextTurnaround();
+					return this._notificationHandlers[e][o] = new c(n, o), this._sendRequest("replay_start", [e, o, t])
+				}, Q.prototype.replayStop = function(e, t) {
+					var n = this._generateNextTurnaround();
+					return this._notificationHandlers[e][n] = new c(t, n), this._sendRequest("replay_stop", [e, n])
+				},
+				Q.prototype.replayStep = function(e, t, n) {
+					var o = this._generateNextTurnaround();
+					return this._notificationHandlers[e][o] = new c(n, o), this._sendRequest("replay_step", [e, o, t])
+				}, Q.prototype.replayAddSeries = function(e, t, n, o) {
+					var s = this._generateNextTurnaround();
+					return this._notificationHandlers[e][s] = new c(o, s), this._sendRequest("replay_add_series", [e, s, t, n])
+				}, Q.prototype.replayRemoveSeries = function(e, t, n, o) {
+					var s = this._generateNextTurnaround();
+					return this._notificationHandlers[e][s] = new c(o, s), this._sendRequest("replay_remove_series", [e, s, t, n])
+				}, Q.prototype.replaySetResolution = function(e, t, n) {
+					var o = this._generateNextTurnaround();
+					return this._notificationHandlers[e][o] = new c(n, o), this._sendRequest("replay_set_resolution", [e, o, t])
+				}, Q.prototype.redirectCount = function() {
+					return this._wsBackendConnection.getRedirectCount()
+				}, Q.prototype.disconnectCount = function() {
+					return this._disconnectCount || 0
+				}, Q.prototype._invokeHandler = function(e, t) {
+					e && e(t)
+				}, Q.prototype._flushPendingMessages = function() {
+					I.logInfo("Flush pending messages. Count=" + this._pendingMessagesQueue.length), this._pendingMessagesQueue.forEach((function(e) {
+						this._sendRequest(e.method, e.args)
+					}), this), this._pendingMessagesQueue = []
+				}, Q.prototype._sendRequest = function(e, t) {
+					if (0 !== this._sendingQueuedRequestsCount) return this._pendingMessagesQueue.push({
+						method: e,
+						args: t
+					}), !0;
+					var n = this._dataHandleModule[e].apply(this._dataHandleModule, t),
+						o = {
+							m: e,
+							p: n
+						},
+						s = JSON.stringify(o);
+					if (n.length > 0) {
+						var r = n[0];
+						r.startsWith("qs_") ? k.logNormal("send: " + s) : r.startsWith("cs_") && E.logNormal("send: " + s)
+					} else I.logNormal("send: " + s);
+					var i = this._dataHandleModule.prepareEncodeMessage(e, n);
+					return this._wsBackendConnection.send(i)
+				}, Q.prototype._onMessage = function(e) {
+					this._calcTrafficStats(e);
+					var t = this.unpack(e);
+					"protocol_switched" !== t.method ? "protocol_error" !== t.method ? this._dispatchNotification(t, e) : this._processProtocolError(t) : I.logError("Unexpected protocol changing request, try skipping. Requested protocol:" + t.params[0])
+				}, Q.prototype._processProtocolError = function(e) {
+					const t = e.params[0];
+					I.logError(`Protocol error. Reason=${t}.`), "banned" !== t && "banned by user_id" !== t && "banned by ip" !== t || (this._banInfo.setValue({
+						reason: t
+					}), this.disconnect())
+				}, Q.prototype._onSendingQueueRequestFinished = function() {
+					this._sendingQueuedRequestsCount -= 1, I.logInfo("Sending queue request finished. Remaining pending requests=" + this._sendingQueuedRequestsCount), this._sendingQueuedRequestsCount < 0 && I.logError("Invalid queue state=" + this._sendingQueuedRequestsCount), 0 === this._sendingQueuedRequestsCount && this._flushPendingMessages()
+				}, Q.prototype._convertTimescaleResponse = function(e) {
+					return this._dataHandleModule.convertTimescaleResponse(e)
+				}, Q.prototype._appendDuration = function(e, t) {
+					return e ? t + ", duration: " + Math.round(Date.now() / 1e3 - e + this._serverTimeOffset) + "s" : t
+				}, Q.prototype._dispatchNotification = function(e, t) {
+					var n = e.params.shift();
+					if (this._notificationHandlers[n]) {
+						var s = e.params[0];
+						if ("symbol_resolved" === e.method) {
+							var i = e.params[1].full_name;
+							h.sendChartReport("symbol_resolved", {
+								count: 1,
+								additional: {
+									symbol: i
+								}
+							});
+							var a = h.timeCounters.series["resolve_symbol_" + n];
+							"number" == typeof a && h.sendChartReport("symbol_resolve_time_frame", {
+								value: window.performance.now() - a,
+								additional: {
+									symbol: i
+								}
+							})
+						}
+						if (["series_error", "series_completed"].includes(e.method) && h.timeCounters.series.marks.length > 0) {
+							var u = "create_series_" + n,
+								d = h.timeCounters.series.marks.indexOf(u);
+							d >= 0 && h.timeCounters.series.marks.splice(d, 1)
+						}
+						r || "series_error" !== e.method || (r = !0);
+						var c = this._wsBackendConnection.getConnectionEstablished();
+						if (null !== c && "series_completed" === e.method && (r || (r = !0, h.sendChartReport("first_series_full_time_frame", {
+								value: window.performance.now() - c
+							}), h.timeCounters.series.marks = []), o || (o = !0, h.sendChartReport("page_full_load_time_frame", {
+								value: window.performance.now()
+							}))), n.startsWith("cs_")) {
+							var _ = "recv: " + t;
+							"data_update" === e.method ? (_ = w.isHighRateEnabled() ? _ : _.slice(0, 500), b.logNormal(this._appendDuration(e.time, _))) : "study_loading" === e.method ? U.logNormal(this._appendDuration(e.time, _)) : "tickmark_update" === e.method ? B.logNormal(this._appendDuration(e.time, _)) : E.logNormal(this._appendDuration(e.time, _))
+						}
+						if (n.startsWith("qs_"))("quote_symbol_data" === e.method ? R.logNormal : k.logNormal)("recv: " + t);
+						switch (e.method) {
+							case "timescale_update":
+								var l = this._dataHandleModule.getTimescaleObjects(e),
+									p = this._dataHandleModule.getTimescaleChangeset(e);
+								(T = this._convertTimescaleResponse(p)).clear = 0 === T.changes.length && 0 === T.index_diff.length && 0 === T.marks.length, this._sessions[n].onMessage({
+									method: "timescale_update",
+									params: T
+								}), this._dataHandleModule.prepareDataUpdateObjects(n, l, function(e, t, n) {
+									this._invokeNotificationHandler(e, t, n)
+								}.bind(this));
+								break;
+							case "tickmark_update":
+								var T;
+								(T = this._convertTimescaleResponse(e.params[0])).changes = [], this._sessions[n].onMessage({
+									method: "timescale_update",
+									params: T
+								});
+								break;
+							case "data_update":
+								l = this._dataHandleModule.getDataUpdateObjects(e);
+								this._dataHandleModule.prepareDataUpdateObjects(n, l, function(e, t, n) {
+									this._invokeNotificationHandler(e, t, n)
+								}.bind(this));
+								break;
+							case "index_update":
+								for (var S in e.params[0]) {
+									var f = {
+										method: "index_update",
+										params: e.params[0][S]
+									};
+									this._invokeNotificationHandler(n, S, f)
+								}
+								break;
+							case "critical_error":
+								I.logInfo(new Date + " critical_error session:" + this.sessionid + " reason:" + e.params[0]), h.sendChartReport("critical_error"), this._sessions[n].onMessage({
+									method: "critical_error",
+									params: e.params
+								});
+								break;
+							case "timescale_completed":
+							case "quote_symbol_data":
+							case "quote_list_fields":
+							case "quote_completed":
+							case "depth_symbol_error":
+							case "depth_symbol_success":
+							case "dd":
+							case "dpu":
+							case "depth_bar_last_value":
+								this._sessions[n].onMessage({
+									method: e.method,
+									params: e.params
+								});
+								break;
+							case "clear_data":
+								for (var m in e.params[0]) this._invokeNotificationHandler(n, m, {
+									method: "clear_data",
+									params: e.params[0][m]
+								});
+								break;
+							case v.point:
+							case v.resolutions:
+							case v.endOfData:
+							case v.instanceId:
+								this._sessions[n].onMessage(e);
+								break;
+							case "series_timeframe":
+								e.params[4] = function(e) {
+										if (null == e) return null;
+										var t = /r,(\d+):(\d+)/.exec(e);
+										return null !== t ? {
+											from: Number(t[1]),
+											to: Number(t[2]),
+											type: F.TimeRange
+										} : {
+											value: e,
+											type: F.PeriodBack
+										}
+									}(e.params[4]),
+									this._invokeNotificationHandler(n, s, e);
+								break;
+							case "symbol_resolved":
+								! function(e) {
+									if (void 0 === e.corrections) {
+										var t = e.subsessions.find((function(t) {
+											return t.id === e.subsession_id
+										}));
+										void 0 !== t && (e.corrections = t["session-correction"])
+									}
+								}(e.params[1]), this._invokeNotificationHandler(n, s, e);
+								break;
+							default:
+								this._invokeNotificationHandler(n, s, e)
+						}
+					}
+				}, Q.prototype._isStrategy = function(e, t) {
+					var n = this._notificationHandlers[e][t];
+					return n && n.handler && n.handler.isTVScriptStrategy
+				}, Q.prototype._invokeNotificationHandler = function(e, t, n) {
+					if (void 0 !== t) {
+						var o = this._notificationHandlers[e][t];
+						0 === n.method.indexOf("replay_") && delete this._notificationHandlers[e][t], void 0 !== o && this._invokeHandler(o.handler, n)
+					}
+				}, Q.prototype._notifySessions = function(e) {
+					for (var t in this._sessions) {
+						if (!this._sessions.hasOwnProperty(t)) return;
+						var n = this._sessions[t];
+						"function" == typeof n.onMessage && n.onMessage(e)
+					}
+				}, Q.prototype.unpack = function(e) {
+					return this._dataHandleModule.unpack(e)
+				}, Q.prototype._symbolSearchRequest = null, Q.prototype.searchSymbols = function(e, t, n, o, s, r, i, a, u, d) {
+					var c = this;
+					this._symbolSearchRequest && this._symbolSearchRequest.abort();
+					var _ = location.protocol + "//" + window.SS_HOST;
+					l.isProd() ? _ += "/symbol_search/" : _ += "/local_search/", window.SS_URL && (_ = window.SS_URL);
+					var p = {
+						text: e,
+						exchange: t,
+						type: n,
+						hl: s,
+						lang: o
+					};
+					window.SS_DOMAIN_PARAMETER && (p.domain = window.SS_DOMAIN_PARAMETER), r && (p.strict = 1), n === S.types.QUANDL && (_ = "https://quandlapi.tradingview.com/api/v3/datasets.json", p = {
+						query: e,
+						database_code: t
+					}), i && (p.broker = i, a && (p.tradable = !0), u && (p.unhide = u));
+					var T = Object.keys(p).map((function(e) {
+							return encodeURIComponent(e) + "=" + encodeURIComponent(p[e])
+						})).join("&"),
+						f = new XMLHttpRequest;
+					f.open("GET", _ + "?" + T);
+					var m = window.performance.now();
+
+					function C() {
+						h.sendChartReport("symbol_search_time_frame", {
+							value: window.performance.now() - m
+						})
+					}
+
+					function g() {
+						C(), h.sendChartReport("symbol_search_http_error"), c._symbolSearchRequest = null
+					}
+					f.addEventListener("load", (function() {
+						var e = JSON.parse(f.responseText);
+						d && d(e), C(), h.sendChartReport("symbol_search_http_status", {
+							value: f.status
+						}), c._symbolSearchRequest = null
+					})), f.addEventListener("error", g), f.addEventListener("timeout", g), this._symbolSearchRequest = f, f.send()
+				}, Q.prototype.getMarks = function(e, t, n, o, s) {
+					throw Error("This method is not implemented")
+				}, Q.prototype.getTimescaleMarks = function(e, t, n, o, s) {
+					throw Error("This method is not implemented")
+				}, Q.prototype.connectionBanInfo = function() {
+					return this._banInfo.readonly()
+				}, Q.prototype.getPingInfo = function() {
+					return this._wsBackendConnection.getPingInfo()
+				}, Q.prototype._calcTrafficStats = function(e) {
+					var t = e.length;
+					this._trafficStats.total += t, this._trafficStats.sinceConnect += t, this._trafficStats.lastChunk += t
+				}, g(Q, "TVChartApi", d, "ChartApiInterface"), window.ChartApiInstance = new Q(window.WSBackendConnection), e && e.exports && (e.exports = Q)
+		},
+		635625: (e, t, n) => {
+			var o = n(695170),
+				s = n(823127);
+			n(823127);
+			var r = n(911905).getLogger("Common.LocalForage"),
+				i = n(49437).TVLocalStorageAsync,
+				a = [o.INDEXEDDB, o.LOCALSTORAGE, o.WEBSQL],
+				u = [o.LOCALSTORAGE, o.WEBSQL, o.INDEXEDDB];
+			window.localForageReady = s.Deferred();
+			var d = function(e) {
+				r.logNormal("localForage driver: " + JSON.stringify(e));
+				var t = {
+					name: "tradingview",
+					driver: e
+				};
+				o.config(t), window.TVLocalForage = o, window.localForageReady.resolve()
+			};
+			try {
+				var c = window.indexedDB.open("tradingviewCheckIndexedDB");
+				c.onerror = function(e) {
+					r.logError("IndexedDB is NOT available"), d(u)
+				}, c.onsuccess = function(e) {
+					r.logNormal("IndexedDB is available"), d(a)
+				}
+			} catch (e) {
+				r.logError("IndexedDB is NOT available, " + e);
+				try {
+					d(u)
+				} catch (e) {
+					window.TVLocalForage = i, window.localForageReady.resolve()
+				}
+			}
+			e.exports = {
+				TVLocalForage: window.TVLocalForage
+			}
+		},
+		723475: (e, t, n) => {
+			var o, s;
+			n.d(t, {
+					ResponseMethods: () => o,
+					ErrorReasons: () => s
+				}),
+				function(e) {
+					e.error = "replay_error", e.point = "replay_point", e.ok = "replay_ok", e.resolutions = "replay_resolutions", e.endOfData = "replay_data_end", e.instanceId = "replay_instance_id"
+				}(o || (o = {})),
+				function(e) {
+					e.tooSmallDelay = "too_small_delay", e.alreadyInAutoplay = "already_in_autoplay", e.nothingToStop = "nothing_to_stop", e.pointTooDeep = "point_too_deep", e.alreadyInSession = "already_in_session", e.thereIsNoSuchSeries = "no_series", e.notAllowedInAutoplay = "not_allow_in_autoplay", e.invalidResolution = "invalid_resolution"
+				}(s || (s = {}))
+		},
+		451902: (e, t, n) => {
+			n.d(t, {
+				showTooManyStudiesNotice: () => a
+			});
+			var o = n(575932),
+				s = n(560507),
+				r = n(833813),
+				i = n(779923);
+
+			function a(e) {
+				"number" != typeof e && (e = TradingView.STUDY_COUNT_LIMIT, e = (0, s.getConfig)(r.ProductFeatures.STUDY_ON_STUDY).limit), (0, i.showWarning)({
+					title: (0, o.t)("Warning"),
+					text: (0, o.t)("Studies limit exceeded: {number} studies per layout.\nPlease, remove some studies.").format({
+						number: e
+					})
+				})
+			}
+		},
+		582919: e => {
+			e.exports = JSON.parse('{"agencialbmcombr":"widget_user_token-agencialbmcombr","ambito":"widget_user_token-ambito","atlcapital":"widget_user_token-atlcapital","bankirosru":"widget_user_token-bankirosru","bbvach":"widget_user_token-bbvach","belugagroupru":"widget_user_token-belugagroupru","bovespa":"widget_user_token-bmfbovespacombr","cincodias":"widget_user_token-cincodias","ceocaD":"widget_user_token-ceocaD","ceocaRT":"widget_user_token-ceocaRT","copees":"widget_user_token-copees","easynvestcombr":"widget_user_token-easynvestcombr","elconfidencial":"widget_user_token-elconfidencial","elespanolcom":"widget_user_token-elespanolcom","elobreroes":"widget_user_token-elobreroes","elpaisfinanciero":"widget_user_token-elpaisfinanciero","euqueroinvestir":"widget_user_token-euqueroinvestircom","eurex":"widget_user_token-eurex","eurofins":"widget_user_token-eurofins","epe":"widget_user_token-epe","europapresses":"widget_user_token-europapresses","forbescombr":"widget_user_token-forbescombr","genialinvestimentos":"widget_user_token-genialinvestimentos","healthitalia":"widget_user_token-healthitalia","hegnarno":"widget_user_token-hegnarno","hipotecariocomar":"widget_user_token-hipotecariocomar","investopedia":"widget_user_token-investopedia","ivsgroup":"widget_user_token-ivsgroup","lainformacioncom":"widget_user_token-lainformacioncom","marcopolocombr":"widget_user_token-marcopolocombr","mercadofinancierocom":"widget_user_token-mercadofinancierocom","moex":"widget_user_token-moex","moneytimescombr":"widget_user_token-moneytimescombr","negocios":"widget_user_token-negocios","okdiario":"widget_user_token-okdiario","pse":"widget_user_token-pse","poder360":"widget_user_token-poder360","pseD":"widget_user_token-pseD","riyadhcapitalD":"widget_user_token-riyadhcapitalD","riyadhcapitalRT":"widget_user_token-riyadhcapitalRT","qecomqa":"widget_user_token-qecomqa","seudinheiro":"widget_user_token-seudinheiro","softwareag":"widget_user_token-softwareag","sogeclair":"widget_user_token-sogeclair","sgcompanyit":"widget_user_token-sgcompanyit","sharejunction":"widget_user_token-sharejunction","smartlab-custom":"widget_user_token-smartlab","smartlab":"widget_user_token-smartlab","spacemoneycombr":"widget_user_token-spacemoneycombr","tradersclubbrasil":"widget_user_token-tradersclubbrasil","tradersclubbrasilD":"widget_user_token-tradersclubbrasilD","tradingview":"widget_user_token-tradingview","vocesaabrilcombr":"widget_user_token-vocesaabrilcombr","xpicombr":"widget_user_token-xpicombr"}')
+		},
+		277714: e => {
+			e.exports = JSON.parse('{"ar_AE":["TADAWUL:TASI","TADAWUL:MT30","TVC:SPX","TVC:NDX","NSE:NIFTY","###Ø§Ù„Ø£Ø³Ù‡Ù…","TADAWUL:2222","TADAWUL:1120","TADAWUL:1150","NASDAQ:AAPL","NASDAQ:TSLA","###Ø§Ù„ÙÙˆØ±ÙƒØ³","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###Ø§Ù„Ø¹Ù‚ÙˆØ¯ Ø§Ù„Ø¢Ø¬Ù„Ø©","TVC:USOIL","TVC:UKOIL","TVC:GOLD","###Ø§Ù„Ø¹Ù…Ù„Ø§Øª Ø§Ù„Ø±Ù‚Ù…ÙŠØ©","BITSTAMP:BTCUSD","BINANCE:BTCUSDT","BITSTAMP:ETHUSD"],"br":["BMFBOVESPA:IBOV","BMFBOVESPA:SMLL","TVC:SPX","TVC:DXY","TVC:DJI","###AÃ§Ãµes (Stocks)","BMFBOVESPA:PETR4","BMFBOVESPA:VVAR3","BMFBOVESPA:ITSA4","BMFBOVESPA:MGLU3","###Cripto","BITSTAMP:BTCUSD","BINANCE:BTCBRL","BINANCE:ETHUSDT","###Futuros (Futures)","BMFBOVESPA:WIN1!","BMFBOVESPA:WDO1!","TVC:UKOIL","TVC:GOLD","BMFBOVESPA:CCM1!","###Moedas (Forex)","FX_IDC:USDBRL","FX:EURUSD","FX:USDJPY"],"de_DE":["TVC:DEU30","TVC:SPX","TVC:NDX","TVC:SX5E","TVC:UKX","###Aktien","XETR:SAP","XETR:BAYN","XETR:ADS","NASDAQ:AAPL","NASDAQ:TSLA","###Forex","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###Krypto","BITSTAMP:BTCUSD","BITSTAMP:BTCEUR","BITSTAMP:ETHUSD","###Futures","EUREX:FDAX1!","TVC:GOLD","TVC:USOIL","TVC:UKOIL"],"default":["###Indices","SP:SPX","TVC:NDX","TVC:DJI","CBOE:VIX","TVC:DXY","###Stocks","NASDAQ:AAPL","NASDAQ:TSLA","NASDAQ:NFLX","###Futures","TVC:USOIL","TVC:GOLD","TVC:SILVER","###Forex","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###Crypto","BITSTAMP:BTCUSD","BINANCE:BTCUSDT","BITSTAMP:ETHUSD"],"es":["TVC:SPX","TVC:IBEX35","TVC:DXY","TVC:VIX","###Acciones","NASDAQ:AAPL","BME:SAN","BCBA:GGAL","BMV:CEMEX/CPO","###Forex","FX:EURUSD","FX:USDJPY","FX:GBPUSD","###Futuros","TVC:USOIL","TVC:GOLD","TVC:SILVER","###Cripto","BITSTAMP:BTCUSD","BINANCE:BTCUSDT","BITSTAMP:ETHUSD"],"fr":["TVC:CAC40","TVC:DEU30","TVC:NDX","TVC:SPX","###Actions","EURONEXT:FP","EURONEXT:GLE","EURONEXT:ORA","###Futures","TVC:UKOIL","TVC:USOIL","TVC:GOLD","###Forex","FX:EURUSD","FX:GBPUSD","FX:USDJPY","FX:EURGBP","###Crypto","BITSTAMP:BTCUSD","BITSTAMP:ETHUSD","BINANCE:BTCUSDT","BITSTAMP:BTCEUR"],"he_IL":["TASE:TA35","TVC:NDX","TVC:SPX","TVC:DJI","TVC:DXY","###×ž× ×™×•×ª","TASE:TEVA","TASE:OPK","TASE:INTL","NASDAQ:AAPL","NASDAQ:TSLA","###×—×•×–×™× ×¢×ª×™×“×™×™×","TVC:USOIL","TVC:GOLD","TVC:SILVER","###×ž×˜\\"×—","FX:EURUSD","FX:GBPUSD","FX:USDJPY","FX_IDC:USDILS","###×§×¨×™×¤×˜×•","BITSTAMP:BTCUSD","BINANCE:BTCUSDT","BITSTAMP:ETHUSD"],"id":["IDX:COMPOSITE","IDX:IDX30","IDX:IDXBUMN20","TVC:SPX","TVC:DXY","###Saham (Stock)","IDX:ANTM","IDX:BBRI","IDX:TLKM","###Forex","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###Kontrak berjangka (Futures)","TVC:USOIL","TVC:UKOIL","TVC:GOLD","###Crypto","BITSTAMP:BTCUSD","BINANCE:BTCUSDT","BITSTAMP:ETHUSD"],"in":["NSE:NIFTY","NSE:BANKNIFTY","BSE:SENSEX","NSE:CNXIT","TVC:SPX","###Stocks","NSE:RELIANCE","NSE:AXISBANK","NSE:HDFCBANK","NSE:ICICIBANK","NSE:BAJFINANCE","###Futures","NSE:NIFTY1!","NSE:BANKNIFTY1!","NSE:RELIANCE1!","NSE:INFY1!","###Forex","FX_IDC:USDINR","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###Crypto","BITSTAMP:BTCUSD","BITSTAMP:ETHUSD","BITSTAMP:XRPUSD","BITSTAMP:LTCUSD"],"it":["TVC:FTMIB","TVC:SPX","TVC:DXY","TVC:UKX","TVC:DAX","###Forex","FX:EURUSD","FX:EURGBP","FX:USDJPY","FX:GBPUSD","###Azioni","MIL:ENI","MIL:ISP","NASDAQ:TSLA","NASDAQ:AAPL","###Futures","TVC:GOLD","TVC:USOIL","###Cripto","BITSTAMP:BTCUSD","BITSTAMP:ETHUSD","BITSTAMP:BTCEUR"],"ja":["TVC:NI225","TVC:DJI","TVC:SPX","TVC:DXY","TVC:VIX","###æ ªå¼","TSE:9984","TSE:8306","TSE:6758","###å…ˆç‰©","TVC:GOLD","TVC:USOIL","OSE:NK2251!","TVC:US10Y","###FX","FX:USDJPY","FX:EURUSD","FX:GBPJPY","###ä»®æƒ³é€šè²¨","BITSTAMP:BTCUSD","BITFLYER:BTCJPY","BITMEX:XBTUSD"],"kr":["KRX:KOSPI","KRX:KOSPI200","KRX:KOSDAQ","TVC:SPX","TVC:NDX","TVC:NI225","###ê°€ìƒí™”íŽ˜","BITMEX:XBTUSD","BITHUMB:BTCKRW","BINANCE:BTCUSDT","###ì™¸í™˜","FX_IDC:USDKRW","FX:EURUSD","FX:USDJPY","###êµ­ë‚´ì£¼ì‹","KRX:005930","KRX:035420","KRX:005380","KRX:068270","KRX:035720","###í•´ì™¸ì„ ë¬¼","CBOT_MINI:YM1!","CME_MINI:NQ1!","CME_MINI:ES1!","NYMEX:CL1!","CBOE:VX1!"],"ms_MY":["FTSEMYX:FBMKLCI","FX_IDC:USDMYR","MYX:FCPO1!","TVC:SPX","TVC:VIX","###Saham","MYX:TOPGLOV","MYX:SUPERMX","MYX:CAREPLS","NASDAQ:AAPL","NASDAQ:TSLA","###Forex","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###Hadapan","TVC:USOIL","TVC:UKOIL","TVC:GOLD","###Kripto","BITSTAMP:BTCUSD","BITSTAMP:ETHUSD","BITFINEX:BTCMYR"],"pl":["GPW:WIG20","TVC:SX5E","TVC:DAX","TVC:SPX","###Akcje GieÅ‚dowe","GPW:PKO","GPW:JSW","GPW:PKN","NASDAQ:AAPL","NASDAQ:TSLA","###Kontrakty Terminowe","TVC:USOIL","TVC:GOLD","TVC:SILVER","###Forex","FX_IDC:USDPLN","FX_IDC:EURPLN","FX:EURUSD","FX:USDJPY","FX:GBPUSD","###Krypto","BITSTAMP:BTCUSD","BITSTAMP:ETHUSD"],"ru":["MOEX:IMOEX","MOEX:RTSI","TVC:SPX","TVC:NDX","###ÐÐºÑ†Ð¸Ð¸","MOEX:SBER","MOEX:GAZP","MOEX:LKOH","MOEX:VTBR","###Ð¤ÑŒÑŽÑ‡ÐµÑ€ÑÑ‹","MOEX:BR1!","MOEX:RI1!","MOEX:GD1!","###Ð’Ð°Ð»ÑŽÑ‚Ñ‹","MOEX:USDRUB_TOM","MOEX:EURRUB_TOM","FX:EURUSD","FX:GBPUSD","###ÐšÑ€Ð¸Ð¿Ñ‚Ð¾Ð²Ð°Ð»ÑŽÑ‚Ñ‹","BITSTAMP:BTCUSD","BITSTAMP:ETHUSD","BITSTAMP:XRPUSD","BITSTAMP:LTCUSD"],"sv_SE":["OMXSTO:OMXSPI","TVC:SPX","TVC:NDX","CURRENCYCOM:UK100","TVC:VIX","###Aktier","OMXSTO:VOLV_A","OMXSTO:ATCO_A","OMXSTO:INVE_A","NASDAQ:AAPL","NASDAQ:TSLA","###Terminer","TVC:USOIL","TVC:UKOIL","TVC:GOLD","###Valutor","FX:USDSEK","FX:EURSEK","FX:EURUSD","FX:USDJPY","###Krypto","BITSTAMP:BTCUSD","BITSTAMP:BTCEUR","BITSTAMP:ETHUSD"],"th_TH":["SET:SET","SET:SET50","TVC:SPX","TVC:NDX","TVC:VIX","###à¸«à¸¸à¹‰à¸™","SET:AOT","SET:CPALL","SET:PTT","NASDAQ:AAPL","NASDAQ:TSLA","###à¸Ÿà¸´à¸§à¹€à¸ˆà¸­à¸£à¹Œ","TVC:USOIL","TVC:GOLD","TVC:SILVER","###Forex","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###à¸„à¸£à¸´à¸›à¹‚à¸•","BITKUB:BTCTHB","BITSTAMP:BTCUSD","BINANCE:ETHUSDT"],"tr":["BIST:XU100","TVC:SPX","TVC:DAX","FX_IDC:XAUTRY","TVC:VIX","###Hisse Senetleri","BIST:THYAO","BIST:ASELS","BIST:TUPRS","NASDAQ:AAPL","NASDAQ:TSLA","###Vadeliler","TVC:USOIL","TVC:GOLD","TVC:SILVER","###DÃ¶viz","FX:USDTRY","FX:EURTRY","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###Kripto","BITFINEX:BTCTRY","BITSTAMP:BTCUSD","BITSTAMP:ETHUSD","BITSTAMP:XRPUSD"],"uk":["TVC:UKX","TVC:SPX","TVC:NDX","CBOE:VIX","TVC:DXY","###Stocks","LSE:LLOY","LSE:BARC","LSE:BP.","NASDAQ:AAPL","NASDAQ:TSLA","###Futures","OANDA:XAUUSD","TVC:USOIL","CURRENCYCOM:US30","###Forex","FX:GBPUSD","FX:EURUSD","FX:GBPJPY","###Crypto","BITSTAMP:BTCUSD","BITSTAMP:BTCGBP","BITSTAMP:ETHUSD","BITSTAMP:XRPUSD"],"vi_VN":["HOSE:VNINDEX","HNX:HNXINDEX","TVC:SPX","TVC:NDX","TVC:VIX","###Tiá»n Ä‘iá»‡n tá»­","BITSTAMP:BTCUSD","BINANCE:BTCUSDT","BITSTAMP:ETHUSD","###Cá»• phiáº¿u","HOSE:HPG","HOSE:VCB","HOSE:FPT","NASDAQ:AAPL","NASDAQ:TSLA","###Ngoáº¡i há»‘i","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###Há»£p Ä‘á»“ng TÆ°Æ¡ng lai","TVC:USOIL","TVC:UKOIL","TVC:GOLD"],"zh_CN":["SSE:000001","SZSE:399106","TVC:HSI","TVC:SPX","TVC:DXY","###è‚¡ç¥¨","HKEX:700","HKEX:9988","SSE:600519","NASDAQ:AAPL","NASDAQ:TSLA","###æœŸè´§","TVC:GOLD","TVC:SILVER","TVC:USOIL","TVC:UKOIL","###å¤–æ±‡","FX:EURUSD","FX:GBPUSD","FX:USDJPY","FX_IDC:USDCNY","###åŠ å¯†è´§å¸","BITSTAMP:BTCUSD","BINANCE:BTCUSDT","BITSTAMP:ETHUSD"],"zh_TW":["TWSE:TAIEX","TVC:HSI","TVC:SPX","TVC:NDX","TVC:VIX","###è‚¡ç¥¨","TWSE:2330","TWSE:0050","HKEX:700","NASDAQ:AAPL","NASDAQ:TSLA","###æœŸè²¨","TVC:USOIL","TVC:GOLD","HKEX:HSI1!","###å¤–åŒ¯","FX:EURUSD","FX:GBPUSD","FX:USDJPY","###åŠ å¯†è²¨å¹£","BITSTAMP:BTCUSD","BINANCE:BTCUSDT","BITSTAMP:ETHUSD"]}')
+		}
+	}
+]);
